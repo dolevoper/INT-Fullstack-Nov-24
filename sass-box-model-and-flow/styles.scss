@@ -2,8 +2,13 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: calc(1.2rem + 0.05vw);
+}
+
 body {
     font-family: system-ui;
+    line-height: 1.5;
 }
 
 #circle {
@@ -16,7 +21,7 @@ body {
 }
 
 * {
-    margin: 0.5rem;
+    margin: 0;
 }
 
 #box {
@@ -38,11 +43,16 @@ body {
     margin: 23px;
 }
 
+<<<<<<< HEAD
 .button-exrecise {
+=======
+#button-exercise {
+>>>>>>> 50122206571a1f2c8ec2935c58d712733cd62cfb
     background: orange;
 }
 
 button {
+<<<<<<< HEAD
   font-size: 1.5rem;
   padding: 0.3em 0.6em;
   background: cornflowerblue;
@@ -64,3 +74,27 @@ button {
     color: cornflowerblue;
   }
 }
+=======
+    font-size: 1.5rem;
+    padding: 0.3em 0.6em;
+    background: cornflowerblue;
+    color: seashell;
+    border: 2px solid currentColor;
+    margin: 20px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: -1.2px;
+    line-height: 1;
+
+    &:hover {
+        background: royalblue;
+    }
+
+    &:active {
+        background: seashell;
+        color: cornflowerblue;
+    }
+}
+>>>>>>> 50122206571a1f2c8ec2935c58d712733cd62cfb
