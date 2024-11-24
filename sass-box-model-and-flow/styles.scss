@@ -37,3 +37,30 @@ body {
     padding: 20px;
     margin: 23px;
 }
+
+.button-exrecise {
+    background: orange;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.3em 0.6em;
+  background: cornflowerblue;
+  color: seashell;
+  border: 2px solid currentColor;
+  margin: 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+
+  &:hover {
+    background: royalblue;
+  }
+
+  &:active {
+    background: seashell;
+    color: cornflowerblue;
+  }
+}
