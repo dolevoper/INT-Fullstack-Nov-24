@@ -7,12 +7,25 @@ html {
     font-size: calc(1.2rem + 0.5vw);
 }
 
+body {
+    font-family: system-ui;
+    color: hsl(0 0 22);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: black;
+}
+
 h1 {
     font-size: 1.8rem;
 }
 
 h2 {
     font-size: 1.4rem;
+}
+
+article h2 {
+    text-decoration: underline;
 }
 
 .intro {
@@ -45,8 +58,12 @@ article > .box {
     margin-block: 8px;
 }
 
-.rounded {
+.box.rounded {
     border-radius: 4px;
+}
+
+.rounded {
+    border-radius: 50%;
 }
 
 h2 + p {
@@ -69,4 +86,13 @@ text-decoration: underline;
 }
 ul, p, li, article{
  font-weight: lighter;  
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    color: orange;
 }
