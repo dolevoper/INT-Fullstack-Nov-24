@@ -2,8 +2,13 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: calc(1.2rem + 0.05vw);
+}
+
 body {
   font-family: system-ui;
+  line-height: 1.5;
 }
 
 #circle {
@@ -16,7 +21,7 @@ body {
 }
 
 * {
-  margin: 0.5rem;
+  margin: 0;
 }
 
 #box {
@@ -35,4 +40,30 @@ body {
   aspect-ratio: 1;
   padding: 20px;
   margin: 23px;
+}
+
+#button-exercise {
+  background: orange;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.3em 0.6em;
+  background: cornflowerblue;
+  color: seashell;
+  border: 2px solid currentColor;
+  margin: 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  line-height: 1;
+}
+button:hover {
+  background: royalblue;
+}
+button:active {
+  background: seashell;
+  color: cornflowerblue;
 }
