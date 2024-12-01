@@ -1,0 +1,44 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+main {
+  width: 60ch;
+  margin-inline: auto;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  font-family: system-ui;
+}
+
+.inline-article {
+  display: inline;
+  border: 1px solid black;
+}
+
+.breadcrumbs {
+  margin-inline: auto;
+  width: fit-content;
+}
+.breadcrumbs li {
+  display: inline;
+}
+.breadcrumbs li a {
+  padding-inline: 1rem;
+}
+.breadcrumbs li:last-child {
+  font-weight: 600;
+  padding-inline: 1rem;
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+}

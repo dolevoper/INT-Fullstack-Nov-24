@@ -1,0 +1,50 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+main {
+    width: 60ch;
+    // margin-left: auto;
+    // margin-right: auto;
+    margin-inline: auto;
+}
+
+ul, ol {
+    padding: 0;
+}
+
+body {
+    line-height: 1.5;
+    font-family: system-ui;
+}
+
+.inline-article {
+    display: inline;
+    border: 1px solid black;
+}
+
+.breadcrumbs {
+    margin-inline: auto;
+    width: fit-content;
+
+    li {
+        display: inline;
+        
+        a {
+            padding-inline: 1rem;
+        }
+
+        &:last-child {
+            font-weight: 600;
+            padding-inline: 1rem;
+        }
+
+        &:not(:last-child)::after {
+            content: "/";
+        }
+    }
+}
