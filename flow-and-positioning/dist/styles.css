@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -6,12 +8,21 @@
   margin: 0;
 }
 
-main {
-  width: 60ch;
-  margin-inline: auto;
+img {
+  display: block;
+  width: 100%;
 }
 
-ul, ol {
+main {
+  width: 90ch;
+  margin-inline: auto;
+}
+main > * {
+  margin-block-start: 1rem;
+}
+
+ul,
+ol {
   padding: 0;
 }
 
@@ -41,4 +52,47 @@ body {
 }
 .breadcrumbs li:not(:last-child)::after {
   content: "/";
+}
+
+.box {
+  display: inline-block;
+  background: red;
+  width: 50px;
+  aspect-ratio: 1;
+  margin-inline: 25px;
+  border: 1px solid black;
+}
+
+.main-action {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  margin: 0;
+  font-family: inherit;
+  font-size: 2rem;
+  padding: 0.5em 1em;
+  border-radius: 16px;
+  background: deeppink;
+  color: white;
+  font-weight: 600;
+  border: 2px solid currentColor;
+  line-height: 1;
+}
+
+.dropping {
+  position: relative;
+  top: 100px;
+}
+
+.container {
+  position: relative;
+  border: 1px solid black;
+  aspect-ratio: 1;
+  background: turquoise;
+}
+.container .container-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
 }
