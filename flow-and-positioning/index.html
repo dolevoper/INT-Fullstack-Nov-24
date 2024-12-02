@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flow and positionning</title>
     <link rel="stylesheet" href="dist/styles.css">
 </head>
+
 <body>
-    <p>Lorem, ipsum dolor sit amet <b>consectetur</b> adipisicing elit. Reiciendis odio optio nam dolor dolores vero. Minima consequatur, ducimus inventore ipsam sequi quae voluptatum, ea at aspernatur, enim perspiciatis doloremque placeat?</p>
-    <article class="inline-article">
-        hello this is an article
-    </article><span>hello world</span>
-    <h1>this is h1</h1>
-    <h2>this is h2</h2>
-    <ul>
-        <li>this is a list</li>
-    </ul>
-    <p>another paragraph</p>
-    <nav>
+    <main>
+        <nav>
+            <ol class="breadcrumbs">
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li>Page 3</li>
+            </ol>
+        </nav>
+        <article>
+            Here are some boxes
+            <span class="box"></span>
+            <span class="box dropping"></span>
+            <span class="box"></span>
+        </article>
+        <p>Lorem, ipsum dolor sit amet <b>consectetur</b> adipisicing elit. Reiciendis odio optio nam dolor dolores
+            vero. Minima consequatur, ducimus inventore ipsam sequi quae voluptatum, ea at aspernatur, enim perspiciatis
+            doloremque placeat?</p>
+        <article class="inline-article">
+            hello this is an article
+        </article><span>hello world</span>
+        <h1>this is h1</h1>
+        <h2>this is h2</h2>
         <ul>
-            <li>list inside nav</li>
-            <li>list inside nav</li>
-            <li>list inside nav</li>
+            <li>this is a list</li>
         </ul>
-    </nav>
-    <img src="https://picsum.photos/200" alt="">
-    <abbr title="Hyper Text Markup Language">HTML</abbr>
-    <img src="https://picsum.photos/200" alt="">
-    <b>this is bold</b><u>this is underlined</u>
-    <img src="https://picsum.photos/200" alt="">
-    <span>this is strong</span>
-    <table></table>
+        <p>another paragraph</p>
+        <nav>
+            <ul>
+                <li>list inside nav</li>
+                <li>list inside nav</li>
+                <li>list inside nav</li>
+            </ul>
+        </nav>
+        <img src="https://picsum.photos/id/237/200" alt="">
+        <abbr title="Hyper Text Markup Language">HTML</abbr>
+        <img src="https://picsum.photos/id/238/1024/600" alt="">
+        <b>this is bold</b><u>this is underlined</u>
+        <img src="https://picsum.photos/id/239/200" alt="">
+        <span>this is strong</span>
+        <div class="container">
+            <div class="box container-center"></div>
+        </div>
+        <button class="main-action">New mail</button>
+    </main>
 </body>
+
 </html>
