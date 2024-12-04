@@ -1,0 +1,70 @@
+:root {
+    --color-bg: hsl(40, 9%, 94%);
+    --color-surface: hsl(0, 0%, 98%);
+    --color-primary: hsl(0, 0%, 14%);
+    --color-black: hsl(0, 0%, 31%);
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-black);
+}
+
+.site-header {
+    height: 100vh;
+    background: var(--color-surface);
+
+    nav {
+        background: var(--color-bg);
+
+        li {
+            display: inline;
+            margin-inline: 1rem;
+        }
+    }
+}
+
+.intro {
+    background: var(--color-bg);
+    text-align: center;
+}
+
+.brands li {
+    display: inline;
+    margin-inline: 1rem;
+}
+
+.services {
+    ul {
+        width: fit-content;
+        margin-inline: auto;
+    }
+
+    li {
+        display: inline;
+        margin-inline: 1rem;
+    }
+}
+
+.site-footer {
+    background: var(--color-surface);
+
+    nav {
+        p, li {
+            display: inline;
+        }
+
+        menu {
+            float: right;
+        }
+
+        li {
+            margin-inline: 1rem;
+        }
+    }
+}
+
+.contact-me {
+    width: fit-content;
+    margin-inline: auto;
+}
