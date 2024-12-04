@@ -1,0 +1,60 @@
+:root {
+  --color-primary: blue;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: calc(1.2rem + 0.1vw);
+  line-height: 1.5;
+}
+
+body {
+  font-family: system-ui;
+}
+
+main > * + * {
+  margin-block-start: 2rem;
+}
+
+.reading-container {
+  --_inline-margin: 1rem;
+  --_screen-size-lg: 75ch;
+  --_screen-size-sm: calc(100% - 2 * var(--_inline-margin));
+  width: min(var(--_screen-size-lg), var(--_screen-size-sm));
+  margin-inline: auto;
+}
+
+.content-sm {
+  --_screen-size-lg: 45ch;
+}
+
+.toggle .toggle-container {
+  position: relative;
+  width: fit-content;
+}
+.toggle .slot {
+  width: 70px;
+  height: 20px;
+  background: lightgray;
+  border-radius: 20px;
+}
+.toggle .pill {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  height: 30px;
+  aspect-ratio: 1;
+  border: 2px solid black;
+  border-radius: 50%;
+  background: white;
+}
+.toggle input {
+  display: none;
+}
+.toggle input:checked + label .pill {
+  right: 0;
+}
