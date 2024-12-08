@@ -65,3 +65,16 @@ main > * + * {
 footer {
   background: #cccccc;
 }
+
+.line-up {
+  display: flex;
+  gap: clamp(1rem, 10vw, 10rem);
+  margin-inline: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.line-up > li {
+  flex: 30%;
+  max-width: 250px;
+  min-width: 200px;
+}

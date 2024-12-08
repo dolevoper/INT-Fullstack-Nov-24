@@ -75,3 +75,17 @@ main {
 footer {
     background: hsl(0deg 0% 80%);
 }
+
+.line-up {
+    display: flex;
+    gap: clamp(1rem, 10vw, 10rem);
+    margin-inline: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > li {
+        flex: 30%;
+        max-width: 250px;
+        min-width: 200px;
+    }
+}
