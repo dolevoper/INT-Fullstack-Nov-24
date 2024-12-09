@@ -1,0 +1,84 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul, ol, menu {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+input, button {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 1.2rem;
+}
+
+body {
+  font-family: system-ui;
+  line-height: 1.5;
+  color: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  width: min(60ch, 100% - 2rem);
+  height: min(80ex, 60%);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+.feed {
+  flex: 1;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+}
+.feed ol {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.3rem;
+  height: 100%;
+}
+.feed .message {
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  padding: 0.1rem 0.3rem;
+}
+.feed .message--user {
+  background: green;
+  color: white;
+  align-self: flex-end;
+}
+
+.send-message {
+  display: flex;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+}
+.send-message input {
+  flex: 1;
+}
