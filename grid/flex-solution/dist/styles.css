@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul, ol, menu {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+html {
+  font-size: 1.2rem;
+}
+
+body {
+  font-family: system-ui;
+  line-height: 1.5;
+  color: #0d0d0d;
+}
+
+main {
+  width: calc(100% - 2rem);
+  margin-inline: auto;
+}
+main > * + * {
+  margin-block-start: 2rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-block-start: 2rem;
+}
+.gallery > * {
+  flex: 500px;
+  min-width: 350px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.card img:first-child {
+  border-radius: 16px;
+}
+.card__title, .card__price {
+  font-weight: 500;
+}
