@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -21,8 +19,7 @@ main > * {
   margin-block-start: 1rem;
 }
 
-ul,
-ol {
+ul, ol {
   padding: 0;
 }
 

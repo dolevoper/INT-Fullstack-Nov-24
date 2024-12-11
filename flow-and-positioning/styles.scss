@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*,*::before,*::after {
     box-sizing: border-box;
 }
 
@@ -24,8 +22,7 @@ main {
     }
 }
 
-ul,
-ol {
+ul, ol {
     padding: 0;
 }
 

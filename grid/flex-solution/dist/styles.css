@@ -24,6 +24,9 @@ body {
   font-family: system-ui;
   line-height: 1.5;
   color: #0d0d0d;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
 }
 
 main {
@@ -55,4 +58,11 @@ main > * + * {
 }
 .card__title, .card__price {
   font-weight: 500;
+}
+
+.sidebar {
+  display: flex;
+  flex: 1 0 auto;
+  background-color: red;
+  flex-flow: column wrap;
 }

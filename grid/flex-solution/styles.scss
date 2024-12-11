@@ -28,11 +28,16 @@ body {
     font-family: system-ui;
     line-height: 1.5;
     color: hsl(0deg 0% 5%);
+    display: flex;
+    flex-flow: row ;
+    
+    
 }
 
 main {
-    width: calc(100% - 2rem);
+    width: ;
     margin-inline: auto;
+    overflow: auto;
 
     > * + * {
         margin-block-start: 2rem;
@@ -43,6 +48,7 @@ main {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    
 
     margin-block-start: 2rem;
 
@@ -64,4 +70,24 @@ main {
     &__title, &__price {
         font-weight: 500;
     }
+}
+
+.sidebar{
+display: flex;
+flex: 1 0 auto;
+
+background-color: red;
+
+flex-flow: column wrap;
+
+
+
+> * {
+
+
+
+}
+
+
+
 }
