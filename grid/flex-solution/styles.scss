@@ -1,0 +1,67 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+// html, body {
+//     height: 100%;
+// }
+
+html {
+    font-size: 1.2rem;
+}
+
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+    color: hsl(0deg 0% 5%);
+}
+
+main {
+    width: calc(100% - 2rem);
+    margin-inline: auto;
+
+    > * + * {
+        margin-block-start: 2rem;
+    }
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    margin-block-start: 2rem;
+
+    > * {
+        flex: 500px;
+        min-width: 350px;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    img:first-child {
+        border-radius: 16px;
+    }
+
+    &__title, &__price {
+        font-weight: 500;
+    }
+}
