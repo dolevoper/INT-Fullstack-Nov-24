@@ -1,0 +1,57 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+html, body, main {
+    height: 100%;
+}
+
+html {
+    font-size: 1.2rem;
+}
+
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+    color: hsl(0deg 0% 5%);
+}
+
+main {
+    display: grid;
+    grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+}
+
+#box1 {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+
+    background: lime;
+}
+
+#box2 {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+
+    background: red;
+}
+
+#box3 {
+    grid-column: 1;
+    grid-row: 1;
+
+    background: blue;
+}
