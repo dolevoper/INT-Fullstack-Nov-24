@@ -1,0 +1,72 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul, ol, menu {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+html, body, main {
+  height: 100%;
+}
+
+html {
+  font-size: 1.2rem;
+}
+
+body {
+  font-family: system-ui;
+  line-height: 1.5;
+  color: #0d0d0d;
+}
+
+.lineup {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-rows: repeat(3, auto);
+  gap: 1rem;
+  place-content: center;
+  width: min(100% - 2rem, 120ch);
+  margin-inline: auto;
+}
+.lineup > .card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row-end: span 3;
+}
+@media screen and (width < 60.25rem) {
+  .lineup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lineup > .card {
+    width: min(100%, 600px);
+  }
+}
+
+.card {
+  border: 1px solid currentColor;
+  border-radius: 8px;
+}
+.card__title {
+  font-weight: 600;
+  margin-block-end: 1rem;
+}
+
+.gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  padding-inline: 1rem;
+}
