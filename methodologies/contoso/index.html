@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contoso</title>
     <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/composition.css" />
 </head>
 <body>
-    <header>
+    <header class="cluster">
         <p>Contoso</p>
-        <form name="search">
+        <form name="search" class="cluster__break">
             <input type="search" placeholder="Scott pilgrim..." />
         </form>
         <details>
@@ -22,15 +23,15 @@
             </menu>
         </details>
     </header>
-    <main>
+    <main class="stack">
         <article>
             <h1>Browse</h1>
             <img src="https://picsum.photos/id/345/300/200" alt="" />
             <p>More content</p>
         </article>
-        <article>
+        <article class="stack">
             <h2>For you</h2>
-            <ul>
+            <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
                     <img src="https://picsum.photos/id/204/200/200" alt="" />
                 </li>
@@ -48,21 +49,21 @@
                 </li>
             </ul>
         </article>
-        <nav>
+        <nav class="cluster">
             <h2>Categories</h2>
-            <menu>
-                <li>Action</li>
-                <li>Drama</li>
-                <li>Family</li>
-                <li>Rom com</li>
-                <li>Thriller</li>
-                <li>Horror</li>
-                <li>Documentary</li>
+            <menu class="cluster cluster__break">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Drama</a></li>
+                <li><a href="#">Family</a></li>
+                <li><a href="#">Rom com</a></li>
+                <li><a href="#">Thriller</a></li>
+                <li><a href="#">Horror</a></li>
+                <li><a href="#">Documentary</a></li>
             </menu>
         </nav>
-        <article>
+        <article class="stack">
             <h2>Trending</h2>
-            <ul>
+            <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
                     <img src="https://picsum.photos/id/204/200/200" alt="" />
                 </li>
@@ -80,9 +81,9 @@
                 </li>
             </ul>
         </article>
-        <article>
+        <article class="stack">
             <h2>Best picks</h2>
-            <ul>
+            <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
                     <img src="https://picsum.photos/id/204/200/200" alt="" />
                 </li>
