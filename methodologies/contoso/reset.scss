@@ -1,0 +1,51 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    font-size: 1.2rem;
+}
+
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+}
+
+input {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    appearance: none;
+    border: none;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: inherit;
+}
