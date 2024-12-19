@@ -1,0 +1,18 @@
+.reel {
+  display: flex;
+  gap: 1rem;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-content: baseline;
+}
+.cluster__break {
+  margin-inline-start: auto;
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack-gutter, 2rem);
+}
