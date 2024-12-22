@@ -8,6 +8,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: scale 300ms;
+  transition-timing-function: ease-out;
   will-change: scale;
 }
 .button:hover {
