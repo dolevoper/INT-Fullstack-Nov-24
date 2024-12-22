@@ -1,0 +1,29 @@
+.button {
+  padding: 1em 2em;
+  text-transform: uppercase;
+  border-radius: calc(2em + 1.6em);
+  border: 2px solid white;
+  background: hotpink;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: scale 300ms;
+  will-change: scale;
+}
+.button:hover {
+  background: #fe71c3;
+  scale: 1.1;
+  transition: scale 125ms;
+}
+.button:active {
+  background: #ff66a6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button:hover {
+    transition: none;
+    scale: 1;
+  }
+}

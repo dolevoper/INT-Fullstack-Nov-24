@@ -1,0 +1,40 @@
+.loading {
+  font-size: 3rem;
+  width: 1em;
+  height: 1em;
+  position: relative;
+}
+.loading .ball {
+  --size: 0.2em;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  top: calc(50% - var(--size) / 2);
+  left: calc(50% - var(--size) / 2);
+  border-radius: 50%;
+  background: white;
+  translate: calc(0.3em * sin(var(--degrees))) calc(0.3em * cos(var(--degrees)));
+}
+.loading .b1,
+.loading .b3,
+.loading .b5 {
+  background: #4d4db3;
+}
+.loading .b1 {
+  --degrees: 0deg;
+}
+.loading .b2 {
+  --degrees: 60deg;
+}
+.loading .b3 {
+  --degrees: 120deg;
+}
+.loading .b4 {
+  --degrees: 180deg;
+}
+.loading .b5 {
+  --degrees: 240deg;
+}
+.loading .b6 {
+  --degrees: 300deg;
+}
