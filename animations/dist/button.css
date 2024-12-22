@@ -1,0 +1,16 @@
+.button {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  border-radius: calc(2rem + 1.6em);
+  border: 2px solid white;
+  background: hotpink;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+.button:hover {
+  background: #fe71c3;
+}
+.button:active {
+  background: #ff66a6;
+}

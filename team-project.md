@@ -1,6 +1,6 @@
 ## Schedule
 14/12/2024 - Idea and design
-21/12/2024 - First draft
+23/12/2024 - First draft
 28/12/2024 - Final submission
 
 ## Scope

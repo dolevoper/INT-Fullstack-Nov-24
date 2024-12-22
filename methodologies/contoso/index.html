@@ -6,9 +6,10 @@
     <title>Contoso</title>
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/composition.css" />
+    <link rel="stylesheet" href="dist/utility.css" />
 </head>
-<body>
-    <header class="cluster">
+<body class="background">
+    <header class="cluster surface">
         <p>Contoso</p>
         <form name="search" class="cluster__break">
             <input type="search" placeholder="Scott pilgrim..." />
@@ -24,12 +25,12 @@
         </details>
     </header>
     <main class="stack">
-        <article>
+        <article class="surface surface--accent">
             <h1>Browse</h1>
             <img src="https://picsum.photos/id/345/300/200" alt="" />
             <p>More content</p>
         </article>
-        <article class="stack">
+        <article class="stack surface surface--primary">
             <h2>For you</h2>
             <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
@@ -49,7 +50,7 @@
                 </li>
             </ul>
         </article>
-        <nav class="cluster">
+        <nav class="cluster surface">
             <h2>Categories</h2>
             <menu class="cluster cluster__break">
                 <li><a href="#">Action</a></li>
@@ -61,7 +62,7 @@
                 <li><a href="#">Documentary</a></li>
             </menu>
         </nav>
-        <article class="stack">
+        <article class="stack surface surface--primary">
             <h2>Trending</h2>
             <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
@@ -81,7 +82,7 @@
                 </li>
             </ul>
         </article>
-        <article class="stack">
+        <article class="stack surface surface--primary">
             <h2>Best picks</h2>
             <ul class="reel" style="--stack-gutter: 1rem">
                 <li>
