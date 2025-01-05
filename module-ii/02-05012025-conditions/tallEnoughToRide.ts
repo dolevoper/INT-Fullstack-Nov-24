@@ -8,8 +8,29 @@ const userHeightInCm = Number(prompt("What is your height? (cm)"));
 
 // Output: "You can board the ride!" or "Go home"
 
-if ((userAge >= 8 && userHeightInCm >= 140) || userAge >= 18) {
-  console.log("You can board the ride!");
-} else {    
-  console.log("Go home");
+
+const isOlderThan8 = userAge > 8;
+const isAtLeast140Cm = userHeightInCm >= 140;
+const isOlderThan18 = userAge > 18;
+
+if (isOlderThan18) {
+    alert("You can board the ride!");
+} else if (!isOlderThan8) {
+    alert("Go home");
+} else if (isAtLeast140Cm) {
+    alert("You can board the ride!");
+} else {
+    alert("Go home");
 }
+
+// logic operators - takes 2 booleans and return a boolean
+//  && (and)
+// || (inclusive or)
+
+// Short circuit logic
+if (isOlderThan18 || (isOlderThan8 && isAtLeast140Cm)) {
+    alert("You can board the ride!");
+} else {
+    alert("Go home");
+}
+>>>>>>> 0a9cea75380e5f0d0a01913dc7c8cc6b949985a9
