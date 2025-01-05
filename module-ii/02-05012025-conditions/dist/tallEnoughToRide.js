@@ -5,3 +5,9 @@ var userHeightInCm = Number(prompt("What is your height? (cm)"));
 // At least 140cm tall
 // Or above 18 y/o
 // Output: "You can board the ride!" or "Go home"
+if ((userAge > 8 && userHeightInCm >= 140) || userAge >= 18) {
+    alert("You can board the ride!");
+}
+else {
+    alert("Go home");
+}
