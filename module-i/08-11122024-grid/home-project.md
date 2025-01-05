@@ -1,0 +1,7 @@
+- Optional - complete this design: https://dribbble.com/shots/22664022-E-commerce-Website
+- Lineup
+    - lineup the 3 cards
+    - Names should be bigger and bolder
+    - Should be a bit more space between the name and the description
+    - Everything should align
+- Gallery - use grid instead of flex

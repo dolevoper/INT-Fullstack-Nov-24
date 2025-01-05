@@ -1,0 +1,114 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+html, body, main {
+    height: 100%;
+}
+
+html {
+    font-size: 1.2rem;
+}
+
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+    color: hsl(0deg 0% 5%);
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.site-nav {
+    background: hsl(0deg 0% 95%);
+    padding: 0.5rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 250px;
+
+    menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        flex: 1;
+    }
+
+    &__break {
+        margin-block-start: auto;
+    }
+}
+
+.brand {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+main {
+    flex: 9999999;
+    min-width: 900px;
+    overflow: auto;
+
+    > * + * {
+        margin-block-start: 2rem;
+    }
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    margin-block-start: 2rem;
+
+    > * {
+        flex: 500px;
+        min-width: 350px;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    img:first-child {
+        border-radius: 16px;
+    }
+
+    &__title, &__price {
+        font-weight: 500;
+    }
+}
+
+.reading-view {
+    width: min(70ch, 100% - 2rem);
+    margin-inline: auto;
+
+    > p + p {
+        margin-block-start: 1rem;
+    }
+}
+
+aside {
+    margin-block: 1rem;
+    border: 1px solid currentColor;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
