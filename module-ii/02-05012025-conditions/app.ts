@@ -22,8 +22,6 @@ const isValidRightTriangle = hypotenous ** 2 === realHypotenous;
 
 if (isValidRightTriangle) {
     alert("it's a valid right triangle");
-}
-
-if (!isValidRightTriangle) {
+} else {
     alert("it's NOT a valid right triangle");
 }
