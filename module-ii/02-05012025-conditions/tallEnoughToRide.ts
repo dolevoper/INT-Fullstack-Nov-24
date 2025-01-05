@@ -8,8 +8,8 @@ const userHeightInCm = Number(prompt("What is your height? (cm)"));
 
 // Output: "You can board the ride!" or "Go home"
 
-if ((userAge > 8 && userHeightInCm >= 140) || userAge >= 18) {
-    alert("You can board the ride!");
-} else {
-    alert("Go home");
+if ((userAge >= 8 && userHeightInCm >= 140) || userAge >= 18) {
+  console.log("You can board the ride!");
+} else {    
+  console.log("Go home");
 }
