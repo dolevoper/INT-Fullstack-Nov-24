@@ -14,3 +14,6 @@ else if (operator === "/") {
 else if (operator === "*") {
     alert(variabel1 * variabel2);
 }
+else {
+    alert("ERROR");
+}
