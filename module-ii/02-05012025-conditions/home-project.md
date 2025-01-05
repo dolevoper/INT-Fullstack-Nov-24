@@ -22,6 +22,9 @@
 5. BONUS - super guess my number
     * The user chooses how many guesses before game over
     * On invalid input, show an appropriate message and ask for a valid input (invalid input is not considered a guess)
+    ----------------------DONE
+
+    
 6. I have time for a full guess my number project!
     * Add a main menu where the user can start a new game, change the settings, or quit
     * After each play, return to the main menu
