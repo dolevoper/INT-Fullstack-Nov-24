@@ -33,4 +33,3 @@ if (isOlderThan18 || (isOlderThan8 && isAtLeast140Cm)) {
 } else {
     alert("Go home");
 }
->>>>>>> 0a9cea75380e5f0d0a01913dc7c8cc6b949985a9
