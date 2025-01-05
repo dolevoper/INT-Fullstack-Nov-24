@@ -14,16 +14,17 @@ if (userNumber !== null || numberOfTries !== null) {
 }
 // Check if the user number is the same as the random number and output the result
 for (var i = 1; i <= Number(numberOfTries); i++) {
-    if (i > (Number(numberOfTries) + 1)) {
-        break;
-    }
     if (Number(userNumber) > randomNumber) {
         alert('Your number is higher than the random number');
-        userNumber = prompt('Please enter a higher number');
+        if (i < Number(numberOfTries)) {
+            userNumber = prompt('Please enter a higher number');
+        }
     }
     else if (Number(userNumber) < randomNumber) {
         alert('Your number is lower than the random number');
-        userNumber = prompt('Please enter a lower number');
+        if (i < Number(numberOfTries)) {
+            userNumber = prompt('Please enter a lower number');
+        }
     }
     else if (Number(userNumber) === randomNumber) {
         alert('Congratulations! You guessed the number');
