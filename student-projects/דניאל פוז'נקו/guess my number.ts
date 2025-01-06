@@ -56,5 +56,5 @@ if (guess === randomNumber) {
                             }
                         }
                     }
-                }
+                
             
