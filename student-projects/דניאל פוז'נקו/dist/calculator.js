@@ -12,18 +12,24 @@ else {
         if (isNaN(secondNumber)) {
             alert("You must enter a number");
         }
+        else if (operator === "/" && secondNumber === 0) {
+            alert("You can't divide by zero");
+        }
         else {
-            if (operator === "+") {
-                var result = firstNumber + secondNumber;
-            }
-            if (operator === "-") {
-                var result = firstNumber - secondNumber;
-            }
-            if (operator === "*") {
-                var result = firstNumber * secondNumber;
-            }
-            if (operator === "/") {
-                var result = firstNumber / secondNumber;
+            var result = void 0;
+            switch (operator) {
+                case "+":
+                    result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    result = firstNumber / secondNumber;
+                    break;
             }
             alert("The result is " + result);
         }

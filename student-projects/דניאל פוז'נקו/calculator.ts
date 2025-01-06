@@ -1,34 +1,38 @@
 const firstNumber = Number(prompt("Enter the first number"));
+
 if (isNaN(firstNumber)) {
     alert("You must enter a number");
-}
-else {const operator = prompt("Enter the operator");
+} else {
+    const operator = prompt("Enter the operator");
+
     if (operator !== "+" && operator !== "-" && operator !== "*" && operator !== "/") {
-        alert("You must enter a valid operator");}
+        alert("You must enter a valid operator");
+    } else {
+        const secondNumber = Number(prompt("Enter the second number"));
 
-    else {const secondNumber = Number(prompt("Enter the second number"));
-            if (isNaN(secondNumber)) {
-                alert("You must enter a number");}
-        
-            else {
+        if (isNaN(secondNumber)) {
+            alert("You must enter a number");
+        } else if (operator === "/" && secondNumber === 0) {
+            alert("You can't divide by zero");
+        } else {
+            let result: number;
 
-                    if (operator === "+") {
-                        const result = firstNumber + secondNumber;
-                    }
+            switch (operator) {
+                case "+":
+                    result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    result = firstNumber / secondNumber;
+                    break;
+            }
 
-                    if (operator === "-") {
-                        const result = firstNumber - secondNumber;
-                    }
-
-                    if (operator === "*") {
-                        const result = firstNumber * secondNumber;
-                    }
-
-                    if (operator === "/") {
-                        const result = firstNumber / secondNumber;
-                    }
-
-
-
-                    alert("The result is " + result);
-                        }}}
+            alert("The result is " + result);
+        }
+    }
+}
