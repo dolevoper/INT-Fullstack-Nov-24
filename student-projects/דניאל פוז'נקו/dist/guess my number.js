@@ -1,37 +1,49 @@
-var firstNumber = Number(prompt("Enter the first number"));
-if (isNaN(firstNumber)) {
+var randomNumber = Math.floor(Math.random() * 20) + 1;
+var guess;
+alert("I'm thinking of a number between 1 and 20. Can you guess what it is?");
+guess = Number(prompt("Guess my number (try 1/3)"));
+if (isNaN(guess)) {
     alert("You must enter a number");
 }
 else {
-    var operator = prompt("Enter the operator");
-    if (operator !== "+" && operator !== "-" && operator !== "*" && operator !== "/") {
-        alert("You must enter a valid operator");
+    if (guess === randomNumber) {
+        alert("Congratulations! You guessed my number!");
     }
     else {
-        var secondNumber = Number(prompt("Enter the second number"));
-        if (isNaN(secondNumber)) {
+        if (guess > randomNumber) {
+            alert("Sorry, you guessed too high");
+        }
+        else if (guess < randomNumber) {
+            alert("Sorry, you guessed too low");
+        }
+        guess = Number(prompt("Guess my number (try 2/3)"));
+        if (isNaN(guess)) {
             alert("You must enter a number");
         }
-        else if (operator === "/" && secondNumber === 0) {
-            alert("You can't divide by zero");
-        }
         else {
-            var result = void 0;
-            switch (operator) {
-                case "+":
-                    result = firstNumber + secondNumber;
-                    break;
-                case "-":
-                    result = firstNumber - secondNumber;
-                    break;
-                case "*":
-                    result = firstNumber * secondNumber;
-                    break;
-                case "/":
-                    result = firstNumber / secondNumber;
-                    break;
+            if (guess === randomNumber) {
+                alert("Congratulations! You guessed my number!");
             }
-            alert("The result is " + result);
+            else {
+                if (guess > randomNumber) {
+                    alert("Sorry, you guessed too high");
+                }
+                else if (guess < randomNumber) {
+                    alert("Sorry, you guessed too low");
+                }
+                guess = Number(prompt("Guess my number (try 3/3)"));
+                if (isNaN(guess)) {
+                    alert("You must enter a number");
+                }
+                else {
+                    if (guess === randomNumber) {
+                        alert("Congratulations! You guessed my number!");
+                    }
+                    else {
+                        alert("Sorry, you lost. It was " + randomNumber);
+                    }
+                }
+            }
         }
     }
 }
