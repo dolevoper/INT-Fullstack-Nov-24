@@ -79,19 +79,16 @@ const randomN = Math.floor(Math.random() * 100);
 for (let i = 1 ; i < 4; i++) {
 alert ("this is your " + i + " try");
 const newTry = Number(prompt("Choose a number between 1 - 100"));
-
-// if (!isValid (newTry)){
-//     alert("enter a valid number"); 
-//     i--; 
-// }
-
-if (newTry > randomN){
+if (isNaN(newTry) || newTry > 100 || newTry === 0){
+    alert("enter a valid number");
+    i = i - 1; 
+} else if (newTry > randomN){
 alert("Your number is above the random number, the random number is " + randomN);  
 } else if (newTry < randomN){
 alert("Your number is below the random number, the random number is " + randomN);      
 } else {
 alert("you won!");
-   
+GuessGameNew ()   
 }
 }
 }
