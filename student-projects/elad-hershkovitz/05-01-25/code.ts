@@ -1,6 +1,6 @@
 // 1. Complete simple calculator //
 
-const num1 = Number(prompt("pleas insert a number"));
+/* const num1 = Number(prompt("pleas insert a number"));
 const anoperation = prompt("select between: + , - , * , / ");
 const num2 = Number(prompt("pleas insert anover number"));
 
@@ -21,4 +21,28 @@ if (isplas) {
   alert(num1 * num2);
 } else {
   alert("unvaild operation");
+} */
+
+// guess my number game //
+
+const secretNumber = Math.floor(Math.random() * 10) + 1;
+const usreguess = Number(prompt("guess a number between 1 to 10"));
+
+const guessLeft = 3;
+while (guessLeft > 0) {
+    if (isNaN(usreguess) || usreguess < 1 || usreguess > 10) {
+        alert("Please enter a valid number between 1 and 10.");
+        guessLeft--;
+    } else if (usreguess === secretNumber) {
+        alert("You won!👌");
+        break;
+    } else {
+        alert("You got it wrong");
+        guessLeft--;
+    }
+    if (guessLeft > 0) {
+        usreguess = Number(prompt("You have " + guessLeft + " guesses left, guess a number between 1 to 10"));
+    } else {
+        alert("You lost. the number was " + secretNumber + ".");
+    }
 }
