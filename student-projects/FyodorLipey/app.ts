@@ -1,26 +1,42 @@
 
+function calc (number, operation, secNumber){
+    if (operation === "+"){
+       alert(Number(number + secNumber));
+       location.reload();
+    } else if (operation === "-") {
+        alert(Number(number - secNumber));
+        location.reload();
+    } else if (operation === "*"){
+        alert(Number(number * secNumber));
+        location.reload();
+    } else if (operation === "/"){
+        alert(Number(number / secNumber));
+        location.reload();
+    } else {
+        alert("Please choose: + - * / ")
+        location.reload();
+    }
+    }
+    
 const num1 =  Number(prompt("enter first number"));
+if (isNaN(num1)){
+alert("Please enter a number! Refreshing page")
+location.reload();
+} else if (!isNaN(num1)) {
 const operation = prompt("choose operation");
+if(operation !== "+" && operation !== "-" && operation !== "/" && operation !== "*" ){
+alert("Please choose: + - * / ! Refreshing page");
+location.reload();
+}  else {
 const num2 =  Number(prompt("enter second number"));
-
-function calc (number, oper, secNumber){
-if (operation === "+"){
-   alert(Number(num1 + num2));
-   location.reload();
-} else if (operation === "-") {
-    alert(Number(num1 - num2));
-    location.reload();
-} else if (operation === "*" || operation === "X"){
-    alert(Number(num1 * num2));
-    location.reload();
-} else if (operation === "/" || operation === ":"){
-    alert(Number(num1 / num2));
+if (isNaN(num2)){
+    alert("Please enter a number! Refreshing page");
+     location.reload();
+} else if(operation === "/" && num2 === 0) {
+    alert("You cannot divide 0, refreshing");
     location.reload();
 } else {
-    alert("Please choose: + - * / ")
-    location.reload();
-}
-}
-
 calc(num1, operation, num2);
-
+}
+}
+}
