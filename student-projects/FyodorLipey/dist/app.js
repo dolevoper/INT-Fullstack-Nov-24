@@ -51,8 +51,41 @@ function GuessGame() {
         location.reload();
     }
     else {
-        alert("try again, the number was " + randomNum);
+        if (randomNum > userNum) {
+            alert("Your number is below the random number, the random number is " + randomNum);
+        }
+        else {
+            alert("Your number is above the random number, the random number is " + randomNum);
+        }
         location.reload();
     }
+    return randomNum;
 }
-GuessGame();
+function isValid(num) {
+    if (isNaN(num) || num > 100 || num === 0) {
+        return false;
+    }
+    return true;
+}
+function GuessGameNew() {
+    var randomN = Math.floor(Math.random() * 100);
+    for (var i = 1; i < 4; i++) {
+        alert("this is your " + i + " try");
+        var newTry = Number(prompt("Choose a number between 1 - 100"));
+        if (!isValid(newTry)) {
+            alert("enter a valid number");
+            i--;
+        }
+        if (newTry > randomN) {
+            alert("Your number is above the random number, the random number is " + randomN);
+        }
+        else if (newTry < randomN) {
+            alert("Your number is below the random number, the random number is " + randomN);
+        }
+        else {
+            alert("you won!");
+            GuessGameNew();
+        }
+    }
+}
+GuessGameNew();
