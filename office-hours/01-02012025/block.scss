@@ -1,0 +1,11 @@
+.tag-list>li {
+    background: deeppink;
+    color: white;
+    font-weight: 600;
+    padding: 0.2rem 0.3rem;
+    border-radius: calc(1.4rem);
+}
+
+.bread-crumbs>li:not(:last-child)::after {
+    content: "/";
+}
