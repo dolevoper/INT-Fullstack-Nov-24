@@ -72,10 +72,10 @@ function GuessGameNew() {
     for (var i = 1; i < 4; i++) {
         alert("this is your " + i + " try");
         var newTry = Number(prompt("Choose a number between 1 - 100"));
-        if (!isValid(newTry)) {
-            alert("enter a valid number");
-            i--;
-        }
+        // if (!isValid (newTry)){
+        //     alert("enter a valid number"); 
+        //     i--; 
+        // }
         if (newTry > randomN) {
             alert("Your number is above the random number, the random number is " + randomN);
         }
@@ -84,7 +84,6 @@ function GuessGameNew() {
         }
         else {
             alert("you won!");
-            GuessGameNew();
         }
     }
 }
