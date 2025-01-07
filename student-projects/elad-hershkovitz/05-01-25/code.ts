@@ -1,21 +1,23 @@
-// home work calcolation //
+// 1. Complete simple calculator //
 
 const num1 = Number(prompt("pleas insert a number"));
 const anoperation = prompt("select between: + , - , * , / ");
 const num2 = Number(prompt("pleas insert anover number"));
 
-const plas = anoperation === "+";
-const minoos = anoperation === "-";
-const split = anoperation === "/";
-const moltiplait = anoperation === "*";
+const isplas = anoperation === "+";
+const isminoos = anoperation === "-";
+const issplit = anoperation === "/";
+const ismoltiplait = anoperation === "*";
 
-if (plas) {
+if (isplas) {
   alert(num1 + num2);
-} else if (minoos) {
+} else if (isminoos) {
   alert(num1 - num2);
-} else if (split) {
+} else if (issplit && num2 !== 0) {
   alert(num1 / num2);
-} else if (moltiplait) {
+} else if (issplit && num2 === 0) {
+  alert("can't divide by 0");
+} else if (ismoltiplait) {
   alert(num1 * num2);
 } else {
   alert("unvaild operation");

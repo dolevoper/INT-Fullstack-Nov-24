@@ -1,21 +1,24 @@
-// home work calcolation //
+// 1. Complete simple calculator //
 var num1 = Number(prompt("pleas insert a number"));
 var anoperation = prompt("select between: + , - , * , / ");
 var num2 = Number(prompt("pleas insert anover number"));
-var plas = anoperation === "+";
-var minoos = anoperation === "-";
-var split = anoperation === "/";
-var moltiplait = anoperation === "*";
-if (plas) {
+var isplas = anoperation === "+";
+var isminoos = anoperation === "-";
+var issplit = anoperation === "/";
+var ismoltiplait = anoperation === "*";
+if (isplas) {
     alert(num1 + num2);
 }
-else if (minoos) {
+else if (isminoos) {
     alert(num1 - num2);
 }
-else if (split) {
+else if (issplit && num2 !== 0) {
     alert(num1 / num2);
 }
-else if (moltiplait) {
+else if (issplit && num2 === 0) {
+    alert("can't divide by 0");
+}
+else if (ismoltiplait) {
     alert(num1 * num2);
 }
 else {
