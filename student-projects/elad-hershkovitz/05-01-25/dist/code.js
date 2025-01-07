@@ -22,13 +22,13 @@ if (isplas) {
   alert("unvaild operation");
 } */
 // guess my number game //
+var guessLeft = Number(prompt("how many guesses you want?"));
 var secretNumber = Math.floor(Math.random() * 10) + 1;
 var usreguess = Number(prompt("guess a number between 1 to 10"));
-var guessLeft = 3;
 while (guessLeft > 0) {
     if (isNaN(usreguess) || usreguess < 1 || usreguess > 10) {
         alert("Please enter a valid number between 1 and 10.");
-        guessLeft--;
+        guessLeft = guessLeft - 1;
     }
     else if (usreguess === secretNumber) {
         alert("You won!👌");
@@ -36,10 +36,10 @@ while (guessLeft > 0) {
     }
     else {
         alert("You got it wrong");
-        guessLeft--;
+        guessLeft = guessLeft - 1;
     }
     if (guessLeft > 0) {
-        usreguess = Number(prompt("You have " + guessLeft + " guesses left, guess a number between 1 to 10"));
+        usreguess === Number(prompt("You have " + guessLeft + " guesses left, guess a number between 1 to 10"));
     }
     else {
         alert("You lost. the number was " + secretNumber + ".");
