@@ -28,7 +28,7 @@
 // alert("Please choose: + - * / ! Refreshing page");
 // location.reload();
 // }  else {
-// const num2 =  Number(prompt("enter second number"));
+// const userNum =  Number(prompt("enter second number"));
 // if (isNaN(num2)){
 //     alert("Please enter a number! Refreshing page");
 //      location.reload();
@@ -43,18 +43,23 @@
 
 
 // Guess game 
+
+
+
+function GuessGame (){
 const randomNum = Math.floor(Math.random() * 100);
 const userNum = Number(prompt("Choose a number between 1 - 100"));
-
-function GuessGame (num1, num2){
-if (num1 === num2){
+if (randomNum === userNum){
 alert("you won!");
 location.reload();
+} else if (isNaN(userNum) || userNum > 100 || userNum === 0){
+alert("enter a valid number");
+location.reload();
 } else {
-alert("try again, the number was " + num1);
+alert("try again, the number was " + randomNum);
 
 location.reload();   
 }
 
 }
-GuessGame(randomNum, userNum); 
+GuessGame(); 
