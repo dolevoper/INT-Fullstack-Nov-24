@@ -1,6 +1,6 @@
 // 1. Complete simple calculator //
 
-/* const num1 = Number(prompt("pleas insert a number"));
+const num1 = Number(prompt("pleas insert a number"));
 const anoperation = prompt("select between: + , - , * , / ");
 const num2 = Number(prompt("pleas insert anover number"));
 
@@ -21,7 +21,7 @@ if (isplas) {
   alert(num1 * num2);
 } else {
   alert("unvaild operation");
-} */
+}
 
 // guess my number game //
 
