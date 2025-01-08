@@ -1,11 +1,11 @@
 var sumNumbers = 0;
 var numbersToRead = Number(prompt("how many numbers do you want to input?"));
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < numbersToRead; i++) {
     var numberToAdd = Number(prompt("please enter a number"));
     // sumNumbers = sumNumbers + numberToAdd
     sumNumbers += numberToAdd;
 }
-var average = sumNumbers / 5;
+var average = sumNumbers / numbersToRead;
 alert(average);
 // 1 + 0 = 1
 // 2 + 0 = 2
