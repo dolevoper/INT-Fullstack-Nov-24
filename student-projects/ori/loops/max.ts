@@ -3,8 +3,9 @@ function isValidNumber(value: string): boolean {
 }
 
 let biggest: number | null = null;
-
 let currentNumber: number;
+let numbersum: number = 0;
+
 const roundsinput = prompt(`how many numbers do you want to enter?`);
 if (!roundsinput || !isValidNumber(roundsinput)) {
     alert("Error: This isn't a valid number!");
@@ -21,6 +22,7 @@ const rounds = Number(roundsinput);
         }
 
         currentNumber = Number(input);
+        numbersum = numbersum + currentNumber;
 
         if (biggest === null || currentNumber > biggest) {
             biggest = currentNumber;
@@ -29,6 +31,8 @@ const rounds = Number(roundsinput);
 
     if (biggest !== null) {
         alert(biggest + ` is the biggest number.`);
+        const average  = numbersum / rounds;
+        alert(`Your input average is ` + average)
     } else {
         alert("No valid numbers were entered.");
     }
