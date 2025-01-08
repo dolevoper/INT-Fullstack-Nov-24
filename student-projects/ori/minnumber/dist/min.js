@@ -1,24 +1,18 @@
 var smallest = null;
 var currentNumber;
-var numbersum = 0;
-var numbersToRead = prompt("how many numbers do you want to enter?");
-var rounds = Number(numbersToRead);
-for (var i = 0; i < rounds; i++) {
-    var input = prompt(+i + 1 + "th number");
-    if (!input || !isValidNumber(input)) {
-        alert("Error: This isn't a valid number!");
+while (true) {
+    var input = prompt('Please enter a number (write "stop" to finish input)');
+    if (input === "stop") {
+        alert("stopping");
         break;
     }
     currentNumber = Number(input);
-    numbersum += currentNumber;
-    if (biggest === null || currentNumber > biggest) {
-        biggest = currentNumber;
+    if (smallest === null || currentNumber < smallest) {
+        smallest = currentNumber;
     }
 }
-if (biggest !== null) {
-    alert(biggest + " is the biggest number.");
-    var average = numbersum / (rounds + 1);
-    alert("Your input average is " + average);
+if (smallest !== null) {
+    alert(smallest + " is the biggest number.");
 }
 else {
     alert("No valid numbers were entered.");
