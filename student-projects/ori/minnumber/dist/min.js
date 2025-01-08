@@ -12,7 +12,7 @@ while (true) {
     }
 }
 if (smallest !== null) {
-    alert(smallest + " is the biggest number.");
+    alert(smallest + " is the smallest number.");
 }
 else {
     alert("No valid numbers were entered.");
