@@ -25,21 +25,32 @@
 // }
 
 //Guess a Number
-alert("try to guess my number (1-10)");
-const minNum = 1;
-const maxNum = 10;
-const answer = Math.floor(Math.random() * (maxNum - minNum +2)) + minNum;
-console.log(answer);
-const guess = Number(prompt("what is your number?"));
-if (guess===answer){
-    alert("Good guess");
-}
-if (isNaN(guess)){
-    alert("This is not a number!");
-}
-else if (guess !== answer) {
-    alert("wrong guess");
-}
+// alert("try to guess my number (1-10)");
+// const minNum = 1;
+// const maxNum = 10;
+// const answer = Math.floor(Math.random() * (maxNum - minNum +2)) + minNum;
+// console.log(answer);
+// const guess = Number(prompt("what is your number?"));
+// if (guess===answer){
+//     alert("Good guess");
+// }
+// if (isNaN(guess)){
+//     alert("This is not a number!");
+// }
+// else if (guess !== answer) {
+//     alert("wrong guess");
+// }
 
-
+// Guess a number 3 attempts
+alert("try to guess my number (1-10) you have 3 attempts");
+const minNum3 = 1;
+const maxNum3 = 10;
+const answer3 = Math.floor(Math.random()*(maxNum3-minNum3 +1));
+console.log(answer3);
+const guess3 = Number(prompt("First guess"));
+if (guess3 === answer){
+    alert("Great guess!");
+    else if (guess3 !==answer)
+        alert=Number(prompt("second guess"));
+}
 

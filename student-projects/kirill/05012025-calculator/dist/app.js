@@ -22,18 +22,30 @@
 //     }
 // }
 //Guess a Number
-alert("try to guess my number (1-10)");
-var minNum = 1;
-var maxNum = 10;
-var answer = Math.floor(Math.random() * (maxNum - minNum + 2)) + minNum;
-console.log(answer);
-var guess = Number(prompt("what is your number?"));
-if (guess === answer) {
-    alert("Good guess");
-}
-if (isNaN(guess)) {
-    alert("This is not a number!");
-}
-else if (guess !== answer) {
-    alert("wrong guess");
+// alert("try to guess my number (1-10)");
+// const minNum = 1;
+// const maxNum = 10;
+// const answer = Math.floor(Math.random() * (maxNum - minNum +2)) + minNum;
+// console.log(answer);
+// const guess = Number(prompt("what is your number?"));
+// if (guess===answer){
+//     alert("Good guess");
+// }
+// if (isNaN(guess)){
+//     alert("This is not a number!");
+// }
+// else if (guess !== answer) {
+//     alert("wrong guess");
+// }
+// Guess a number 3 attempts
+alert("try to guess my number (1-10) you have 3 attempts");
+var minNum3 = 1;
+var maxNum3 = 10;
+var answer3 = Math.floor(Math.random() * (maxNum3 - minNum3 + 1));
+console.log(answer3);
+var guess3 = Number(prompt("First guess"));
+if (guess3 === answer) {
+    alert("Great guess!");
+    if (guess3 !== answer)
+        alert = Number(prompt("second guess"));
 }
