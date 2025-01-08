@@ -5,8 +5,8 @@ var biggest = null;
 var currentNumber;
 var numbersum = 0;
 var numbersToRead = prompt("how many numbers do you want to enter?");
-if (!numbersToRead || !isValidNumber(numbersToRead)) {
-    alert("Error: This isn't a valid number!");
+if (!numbersToRead || !isValidNumber(numbersToRead) || +numbersToRead <= 0) {
+    alert("Error: This isn't a valid answer");
 }
 else {
     var rounds = Number(numbersToRead);
