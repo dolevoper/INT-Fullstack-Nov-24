@@ -8,7 +8,8 @@ function getRandomInt(min, max) {
 var randomInt = getRandomInt(1, 10);
 console.log("Generated random number (for debugging): " + randomInt);
 var guess = null;
-while (true) {
+var trycount = 1;
+while (trycount !== 4) {
     var playerGuess = prompt("Guess a number between 1 and 10:");
     if (!playerGuess || !isValidNumber(playerGuess)) {
         alert("Error: Please enter a valid number!");
@@ -25,4 +26,5 @@ while (true) {
     else {
         alert("Too high! Try again.");
     }
+    trycount = trycount + 1;
 }

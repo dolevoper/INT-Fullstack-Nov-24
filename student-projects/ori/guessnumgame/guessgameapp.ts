@@ -13,7 +13,9 @@ console.log(`Generated random number (for debugging): ${randomInt}`);
 
 let guess: number | null = null;
 
-while (true) {
+var trycount : number = 1;
+
+while (trycount !== 4) {
     const playerGuess: string | null = prompt("Guess a number between 1 and 10:");
 
     if (!playerGuess || !isValidNumber(playerGuess)) {
@@ -31,4 +33,5 @@ while (true) {
     } else {
         alert("Too high! Try again.");
     }
+    trycount = trycount + 1;
 }
