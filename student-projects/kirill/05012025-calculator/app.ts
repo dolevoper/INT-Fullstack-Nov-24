@@ -47,10 +47,14 @@ const minNum3 = 1;
 const maxNum3 = 10;
 const answer3 = Math.floor(Math.random()*(maxNum3-minNum3 +1));
 console.log(answer3);
+
 const guess3 = Number(prompt("First guess"));
-if (guess3 === answer){
-    alert("Great guess!");
-    else if (guess3 !==answer)
-        alert=Number(prompt("second guess"));
-}
+const guess33 = Number(prompt("Second guess"));
+const guess333 = Number(prompt("third guess"));
+if (guess3 === answer3){
+    alert("Great guess!");}
+    else(guess3!==answer3){
+        alert=Number(prompt("Wrong choice, second guess"));
+    }
+
 
