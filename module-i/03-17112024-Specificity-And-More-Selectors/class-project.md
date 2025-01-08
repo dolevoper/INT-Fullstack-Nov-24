@@ -1,4 +1,0 @@
-- change font to system-ui done
-- h2 inside an article should have underline done
-- change text color to be lighter (where not set by other rules and not in headings)
-- make rounded a full circle done

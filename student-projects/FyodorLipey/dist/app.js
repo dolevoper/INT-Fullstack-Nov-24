@@ -38,7 +38,7 @@
 // }
 // }
 // }
-// Guess game 
+// Guess game
 function GuessGame() {
     var randomNum = Math.floor(Math.random() * 100);
     var userNum = Number(prompt("Choose a number between 1 - 100"));
@@ -52,10 +52,12 @@ function GuessGame() {
     }
     else {
         if (randomNum > userNum) {
-            alert("Your number is below the random number, the random number is " + randomNum);
+            alert("Your number is below the random number, the random number is " +
+                randomNum);
         }
         else {
-            alert("Your number is above the random number, the random number is " + randomNum);
+            alert("Your number is above the random number, the random number is " +
+                randomNum);
         }
         location.reload();
     }
@@ -82,10 +84,12 @@ function GuessGameNew() {
                 i = i - 1;
             }
             else if (newTry > randomN) {
-                alert("Your number is above the random number, the random number is " + randomN);
+                alert("Your number is above the random number, the random number is " +
+                    randomN);
             }
             else if (newTry < randomN) {
-                alert("Your number is below the random number, the random number is " + randomN);
+                alert("Your number is below the random number, the random number is " +
+                    randomN);
             }
             else {
                 alert("you won!");

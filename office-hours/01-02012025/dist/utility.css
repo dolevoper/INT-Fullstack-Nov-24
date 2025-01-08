@@ -1,8 +1,0 @@
-.reading-view {
-  width: min(100% - 1rem, 60ch);
-  margin-inline: auto;
-}
-
-.bg-gray {
-  background: lightgray;
-}
