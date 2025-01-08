@@ -25,7 +25,7 @@ if (isplas) {
 
 // guess my number game //
 
-const guessLeft = Number(prompt("how many guesses you want?"));
+let guessLeft = Number(prompt("how many guesses you want?"));
 const secretNumber = Math.floor(Math.random() * 10) + 1;
 const usreguess = Number(prompt("guess a number between 1 to 10"));
 
