@@ -10,8 +10,14 @@
 // }
 // const average = sumNumbers / numbersToRead;
 // alert(average);
-//Student Grade
-var max = 100;
-var min = 0;
+// Student Grade
 var userName = prompt("Enter your name");
-var minMax = prompt("Which operation would you like to perform?");
+var minMax = Number(prompt("Which grade would you like to receive? (min or max)"));
+var max = 97;
+var min = 66;
+if (min) {
+    alert(userName + " Your lowest grade is: " + min);
+}
+else if (max) {
+    alert(userName + " Your highest grade is: " + max);
+}

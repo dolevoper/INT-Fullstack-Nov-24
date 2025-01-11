@@ -17,12 +17,20 @@
 
 // alert(average);
 
-//Student Grade
-const max = 100;
-const min = 0;
+// Student Grade
+
 
 let userName = prompt("Enter your name");
-let minMax = prompt("Which operation would you like to perform?");
+let minMax = Number(prompt("Which grade would you like to receive? (min or max)"));
+let max = 97;
+let min = 66;
+
+
+if (min){
+    alert(userName + " Your lowest grade is: " + min);
+} else if (max){
+    alert(userName + " Your highest grade is: " +max)
+}
 
 
 
