@@ -1,15 +1,25 @@
-let userInputName = 0;
-let userInputGrade = 0;
-const operation = prompt('Enter operation: min , max');
+
+const operation = prompt("Enter operation: min , max");
 
 switch (operation) {
-    case 'min':
-     
+  case "min":
+    let name;
+    let grade = Infinity;
+    while (true) {
+      const userInputName = prompt("Enter student name");
+      if (userInputName === null) {
         break;
-    case 'max':
-  
+      }
+      const userInputGrade = prompt("Enter student grade");
+      if (userInputGrade === null) {
         break;
-    default:
-        console.log('Invalid operation');
-        break;
+      }
+    }
+
+    break;
+  case "max":
+    break;
+  default:
+    console.log("Invalid operation");
+    break;
 }
