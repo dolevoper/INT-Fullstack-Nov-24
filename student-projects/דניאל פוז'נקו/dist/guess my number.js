@@ -1,13 +1,3 @@
-// 3. I have time for a full guess my number project!
-//     * Add a main menu where the user can start a new game, change the settings, or quit
-//     * After each play, return to the main menu
-//     * If the user clicks "cancel" in the prompt, allow the user to give up (ask if the user wants to give up)
-//     * Settings to modify:
-//         * Difficulty - change the range the selected number can be chosen from (higher difficulty === wider range)
-//         * Number of gueeses
-//         * Play mode - classic (above/bellow) or hot/cold (remember the previous guess and say hot/cold if the current guess is closer/further from the secret number respectively)
-//     * Validate all the inputs
-//     * Handle "cancel"
 var difficulty = 1;
 var numberOfGuess = 3;
 var playMode = 1;
@@ -15,7 +5,7 @@ while (true) {
     var userInput = prompt("Enter your choice: new game(1), change settings(2), or quit(3)");
     switch (userInput) {
         case "1":
-            var secretNumber = Math.floor(Math.random() * difficulty * 10);
+            var secretNumber = Math.floor(Math.random() * (10 * difficulty)) + 1;
             if (playMode === 1) {
                 for (var i = 0; i < numberOfGuess; i++) {
                     var guess = Number(prompt("Enter your guess(" + (i + 1) + "/" + numberOfGuess + ")"));
@@ -49,7 +39,20 @@ while (true) {
                     else {
                         alert("Cold");
                     }
+                    if (i === numberOfGuess - 1) {
+                        alert("You lose! The number was " + secretNumber);
+                        previousGuess = guess;
+                    }
                 }
+                break;
             }
+        case "2":
+            difficulty = Number(prompt("Enter difficulty level (1=10, 2=20, etc.)"));
+            numberOfGuess = Number(prompt("Enter number of guesses"));
+            playMode = Number(prompt("Enter play mode(1 for classic, 2 for hot/cold)"));
+            break;
+    }
+    if (userInput === "3") {
+        break;
     }
 }
