@@ -1,4 +1,5 @@
 let gameMode = "1";
+let gameModeExplained = "classic - above/bellow"
 let gameDifficulty = "medium";
 let gameDifficultyRange : number = 25;
 let gameGueeses : number = 5;
@@ -49,6 +50,10 @@ game: while (true) {
                         alert("Error: Please enter a valid number!");
                         continue;
                     }
+                    if(+playerGuess > gameDifficultyRange || +playerGuess <= 0){
+                        alert("Error: Please guess a number withing the range!");
+                        continue;
+                    }
                     guess = Number(playerGuess);
                 
                     if (guess === randomInt) {
@@ -81,6 +86,7 @@ game: while (true) {
                 }
                     
             break;
+
         case "settings":
             alert("settings");
             let settingoptions = prompt(
@@ -92,15 +98,78 @@ game: while (true) {
             );
 
             switch (settingoptions){
+                case "difficulty":
+                    let difficultyChange = prompt(
+                        `current diffucalty is: ` + gameDifficulty + `\n`+ 
+                        "Please choose a diffucalty:\n" +
+                        "(easy) range : 1 - 10\n" +
+                        "(medium) range : 1 - 25\n" +
+                        "(hard) range : 1 - 50"
+                    );
+                    switch (difficultyChange){
+                        case "easy":
+                            gameDifficulty = difficultyChange;
+                            gameDifficultyRange = 10;
+                            break;
+                        case "medium":
+                            gameDifficulty = difficultyChange;
+                            gameDifficultyRange = 25;
+                            break;
+                        case "hard":
+                            gameDifficulty = difficultyChange;
+                            gameDifficultyRange = 50;
+                            break;
+                        default:
+                            alert('"' + option + '" is not a valid choice');
+                            break;
+                }
+                break;
 
+                case "gusses":
+                    const changeGeusses : string | null = prompt(
+                        `current chances at guessing are: ` + gameGueeses + `\n`+ 
+                        "Please choose a how many guesses you can have:\n");
+                        if (!changeGeusses || !isValidNumber(changeGeusses) || +changeGeusses <= 0) {
+                            alert("Error: Please enter a valid number!");
+                            continue;
+                        }
+                        else{
+                            gameGueeses = +changeGeusses;
+                        }
+                    break;
 
+                case "gamemode":
+                    const chanGameMode : string | null = prompt(
+                        `current game mode is: ` + gameModeExplained + `\n`+ 
+                        "Please choose a game mode:\n" +
+                        "(1) classic - above/bellow\n" + 
+                        "(2) hot & cold\n"
+                    );
+                        if (!chanGameMode || !isValidNumber(chanGameMode) || (+chanGameMode != 1 && +chanGameMode != 2)) {
+                            alert("Error: Please enter a valid number!");
+                            continue;
+                        }
+                        else{
+                            gameMode = chanGameMode;
+                            if(+gameMode == 1){
+                                gameModeExplained = "classic - above/bellow";
+                            }
+                            else{
+                                gameModeExplained = "hot & cold";
+                            }
+                            
+                        }
+                    break;
 
+                case "cancel":
+                    break;
 
                 default:
                     alert('"' + option + '" is not a valid choice');
                     break;
             }
             break;
+
         case "quit":
             break game;
 
