@@ -1,8 +1,12 @@
-var firstNumber = Number(prompt("first number"));
-var secondNumber = Number(prompt("second number"));
-if (firstNumber > secondNumber) {
-    alert(firstNumber);
+var max = Number(prompt("number #1"));
+// i = i + 1
+// i += 1
+// i++
+// ++i
+for (var i = 0; i < 9; i++) {
+    var nextNumber = Number(prompt("number #" + (i + 2)));
+    if (nextNumber > max) {
+        max = nextNumber;
+    }
 }
-else {
-    alert(secondNumber);
-}
+alert(max);

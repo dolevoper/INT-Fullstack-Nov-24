@@ -1,8 +1,16 @@
-const firstNumber = Number(prompt("first number"));
-const secondNumber = Number(prompt("second number"));
+let max = Number(prompt("number #1"));
 
-if (firstNumber > secondNumber) {
-    alert(firstNumber);
-} else {
-    alert(secondNumber);
+// i = i + 1
+// i += 1
+// i++
+// ++i
+
+for (let i = 0; i < 9; i++) {
+    const nextNumber  = Number(prompt("number #" + (i + 2)));
+
+    if (nextNumber > max) {
+        max = nextNumber;
+    }
 }
+
+alert(max);
