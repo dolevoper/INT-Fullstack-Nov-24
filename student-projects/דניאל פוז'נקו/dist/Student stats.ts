@@ -49,11 +49,10 @@ switch (operation) {
       } else {
         userInputGrade = Number(userInputGrade);
         while (isNaN(userInputGrade)) {
-            alert("not a number");
-            userInputGrade = prompt("Enter student grade");
-            userInputGrade = Number(userInputGrade);
-          }
-        
+          alert("not a number");
+          userInputGrade = prompt("Enter student grade");
+          userInputGrade = Number(userInputGrade);
+        }
       }
 
       if (userInputGrade > grade) {
