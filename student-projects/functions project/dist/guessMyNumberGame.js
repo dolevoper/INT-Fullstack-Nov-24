@@ -31,7 +31,6 @@ function getNumberOfTries() {
     }
     return numberOfTries;
 }
-//break game get two numbers and return is equal
 function breakGame(index, numberOfTries) {
     if (index < Number(numberOfTries)) {
         return false;
