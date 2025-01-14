@@ -29,4 +29,4 @@ function finalTask(fullName) {
     var lastName_ = nameParts[1].slice(0, 1).toUpperCase() + nameParts[1].slice(1).toLowerCase();
     alert("hello " + firstName_ + " " + lastName_ + "!\nHave a good day");
 }
-finalTask("amit reuveni the king");
+finalTask("amit reuveni");

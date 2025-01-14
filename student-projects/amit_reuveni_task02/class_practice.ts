@@ -61,4 +61,4 @@ function finalTask(fullName: string){
 
 }
 
-finalTask("amit reuveni the king")
+finalTask("amit reuveni")
