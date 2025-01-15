@@ -3,19 +3,28 @@
     * Validate that the user entered valid numbers
     * Validate that the user entered a valid operator
     * Validate that the user is not trying to divide by 0
+    ----------------------DONE
+
 3. Create a guess my number game
     * The computer chooses a random number
     * The user enters a guess
     * The computer tells the user if their guess was right
     * Display proper error message when the input is not a valid number
     (Single guess)
+    ----------------------DONE
+
 4. Improve our guess my number game
     * Allow the user 3 guesses
     * After each guess, if the user got it wrong, tell the user if his number was above or bellow the secret number
     * Stop the program on invalid input
+    ----------------------DONE
+
 5. BONUS - super guess my number
     * The user chooses how many guesses before game over
     * On invalid input, show an appropriate message and ask for a valid input (invalid input is not considered a guess)
+    ----------------------DONE
+
+    
 6. I have time for a full guess my number project!
     * Add a main menu where the user can start a new game, change the settings, or quit
     * After each play, return to the main menu
