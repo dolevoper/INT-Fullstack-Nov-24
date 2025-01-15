@@ -7,3 +7,4 @@ const
         alert("You must provide a valid number");        
     }
 }
+
