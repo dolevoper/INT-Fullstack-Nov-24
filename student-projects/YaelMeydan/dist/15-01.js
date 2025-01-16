@@ -1,5 +1,8 @@
 var UserNickname = prompt("Hello, welcome to the Enchanted game.\nPlease enter your nickname:");
 confirm("Hi,  " + UserNickname + " In this game is____.\nPress 'ok' to start or 'cancel' at any time to quit the game.");
+if (UserNickname === null) {
+    alert("You hit cancel");
+}
 playGame();
 function playGame() {
     var currentRoom = moonlitGrove;
