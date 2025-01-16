@@ -1,8 +1,5 @@
 var UserNickname = prompt("Hello, welcome to the Enchanted game.\nPlease enter your nickname:");
-confirm("Hi,  " + UserNickname + " In this game is____.\nPress 'ok' to start or 'cancel' at any time to quit the game.");
-if (UserNickname === null) {
-    alert("You hit cancel");
-}
+alert("Hi,  " + UserNickname + " In this game you'll need to find the secret treasure.\nPress 'ok' to start or 'cancel' to quit the game.");
 playGame();
 function playGame() {
     var currentRoom = moonlitGrove;
@@ -64,7 +61,7 @@ function hiddenChamber() {
         "2. Enter the narrow tunnel");
     switch (userAction) {
         case "1":
-            alert("You found a secret treasure!");
+            alert("Congrats! " + UserNickname + "  You found a secret treasure!");
             return;
         case "2": return enchantedForrestClearing;
     }
