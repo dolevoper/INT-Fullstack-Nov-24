@@ -3,12 +3,17 @@
 // End game states - get to certain state/goal to win, or run into "trouble" and loose
 // Inventory - track items in the user's possession and their state, allow using and dropping items, (limit invnetory size?)
 playGame();
+var inventory = "";
 function playGame() {
     var currentRoom = moonlitGrove;
+    var inventory = "";
     while (currentRoom) {
         currentRoom = currentRoom();
     }
     alert("Thank you for playing!");
+}
+function addToInventory(itemToAdd) {
+    inventory = inventory + itemToAdd + ",";
 }
 function moonlitGrove() {
     var userAction = prompt("The air is cool and fragrant with the scent of pine. Moonlight filters through the trees, casting long shadows. In the distance, a babbling stream is heard. The soft rustle of leaves is the only sound, as an ancient stone archway looms ahead.\n" +
