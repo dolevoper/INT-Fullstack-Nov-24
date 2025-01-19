@@ -26,130 +26,97 @@ function addToInventory(item) {
 function hasItem(item) {
     return inventory.includes(item);
 }
-function userAction(text, options, item) {
+function userChoice(text, options, item) {
     if (!hasItem(item)) {
-        options += "\nCollect an " + item;
+        options += "\n3. Collect an " + item;
     }
     var userAction = prompt(text + "\n" + options);
+    return userAction;
+}
+function collect(item, roomName) {
+    if (!hasItem(item)) {
+        addToInventory(item);
+    }
+    else {
+        alert("You have already collected the " + item + ".");
+    }
+    return roomName;
+}
+function moveRoom(item, currentRoom, nextRoom, alertMoove, alertStay) {
+    if (hasItem(item)) {
+        alert(alertMoove);
+        return nextRoom;
+    }
+    else {
+        alert(alertStay);
+        return currentRoom;
+    }
+}
+function undefinedCase(currentRoom) {
+    var shouldQuit = confirm("Are you sure you want to quit the game?");
+    return shouldQuit ? undefined : currentRoom;
 }
 function moonlitGrove() {
+    var text = "The air is cool and fragrant with the scent of pine. Moonlight filters through the trees, casting long shadows. In the distance, a babbling stream is heard. The soft rustle of leaves is the only sound, as an ancient stone archway looms ahead.";
     var options = "1. Approach the stone archway\n" +
-        "2. Follow the stream towards the distant forest\n";
-    if (!hasItem("wooden branch")) {
-        options += "3. Collect a wooden branch";
-    }
-    var userAction = prompt("The air is cool and fragrant with the scent of pine. Moonlight filters through the trees, casting long shadows. In the distance, a babbling stream is heard. The soft rustle of leaves is the only sound, as an ancient stone archway looms ahead.\n" +
-        options);
+        "2. Follow the stream towards the distant forest";
+    var item = "wooden branch";
+    var userAction = userChoice(text, options, item);
     switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
         case "approach":
         case "a":
-        case "1":
-            if (hasItem("wooden branch")) {
-                alert("You use the wooden branch to push open the heavy archway door and enter.");
-                return forgottenTemple;
-            }
-            else {
-                alert("The door is too heavy to open with bare hands. Perhaps a wooden branch could help.");
-                return moonlitGrove;
-            }
+        case "1": moveRoom("wooden branch", moonlitGrove, forgottenTemple, "You use the wooden branch to push open the heavy archway door and enter.", "The door is too heavy to open with bare hands. Perhaps a wooden branch could help.");
         case "follow":
         case "f":
         case "2": return enchantedForestClearing;
         case "collect":
         case "c":
-        case "3":
-            if (!hasItem("wooden branch")) {
-                addToInventory("wooden branch");
-            }
-            else {
-                alert("You have already collected the wooden branch.");
-            }
-            return moonlitGrove;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : moonlitGrove;
+        case "3": collect("wooden branch", moonlitGrove);
+        case undefined: undefinedCase(moonlitGrove);
         default:
             alert("Sorry, I don't know what is \"" + userAction + "\"");
             return moonlitGrove;
     }
 }
 function forgottenTemple() {
+    var text = "The crumbling walls of a long-abandoned temple rise before you. The floor is covered in moss and vine, and faint carvings of gods and beasts can be seen on the stone pillars. A heavy door to the south is slightly ajar.";
     var options = "1. Enter the ajar door\n" +
-        "2. Return to the Moonlit Grove\n";
-    if (!hasItem("ancient stone")) {
-        options += "3. Collect an ancient stone";
-    }
-    var userAction = prompt("The crumbling walls of a long-abandoned temple rise before you. The floor is covered in moss and vine, and faint carvings of gods and beasts can be seen on the stone pillars. A heavy door to the south is slightly ajar.\n" +
-        options);
+        "2. Return to the Moonlit Grove";
+    var item = "ancient stone";
+    var userAction = userChoice(text, options, item);
     switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
         case "enter":
         case "e":
-        case "1":
-            if (hasItem("ancient stone")) {
-                alert("You fit the ancient stone into a slot, fully opening the door.");
-                return hiddenChamber;
-            }
-            else {
-                alert("The door is stuck and cannot be opened. Perhaps the ancient stone would help.");
-                return forgottenTemple;
-            }
+        case "1": moveRoom("ancient stone", forgottenTemple, hiddenChamber, "You fit the ancient stone into a slot, fully opening the door.", "The door is stuck and cannot be opened. Perhaps the ancient stone would help.");
         case "return":
         case "r":
         case "2": return moonlitGrove;
         case "collect":
         case "c":
-        case "3":
-            if (!hasItem("ancient stone")) {
-                addToInventory("ancient stone");
-            }
-            else {
-                alert("You have already collected the ancient stone.");
-            }
-            return forgottenTemple;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : forgottenTemple;
+        case "3": collect("ancient stone", forgottenTemple);
+        case undefined: undefinedCase(forgottenTemple);
         default:
             alert("Sorry, I don't know what is \"" + userAction + "\"");
             return forgottenTemple;
     }
 }
 function enchantedForestClearing() {
+    var text = "A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.";
     var options = "1. Inspect the glowing well\n" +
-        "2. Head back toward the Moonlit Grove\n";
-    if (!hasItem("magical flowe")) {
-        options += "3. Collect a magical flower";
-    }
-    var userAction = prompt("A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.\n" +
-        options);
-    switch (userAction) {
+        "2. Head back toward the Moonlit Grove";
+    var item = "magical flower";
+    var userAction = userChoice(text, options, item);
+    switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
         case "inspect":
         case "i":
-        case "1":
-            if (hasItem("magical flower")) {
-                alert("You toss the magical flower into the well, and a hidden passage reveals itself.");
-                return hiddenChamber;
-            }
-            else {
-                alert("The well appears ordinary. Perhaps the magical flower would do something.");
-                return enchantedForestClearing;
-            }
+        case "1": moveRoom("magical flower", enchantedForestClearing, hiddenChamber, "You toss the magical flower into the well, and a hidden passage reveals itself.", "The well appears ordinary. Perhaps the magical flower would do something.");
         case "head":
         case "h":
         case "2": return moonlitGrove;
         case "collect":
         case "c":
-        case "3":
-            if (!hasItem("magical flower")) {
-                addToInventory("magical flower");
-            }
-            else {
-                alert("You have already collected the magical flower.");
-            }
-            return enchantedForestClearing;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : enchantedForestClearing;
+        case "3": collect("magical flower", enchantedForestClearing);
+        case undefined: undefinedCase(enchantedForestClearing);
         default:
             alert("Sorry, I don't know what is \"" + userAction + "\"");
             return enchantedForestClearing;
@@ -159,7 +126,7 @@ function hiddenChamber() {
     var userAction = prompt("A small, hidden chamber deep beneath the earth, lit by glowing crystals embedded in the walls. Strange symbols pulse faintly, and an old chest lies in the corner, untouched for centuries. A narrow tunnel leads further into the darkness.\n" +
         "1. Open the chest\n" +
         "2. Enter the narrow tunnel");
-    switch (userAction) {
+    switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
         case "open":
         case "o":
         case "1":
@@ -168,9 +135,7 @@ function hiddenChamber() {
         case "enter":
         case "e":
         case "2": return enchantedForestClearing;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : hiddenChamber;
+        case undefined: undefinedCase(hiddenChamber);
         default:
             alert("Sorry, I don't know what is \"" + userAction + "\"");
             return hiddenChamber;
