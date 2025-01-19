@@ -11,60 +11,89 @@ function playGame() {
     alert("Thank you for playing!");
 }
 function moonlitGrove() {
-    var userAction = prompt("The air is cool and fragrant with the scent of pine. Moonlight filters through the trees, casting long shadows. In the distance, a babbling stream is heard. The soft rustle of leaves is the only sound, as an ancient stone archway looms ahead.\n" +
+    var userAction = getUserAction("The air is cool and fragrant with the scent of pine. Moonlight filters through the trees, casting long shadows. In the distance, a babbling stream is heard. The soft rustle of leaves is the only sound, as an ancient stone archway looms ahead.\n" +
         "1. Approach the stone archway\n" +
         "2. Follow the stream towards the distant forest");
-    switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
+    switch (userAction) {
         case "approach":
         case "a":
         case "1": return forgottenTemple;
         case "follow":
         case "f":
         case "2": return enchantedForrestClearing;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : moonlitGrove;
+        case undefined: return;
         default:
-            alert("Sorry, I don't know what is \"" + userAction + "\"");
+            alertUnknownAction(userAction);
             return moonlitGrove;
     }
 }
 function forgottenTemple() {
-    var userAction = prompt("The crumbling walls of a long-abandoned temple rise before you. The floor is covered in moss and vine, and faint carvings of gods and beasts can be seen on the stone pillars. A heavy door to the south is slightly ajar.\n" +
+    var userAction = getUserAction("The crumbling walls of a long-abandoned temple rise before you. The floor is covered in moss and vine, and faint carvings of gods and beasts can be seen on the stone pillars. A heavy door to the south is slightly ajar.\n" +
         "1. Enter the ajar door\n" +
         "2. Return to the Moonlit Grove");
-    switch (userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase()) {
+    switch (userAction) {
         case "enter":
         case "e":
         case "1": return hiddenChamber;
         case "return":
         case "r":
         case "2": return moonlitGrove;
-        case undefined:
-            var shouldQuit = confirm("Are you sure you want to quit the game?");
-            return shouldQuit ? undefined : forgottenTemple;
+        case undefined: return;
         default:
-            alert("Sorry, I don't know what is \"" + userAction + "\"");
+            alertUnknownAction(userAction);
             return forgottenTemple;
     }
 }
 function enchantedForrestClearing() {
-    var userAction = prompt("A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.\n" +
+    var userAction = getUserAction("A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.\n" +
         "1. Inspect the glowing well\n" +
         "2. Head back toward the Moonlit Grove");
     switch (userAction) {
+        case "inspect":
+        case "i":
         case "1": return hiddenChamber;
+        case "head back":
+        case "back":
+        case "h":
         case "2": return moonlitGrove;
+        case undefined: return;
+        default:
+            alertUnknownAction(userAction);
+            return enchantedForrestClearing;
     }
 }
 function hiddenChamber() {
-    var userAction = prompt("A small, hidden chamber deep beneath the earth, lit by glowing crystals embedded in the walls. Strange symbols pulse faintly, and an old chest lies in the corner, untouched for centuries. A narrow tunnel leads further into the darkness.\n" +
+    var userAction = getUserAction("A small, hidden chamber deep beneath the earth, lit by glowing crystals embedded in the walls. Strange symbols pulse faintly, and an old chest lies in the corner, untouched for centuries. A narrow tunnel leads further into the darkness.\n" +
         "1. Open the chest\n" +
         "2. Enter the narrow tunnel");
     switch (userAction) {
+        case "open":
+        case "o":
         case "1":
             alert("You found a secret treasure!");
             return;
+        case "enter":
+        case "e":
         case "2": return enchantedForrestClearing;
+        case undefined: return;
+        default:
+            alertUnknownAction(userAction);
+            return hiddenChamber;
     }
+}
+function getUserAction(text) {
+    var userAction = prompt(text);
+    var parsedUserAction = userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase();
+    while (parsedUserAction === undefined) {
+        var shouldQuit = confirm("Are you sure you want to quit the game?");
+        if (shouldQuit) {
+            return;
+        }
+        userAction = prompt(text);
+        parsedUserAction = userAction === null || userAction === void 0 ? void 0 : userAction.trim().toLowerCase();
+    }
+    return parsedUserAction;
+}
+function alertUnknownAction(userAction) {
+    alert("Sorry, I don't know what is \"" + userAction + "\"");
 }
