@@ -4,14 +4,14 @@ var N = Number(prompt("Enter how many number you would like to choose:"));
 for (var i = 0; i < N; i++) {
     numbers[i] = Number(prompt("Please enter a number:"));
 }
-numbers = sortingArray(numbers);
+var sortedNumbers = sortingArray(numbers);
 if (N % 2 === 0) {
-    var num1 = numbers[(N / 2)];
-    var num2 = numbers[(N / 2) + 1];
+    var num1 = sortedNumbers[(N / 2)];
+    var num2 = sortedNumbers[(N / 2) + 1];
     alert((num1 + num2) / (num1 * num2));
 }
 else {
-    alert(numbers[((N + 1) / 2)]);
+    alert(sortedNumbers[((N + 1) / 2)]);
 }
 function sortingArray(array) {
     for (var i = 0; i < array.length - 1; i++) {

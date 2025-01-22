@@ -1,6 +1,6 @@
 // 3. Read a number (N). Read N numbers. Print the median (if N is odd then (N + 1)/2 else the average of N/2 and N/2 + 1)
 
-let numbers: number[] = [];
+const numbers: number[] = [];
 
 const N = Number(prompt("Enter how many number you would like to choose:"));
 
@@ -8,16 +8,17 @@ for (let i = 0; i < N; i++) {
     numbers[i] = Number(prompt("Please enter a number:"));
 }
 
-numbers = sortingArray(numbers);
+const sortedNumbers = sortingArray(numbers);
 
 if (N % 2 === 0) { 
-    const num1 = numbers[(N/2)];
-    const num2 = numbers[(N/2) + 1];
+    const num1 = sortedNumbers[(N/2)];
+    const num2 = sortedNumbers[(N/2) + 1];
     alert((num1 + num2) / (num1 * num2));
     
 } else { 
-    alert(numbers[((N+1)/2)]);
+    alert(sortedNumbers[((N+1)/2)]);
 }
+
 
 function sortingArray(array: number[]) {
     for (let i = 0; i < array.length - 1; i++) {
