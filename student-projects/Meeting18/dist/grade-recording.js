@@ -55,13 +55,14 @@ function removeGrades(numbers) {
         else {
             var deletedGrade = numbers[index];
             numbers = numbers.slice(index, 1);
-            alert("You chose to remove the " + index + "-nth grade, which was: " + deletedGrade + ".").;
+            alert("You chose to remove the " + index + "-nth grade, which was: " + deletedGrade + ".");
         }
         userInput = prompt("Please enter the number of the grade you would like to remove:");
     }
     return userChoise;
 }
 function gradesStatus(numbers) {
+    var sortedGrades = sortingArray(grades);
     var userInput = prompt("Please chose the status you would like to view:\n" +
         "1. The minimum grade.\n" +
         "2. The maximum grade.\n" +
@@ -69,45 +70,67 @@ function gradesStatus(numbers) {
         "4. The median grade.");
     while (userInput !== null) {
         switch (userInput) {
-            case "1": //min grade
-            case "2": //max grade
-            case "3": //avg grade
-            case "3": //mid grade
-            case undefined: //undefined
+            case "1": minGrade(grades);
+            case "2": maxGrade(grades);
+            case "3": averageGrade(grades);
+            case "3": medianGrade(grades);
+            case undefined: undefinedCase(gradesStatus);
             default: defaultCase(userInput, gradesStatus);
         }
     }
 }
-function undefinedCase(userInput) {
+function sortingArray(numbers) {
+    for (var i = 0; i < numbers.length - 1; i++) {
+        for (var j = 0; j < numbers.length - i - 1; j++) {
+            if (numbers[j] > numbers[j + 1]) {
+                var number = numbers[j];
+                numbers[j] = numbers[j + 1];
+                numbers[j + 1] = number;
+            }
+        }
+    }
+    return numbers;
+}
+function minGrade(numbers) {
+    var sortedGrades = sortingArray(numbers);
+    alert("The minimun grade is: " + sortedGrades[0] + ".");
+    return gradesStatus;
+}
+function maxGrade(numbers) {
+    var sortedGrades = sortingArray(numbers);
+    var length = sortedGrades.length;
+    alert("The maximum grade is: " + sortedGrades[length - 1] + ".");
+    return gradesStatus;
+}
+function medianGrade(numbers) {
+    var sortedNumbers = sortingArray(numbers);
+    var N = numbers.length;
+    var medianNumber;
+    if (N % 2 === 0) {
+        var num1 = sortedNumbers[(N / 2)];
+        var num2 = sortedNumbers[(N / 2) + 1];
+        medianNumber = ((num1 + num2) / (num1 * num2));
+    }
+    else {
+        medianNumber = (sortedNumbers[((N + 1) / 2)]);
+    }
+    alert("The median grade is: " + medianNumber + ".");
+    return gradesStatus;
+}
+function averageGrade(numbers) {
+    var sum = 0;
+    for (var i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    var average = sum / numbers.length;
+    alert("The average grade is: " + average + ".");
+    return gradesStatus;
+}
+function undefinedCase(parentFunction) {
     var shouldQuit = confirm("Are you sure you want to quit the game?");
-    return shouldQuit ? undefined : userInput;
+    return shouldQuit ? undefined : parentFunction;
 }
 function defaultCase(userInput, parentFunction) {
     alert("Sorry, I don't know what is \"" + userInput + "\"");
     return parentFunction;
 }
-// function undefinedCase(currentRoom: Function) {
-//     const shouldQuit = confirm("Are you sure you want to quit the game?");
-//     return shouldQuit ? undefined : currentRoom;
-// }
-// // // 4. Create a function that accepts an array of number and returns the 2 smallest numbers
-// const numbers: number[] = [];
-// let userInput = prompt("Please enter a number:");
-// while(userInput !== null) {
-//     numbers[numbers.length] = Number(userInput);
-//     userInput = prompt("Please enter a number:")
-// }
-// const sortedNumbers: number[] = sortingArray(numbers);
-// alert("The 2 smallest numbers are: " + sortedNumbers[0] + ", " + sortedNumbers[1]);
-// function sortingArray(array: number[]) {
-//     for (let i = 0; i < array.length - 1; i++) {
-//         for (let j = 0; j < array.length - i - 1; j++) {
-//             if (array[j] > array[j + 1]) {
-//                 let number = array[j];
-//                 array[j] = array[j + 1];
-//                 array[j + 1] = number;
-//             }
-//         }
-//     }
-//     return array;
-// }
