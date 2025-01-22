@@ -5,7 +5,7 @@ while (userInput !== null) {
     userInput = prompt("Please enter a number");
 }
 for (let i = 0; i < numbers.length; i++) {
-    let UserEntrydisplay: number = prompt("Enter a number from 0 - number of the previous entries,in order to show the number you typed on that same entry.");
+    let UserEntrydisplay= prompt("Enter a number from 0 - number of the previous entries,in order to show the number you typed on that same entry.");
     if (UserEntrydisplay < numbers.length) {
         alert(numbers[UserEntrydisplay]);
         break;
