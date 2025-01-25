@@ -66,6 +66,8 @@ for (const department in sallariesAverageByDepartment) {
     alert(`The average sallary in ${department} is: ${sallariesAverageByDepartment[department]}`);
 }
 
+menu();
+
 function removeEmployee(){
     let name = prompt("Type the worker name you wish to remove:")
 
@@ -74,6 +76,7 @@ function removeEmployee(){
             employees.splice(i,1);
         }
     }
+    return menu ;
 }
 function addEmployee(){
 
@@ -88,6 +91,7 @@ function addEmployee(){
         department,
         sallary
     });
+   
 }
 
 function viewEmployee(input: string){
@@ -99,9 +103,28 @@ function viewEmployee(input: string){
         }
     }
 
+   // return menu;
+
 }
 
 function menu (){
-    let userAction = prompt("1. Add a new employee. \n" + "2.Remove an employee \n" + "3.Show an employee's profile")
+    let userAction = prompt("1. Add a new employee. \n" + "2.Remove an employee \n" + "3.Show an employee's profile");
+    switch(userAction){
+        case "1": return addEmployee;
+        case "2": return removeEmployee;
+        case "3": return viewEmployee;
+        default:
+            alertUnknownAction(userAction);
+
+            return menu ;
+
+
+    }
+   
     
+}
+
+
+function alertUnknownAction(userAction: string) {
+    alert(`Sorry, I don't know what is "${userAction}"`);
 }

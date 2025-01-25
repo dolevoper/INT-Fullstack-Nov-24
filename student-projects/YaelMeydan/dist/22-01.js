@@ -48,6 +48,7 @@ for (var _e = 0, employees_4 = employees; _e < employees_4.length; _e++) {
 for (var department in sallariesAverageByDepartment) {
     alert("The average sallary in " + department + " is: " + sallariesAverageByDepartment[department]);
 }
+menu();
 function removeEmployee() {
     var name = prompt("Type the worker name you wish to remove:");
     for (var i = 0; i < employees.length; i++) {
@@ -55,6 +56,7 @@ function removeEmployee() {
             employees.splice(i, 1);
         }
     }
+    return menu;
 }
 function addEmployee() {
     var _a, _b;
@@ -75,7 +77,19 @@ function viewEmployee(input) {
             alert(employees[i].name + "\n" + employees[i].age + "\n" + employees[i].department + "\n" + employees[i].sallary);
         }
     }
+    // return menu;
 }
 function menu() {
     var userAction = prompt("1. Add a new employee. \n" + "2.Remove an employee \n" + "3.Show an employee's profile");
+    switch (userAction) {
+        case "1": return addEmployee;
+        case "2": return removeEmployee;
+        case "3": return viewEmployee;
+        default:
+            alertUnknownAction(userAction);
+            return menu;
+    }
+}
+function alertUnknownAction(userAction) {
+    alert("Sorry, I don't know what is \"" + userAction + "\"");
 }
