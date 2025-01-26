@@ -1,3 +1,4 @@
+/*
 type Employee = {
     name: string,
     age: number,
@@ -65,7 +66,7 @@ for (const employee of employees) {
 for (const department in sallariesAverageByDepartment) {
     alert(`The average sallary in ${department} is: ${sallariesAverageByDepartment[department]}`);
 }
-
+*/
 menu();
 
 function removeEmployee(){
@@ -91,7 +92,11 @@ function addEmployee(){
         department,
         sallary
     });
-   
+
+   /* return {
+        menu
+    };
+   */
 }
 
 function viewEmployee(input: string){
