@@ -1,6 +1,6 @@
 var _a, _b;
 var employees = [];
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 2; i++) {
     var name = (_a = prompt("Please enter employee name")) !== null && _a !== void 0 ? _a : "";
     var age = Number(prompt("Please enter employee age"));
     var department = (_b = prompt("Please enter employee department")) !== null && _b !== void 0 ? _b : "";

@@ -7,7 +7,7 @@ type Employee = {
 
 const employees: Employee[] = [];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 2; i++) {
     const name = prompt("Please enter employee name") ?? "";
     const age = Number(prompt("Please enter employee age"));
     const department = prompt("Please enter employee department") ?? "";
