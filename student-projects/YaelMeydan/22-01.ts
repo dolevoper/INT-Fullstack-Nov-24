@@ -77,7 +77,7 @@ function removeEmployee(){
             employees.splice(i,1);
         }
     }
-    return menu ;
+    return menu() ;
 }
 function addEmployee(){
 
@@ -93,10 +93,10 @@ function addEmployee(){
         sallary
     });
 
-   /* return {
-        menu
+    return {
+        menu()
     };
-   */
+   
 }
 
 function viewEmployee(input: string){
@@ -115,13 +115,13 @@ function viewEmployee(input: string){
 function menu (){
     let userAction = prompt("1. Add a new employee. \n" + "2.Remove an employee \n" + "3.Show an employee's profile");
     switch(userAction){
-        case "1": return addEmployee;
-        case "2": return removeEmployee;
-        case "3": return viewEmployee;
+        case "1": return addEmployee();
+        case "2": return removeEmployee();
+        case "3": return viewEmployee();
         default:
-            alertUnknownAction(userAction);
+            
 
-            return menu ;
+            return menu ();
 
 
     }
