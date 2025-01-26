@@ -13,4 +13,4 @@ if (amount % 2 === 1) {
 else {
     median = (numbers[amount / 2 - 1] + numbers[amount / 2]) / 2;
 }
-alert("The median is: " + median);
+alert("The median is: " + median + "!");
