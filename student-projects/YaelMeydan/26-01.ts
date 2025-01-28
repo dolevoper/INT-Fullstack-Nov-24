@@ -1,7 +1,12 @@
 //filter:
+const indexnumbers: number[] = [3 ,78 , 90 ,55 ,37 ,23, 45, 62];
+const evennumbers = indexnumbers.filter((num: number) => num % 2 === 0);
+console.log(evennumbers);
 
-const indexnumbers = [3 ,78 , 90 ,55 ,37 ,23, 45, 62];
-const evennumbers = (num) => indexnumbers.filter(_number % 2 === 0);
+//find:
+const indexnumbers: number[] = [3 ,78 , 90 ,55 ,37 ,-23, 45, 62];
+const negativenumber = indexnumbers.find((num:number) => num < 0);
+console.log(negativenumber);
 
 //some + every:
 
