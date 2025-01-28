@@ -1,3 +1,10 @@
+//filter:
+
+const indexnumbers = [3 ,78 , 90 ,55 ,37 ,23, 45, 62];
+const evennumbers = (num) => indexnumbers.filter(_number % 2 === 0);
+
+//some + every:
+
 console.clear();
 const numbers1: number[] = [1, 2, 3, 24, 6];
 

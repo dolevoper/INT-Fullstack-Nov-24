@@ -1,3 +1,7 @@
+//filter:
+var indexnumbers = [3, 78, 90, 55, 37, 23, 45, 62];
+var evennumbers = function (num) { return indexnumbers.filter(_number % 2 === 0); };
+//some + every:
 console.clear();
 var numbers1 = [1, 2, 3, 24, 6];
 // Check if any number is greater than 3
