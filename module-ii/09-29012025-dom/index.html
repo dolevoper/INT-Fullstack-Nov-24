@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Dom</title>
+</head>
+
+<body>
+    <h1>Look I'm using the DOM!</h1>
+    <p class="info-paragraph">My name is: <span id="nameOutput">Omer</span></p>
+    <form>
+        <div>
+            <label for="nameInput">Name:</label>
+            <input id="nameInput" name="name" type="text" required />
+        </div>
+        <div>
+            <label for="occupationInput">Occupation:</label>
+            <input id="occupationInput" name="occupation" type="text" required />
+        </div>
+        <button id="updateNameButton">Update Name</button>
+    </form>
+
+    <details open>
+        <summary>Another form</summary>
+        <form>
+            <input type="text" />
+            <input type="text" />
+        </form>
+    </details>
+
+    <script src="dist/app.js"></script>
+</body>
+
+</html>
