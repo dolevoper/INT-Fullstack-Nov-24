@@ -1,5 +1,5 @@
 
-const display: HTMLInputElement | null = document.getElementById("display") as HTMLInputElement;
+const display = document.getElementById("display") as HTMLInputElement;
 
 function appendToDisplay(input) {
 
