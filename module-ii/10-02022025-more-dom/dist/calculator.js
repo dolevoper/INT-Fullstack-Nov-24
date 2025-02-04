@@ -15,8 +15,22 @@ export function equals() {
     display = memory;
     shouldClearInput = true;
 }
-export function clear() { }
-export function allClear() { }
+export function clear() {
+    if (shouldClearInput) {
+        allClear();
+    }
+    else {
+        userInput = 0;
+        display = 0;
+    }
+}
+export function allClear() {
+    storedOperation = undefined;
+    display = 0;
+    userInput = 0;
+    memory = 0;
+    shouldClearInput = false;
+}
 export function enterDigit(digit) {
     if (shouldClearInput) {
         userInput = digit;
