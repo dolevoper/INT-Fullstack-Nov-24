@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nim Game</title>
+    <link rel="stylesheet" href="dist/styles.css" />
 </head>
 <body>
-    <div>
-        <button class="match" data-index="0"> | </button>
-        <br>
-        <button class="match" data-index="0"> | </button>
-        <button class="match" data-index="0"> | </button>
-        <button class="match" data-index="0"> | </button>
-        <br>
-        <button class="match" data-index="0"> | </button>
-        <button class="match" data-index="0"> | </button>
-        <button class="match" data-index="0"> | </button>
-        <button class="match" data-index="0"> | </button>
-        <br>
+    <h1>Nim</h1>
+
+    <p id="current-player">It is player 1's turn</p>
+
+    <div class="wins">
+        <p id="player1-wins">Player 1: 0 wins</p>
+        <p id="player2-wins">Player 2: 0 wins</p>
     </div>
+
+    <div class="board">
+        <button class="match" data-index="0"> | </button>
+        <button class="match" data-index="1"> | </button>
+        <button class="match" data-index="2"> | </button>
+        <button class="match" data-index="3"> | </button>
+        <button class="match" data-index="4"> | </button>
+        <button class="match" data-index="5"> | </button>
+        <button class="match" data-index="6"> | </button>
+        <button class="match" data-index="7"> | </button>
+    </div>
+
+    
 
     <script src="dist/app.js"></script>
 </body>
