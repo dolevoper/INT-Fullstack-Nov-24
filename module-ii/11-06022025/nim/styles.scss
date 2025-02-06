@@ -1,0 +1,6 @@
+@for $i from 1 through 3 {
+    [data-match-number="#{$i}"]:hover,
+    [data-match-number="#{$i}"]:has(~ :hover) {
+        background: salmon;
+    }
+}
