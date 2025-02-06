@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+
+    <div id="board">
+        <div>
+            <button data-x="0" data-y="0"></button>
+            <button data-x="0" data-y="1"></button>
+            <button data-x="0" data-y="2"></button>
+        </div>
+        <div>
+            <button data-x="1" data-y="0"></button>
+            <button data-x="1" data-y="1"></button>
+            <button data-x="1" data-y="2"></button>
+        </div>
+        <div>
+            <button data-x="2" data-y="0"></button>
+            <button data-x="2" data-y="1"></button>
+            <button data-x="2" data-y="2"></button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { makeMove, board, currentPlayer } from "./dist/tic-tac-toe.js";
+
+        document.getElementById("board").addEventListener("click", function (e) {
+            if (e.target.type !== "submit") {
+                return;
+            }
+
+            e.target.textContent = currentPlayer;
+            makeMove(Number(e.target.dataset.x), Number(e.target.dataset.y));
+            console.log(board);
+        });
+    </script>
+</body>
+</html>
