@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+
+<body>
+    <main class="stack">
+        <h1>Create task</h1>
+        <form class="stack" name="create task">
+            <div class="form-input">
+                <label for="titleInput">Title</label>
+                <input id="titleInput" name="title" type="text" required autofocus />
+            </div>
+            <div class="form-input form-input--inline">
+                <input id="importantCheckbox" name="isImportant" type="checkbox" />
+                <label for="importantCheckbox">Important</label>
+            </div>
+            <div class="form-input">
+                <label for="assigneeDropdown">Assignee</label>
+                <select id="assigneeDropdown" name="assignee">
+                    <option value="111">Omer Dolev</option>
+                    <option value="112">Coral Tzubiri</option>
+                    <option value="113">Kiril Kovlovsky</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <label for="descriptionInput">Description</label>
+                <textarea
+                name="description"
+                id="descriptionInput"
+                rows="8"
+                maxlength="500" ></textarea>
+            </div>
+            <div class="form-input">
+                <label for="moreInfoInput">More info</label>
+                <input
+                    id="moreInfoInput"
+                    name="moreInfo"
+                    type="text"
+                    placeholder="https://contoso.com"
+                    pattern="^https://.*"
+                    inputmode="url" />
+            </div>
+            <div class="cluster">
+                <button>Create</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </main>
+
+    <script type="module">
+        import { addTask } from "./dist/forms.js";
+
+        document.forms.namedItem("create task").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const rawTask = Object.fromEntries(formData);
+
+            addTask({
+                ...rawTask,
+                assignee: Number(rawTask.assignee),
+                isImportant: !!rawTask.isImportant,
+            });
+        });
+    </script>
+</body>
+
+</html>
