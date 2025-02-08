@@ -1,0 +1,13 @@
+
+🔥 Original Form Idea with TypeScript – "Interactive Personality Map" 🧠✨
+
+📌 What's the Idea?
+A form where the user answers a series of short questions and, in the end, receives a personalized personality profile based on their responses!
+
+📝 Form Fields:
+
+How would you describe yourself? (Choose one out of four options – Extroverted, Introverted, Analytical, Creative).
+How do you respond to stress? (Multiple choice using checkboxes – I plan ahead, I get stressed easily, I act impulsively, etc.).
+What is your favorite activity? (Free-text answer using a textarea).
+Choose a color that represents you (color input).
+How much do you agree with the statement: "I love learning new things"? (range input, from 1 to 10).
