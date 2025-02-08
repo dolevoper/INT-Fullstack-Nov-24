@@ -20,7 +20,7 @@
                     <option value="114">Creative</option>
                 </select>
             </div>
-            <div class="from-input">
+            <div class="form-input">
                 <p>How do you response to stress?</p>
                 <ul>
                     <li><label><input type="checkbox" name="stress" value="plan">I plan ahead</label></li>
@@ -28,26 +28,46 @@
                     <li><label><input type="checkbox" name="stress" value="impulsive">I act impulsively</label></li>
                 </ul>
             </div>
-            <div class="from-input">
+            <div class="form-input">
                 <label for="activityInput">What is your favorite activity?</label>
                 <textarea name="activity" id="activityInput" rows="5" maxlength="200"></textarea>
             </div>
-            <div class="from-input">
+            <div class="form-input">
                 <label for="colorInput">Choose a color that represents you:</label>
-                <input type="color" id="colorInput" name="color">
+                <input type="color" id="colorInput" name="color" list="colorOptions">
+                <datalist id="colorOptions">
+                    <option value="#000000">Black</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#ff0000">Red</option>
+                    <option value="#00ff00">Green</option>
+                    <option value="#0000ff">Blue</option>
+                    <option value="#ffff00">Yellow</option>
+                    <option value="#ff00ff">Pink</option>
+                </datalist>
             </div>
-            <div>
-                <label for="statmentRange">How much do you agree with the statment: "I love learning new things"?</label>
-                <input type="range" id="statmentRange" name="statment" min="1" max="10"> 
+            <div class="form-input">
+                <label for="statementRange">How much do you agree with the statement: "I love learning new things"?</label>
+                <input class="statementInput" type="range" id="statementRange" name="statement" min="1" max="10" value="5" oninput="statmentOutput.value = this.value"> 
+                <datalist class="statementData" id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    <option value="6"></option>
+                    <option value="7"></option>
+                    <option value="8"></option>
+                    <option value="9"></option>
+                    <option value="10"></option>
+                </datalist>
+                <output class="statementOutput" id="statmentOutput">5</output>
             </div>
-            <div di="cluster">
+            <div id="cluster">
                 <button>Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
     </main>
-    <script src="dist/form.js">
-        
-    </script>
+    <script src="dist/form.js"></script>
 </body>
 </html>

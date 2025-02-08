@@ -58,3 +58,29 @@ textarea {
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
+.statementInput {
+    width: 100%;
+    accent-color: #007bff; /* צבע ראשי */
+}
+
+.statementOutput {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.statementData {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    option {
+        writing-mode: vertical-lr;
+        text-align: center;
+        font-size: 0.8em;
+    }
+}
+
+
+

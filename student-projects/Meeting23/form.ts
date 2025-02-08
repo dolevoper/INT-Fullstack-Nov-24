@@ -1,19 +1,37 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.forms.namedItem("prsonality-page");
+    const output = document.getElementById("statementOutput") as HTMLOutputElement;
+    const rangeInput = document.getElementById("statementRange") as HTMLInputElement;
 
+    if (!form) return;
 
-//checkbox code
-// const form = document.querySelector("#hobbiesForm") as HTMLFormElement;
-// const output = document.querySelector("#output") as HTMLElement;
+    rangeInput.addEventListener("input", () => {
+        output.value = rangeInput.value;
+    });
 
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault(); // מונע רענון דף
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-//   // שליפת כל ה-checkbox-ים המסומנים
-//   const selectedHobbies = Array.from(
-//     form.querySelectorAll("input[name='hobby']:checked")
-//   ).map(input => (input as HTMLInputElement).value);
+        const formDate = new FormData(form);
+        const formObject: Record<string, any> = {};
 
-//   // הצגת הנתונים
-//   output.textContent = selectedHobbies.length
-//     ? `התחביבים שבחרת: ${selectedHobbies.join(", ")}`
-//     : "לא בחרת שום תחביב.";
-// });
+        formDate.forEach((value, key) => {
+            if(formObject[key]) {
+                if (Array.isArray(formObject[key])) {
+                    formObject[key].push(value);
+                } else {
+                    formObject[key] = [formObject[key], value];
+                }
+            } else {
+                formObject[key] = value;
+            }
+        });
+
+        console.log("Form Data Submitted:", formObject);
+        alert("Form submitted successfully! Check the console for detalis.");
+    });
+
+    form.addEventListener("reset", () => {
+        output.value = "5"; 
+    });
+});
