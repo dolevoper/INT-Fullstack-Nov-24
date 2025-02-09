@@ -1,0 +1,14 @@
+[data-match-number="1"]:hover,
+[data-match-number="1"]:has(~ :hover) {
+  background: salmon;
+}
+
+[data-match-number="2"]:hover,
+[data-match-number="2"]:has(~ :hover) {
+  background: salmon;
+}
+
+[data-match-number="3"]:hover,
+[data-match-number="3"]:has(~ :hover) {
+  background: salmon;
+}

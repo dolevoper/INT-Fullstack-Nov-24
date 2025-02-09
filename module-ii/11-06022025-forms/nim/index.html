@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIM</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body>
+    <main>
+        <button id="newGameButton">New game</button>
+        <p id="gameStatus"></p>
+        <div id="board"></div>
+    </main>
+
+    <script type="module">
+        import { init, matches, currentPlayer, takeMatches, isGameOver } from "./dist/nim.js";
+
+        const board = document.getElementById("board");
+        const gameStatus = document.getElementById("gameStatus");
+
+        document.getElementById("newGameButton").addEventListener("click", init);
+
+        document.querySelector("main").addEventListener("click", function () {
+            board.innerHTML = Array(matches).fill().map((_, i) => `<button data-match-number="${i + 1}">🔥</button>`).join("");
+            gameStatus.innerText =  isGameOver() ? `${currentPlayer} is the winner!` : `${currentPlayer} to play.`;
+        });
+
+        document.getElementById("board").addEventListener("click", function (e) {
+            const { target } = e;
+            
+            if (target.type !== "submit") {
+                return;
+            }
+
+            const matchesToRemove = Math.min(target.dataset.matchNumber, 3);
+            takeMatches(matchesToRemove);
+        });
+    </script>
+</body>
+</html>
