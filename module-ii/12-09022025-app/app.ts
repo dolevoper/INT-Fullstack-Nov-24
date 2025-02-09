@@ -10,5 +10,53 @@
 // manage loaned equipment
 
 // Model
+type worker{
+    name
+    department
+    salary
+    equipment
+}
+
+type equipment{
+    name
+    value
+    location
+    user
+}
+
+type room{
+    name
+    location
+    equipment
+}
 
 // API
+
+function createWorker(){
+
+}
+
+function removeWorker(){
+
+}
+
+function createEquipment(){
+
+}
+
+function removeEquipment(){
+
+}
+
+function assignEquipment(){
+
+}
+
+function listStorage(){
+
+}
+
+function listLoanedEquipment(){
+    
+}
+
