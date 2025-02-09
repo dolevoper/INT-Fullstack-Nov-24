@@ -3,18 +3,8 @@
 // forms
 // manage array of objects
 // relation to other objects
-// API
-function createWorker() {
-}
-function removeWorker() {
-}
-function createEquipment() {
-}
-function removeEquipment() {
-}
-function assignEquipment() {
-}
-function listStorage() {
-}
-function listLoanedEquipment() {
-}
+// office
+// manage inventory
+// manage employees
+// manage loaned equipment
+// Model
