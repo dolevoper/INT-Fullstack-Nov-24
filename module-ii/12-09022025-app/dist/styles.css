@@ -42,6 +42,19 @@ textarea {
   resize: none;
 }
 
+ul, ol, menu {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: deeppink;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .reading-view {
   width: min(70ch, 100% - 2rem);
   margin-inline: auto;
@@ -64,4 +77,17 @@ textarea {
 .form-control label:has(+ [required])::after {
   content: "*";
   color: red;
+}
+
+.details-list > li {
+  --_highlight-color: #eeeeee;
+  padding: 0.5rem 1rem;
+  will-change: background-color;
+  transition: background-color 300ms;
+}
+.details-list > li + li {
+  border-top: 1px solid var(--_highlight-color);
+}
+.details-list > li:hover {
+  background-color: var(--_highlight-color);
 }

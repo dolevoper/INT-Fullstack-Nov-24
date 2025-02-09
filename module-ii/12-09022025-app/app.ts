@@ -32,9 +32,15 @@ type Stock = { itemId: string, quantity: number }[];
 type Inventory = { itemId: string, serial: string }[];
 
 // API
-export let items: Item[] = [];
-export let stock: Stock = [];
-export let inventory: Inventory = [];
+const itemsStorageKey = "items";
+
+let items: Item[] = JSON.parse(localStorage.getItem(itemsStorageKey)) ?? [];
+let stock: Stock = [];
+let inventory: Inventory = [];
+
+export function getItems() {
+    return items.slice();
+}
 
 export function addItem(item: Item) {
     if (items.some((i) => i.id === item.id)) {
@@ -43,8 +49,12 @@ export function addItem(item: Item) {
 
     items.push(item);
 
+    localStorage.setItem(itemsStorageKey, JSON.stringify(items));
+
     return "Success";
 }
+
+export function editItem(item: Item) {}
 
 export function addToStock(itemId: string, amount: number) {}
 
