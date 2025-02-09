@@ -36,7 +36,15 @@ export let items: Item[] = [];
 export let stock: Stock = [];
 export let inventory: Inventory = [];
 
-export function addItem(item: Item) {}
+export function addItem(item: Item) {
+    if (items.some((i) => i.id === item.id)) {
+        return `Id "${item.id}" already exists`;
+    }
+
+    items.push(item);
+
+    return "Success";
+}
 
 export function addToStock(itemId: string, amount: number) {}
 

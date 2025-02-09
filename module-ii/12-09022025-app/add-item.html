@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+
+<body>
+    <main class="reading-view stack">
+        <h1>New Item</h1>
+        <form name="new item" class="stack">
+            <div class="form-control">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+            </div>
+            <div class="form-control">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option>Supplies</option>
+                    <option>Furniture</option>
+                    <option>IT</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" type="text" rows="6"></textarea>
+            </div>
+            <div class="form-control">
+                <label for="price">Price (₪)</label>
+                <input id="price" name="priceInNIS" type="number" step="0.1" required />
+            </div>
+            <button>Add</button>
+        </form>
+    </main>
+
+    <script type="module">
+        import { addItem } from "./dist/app.js";
+
+        document.forms.namedItem("new item").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const { name, category, description, priceInNIS } = Object.fromEntries(
+                new FormData(e.target)
+            );
+
+            const result = addItem({
+                id: crypto.randomUUID().replaceAll("-", "").slice(-6),
+                name,
+                category,
+                ...(description ? { description } : {}),
+                priceInAgorot: Number(priceInNIS) * 100,
+            });
+
+            if (result !== "Success") {
+                alert(result);
+            }
+        });
+    </script>
+</body>
+
+</html>
