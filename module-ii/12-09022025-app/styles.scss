@@ -44,6 +44,20 @@ textarea {
     resize: none;
 }
 
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: deeppink;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .reading-view {
     width: min(70ch, 100% - 2rem);
     margin-inline: auto;
@@ -67,5 +81,21 @@ textarea {
             content: "*";
             color: red;
         }
+    }
+}
+
+.details-list > li {
+    --_highlight-color: #eeeeee;
+
+    padding: 0.5rem 1rem;
+    will-change: background-color;
+    transition: background-color 300ms;
+
+    + li {
+        border-top: 1px solid var(--_highlight-color);
+    }
+
+    &:hover {
+        background-color: var(--_highlight-color);
     }
 }
