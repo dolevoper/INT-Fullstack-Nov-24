@@ -30,35 +30,36 @@
         </div>
         <div>
             <button id="equalsButton">=</button>
-            <button>C</button>
-            <button>AC</button>
+            <button id="clearButton">C</button>
+            <button id="allClearButton">AC</button>
         </div>
     </main>
 
     <script type="module">
-        import { debug, enterDigit, operate, equals, getDisplayValue } from "./dist/calculator.js";
+        import { debug, enterDigit, operate, equals, getDisplayValue, clear, allClear } from "./dist/calculator.js";
 
         const display = document.getElementById("display");
+
+        document.addEventListener("click", function () {
+            display.textContent = getDisplayValue();
+            debug();
+        });
 
         document.getElementById("digitButtons").addEventListener("click", function (e) {
             const value = Number(e.target.dataset.value);
             enterDigit(value);
-            display.textContent = getDisplayValue();
-            debug();
         });
 
         document.getElementById("operations").addEventListener("click", function (e) {
             const operation = e.target.dataset.operation;
             operate(operation);
-            display.textContent = getDisplayValue();
-            debug();
         });
 
-        document.getElementById("equalsButton").addEventListener("click", function (e) {
-            equals();
-            display.textContent = getDisplayValue();
-            debug();
-        });
+        document.getElementById("equalsButton").addEventListener("click", equals);
+
+        document.getElementById("clearButton").addEventListener("click", clear);
+
+        document.getElementById("allClearButton").addEventListener("click", allClear);
     </script>
 </body>
 
