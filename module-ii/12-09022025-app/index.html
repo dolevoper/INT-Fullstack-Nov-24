@@ -24,9 +24,12 @@
 
         for (const item of getItems()) {
             const itemEl = document.createElement("li");
+            const link = document.createElement("a");
 
-            itemEl.textContent = item.name;
+            link.textContent = item.name;
+            link.setAttribute("href", `add-item.html#${item.id}`);
 
+            itemEl.append(link);
             itemsList.append(itemEl);
         }
     </script>

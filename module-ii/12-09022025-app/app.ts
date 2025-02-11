@@ -42,6 +42,12 @@ export function getItems() {
     return items.slice();
 }
 
+export function getItem(itemId: string) {
+    const item = items.find((i) => i.id === itemId);
+
+    return item ?? `Item with id "${itemId}" doesn't exist.`;
+}
+
 export function addItem(item: Item) {
     if (items.some((i) => i.id === item.id)) {
         return `Id "${item.id}" already exists`;
@@ -54,7 +60,21 @@ export function addItem(item: Item) {
     return "Success";
 }
 
-export function editItem(item: Item) {}
+export function editItem(item: Item) {
+    const itemToEdit = getItem(item.id);
+
+    if (typeof itemToEdit === "string") {
+        return itemToEdit;
+    }
+
+    itemToEdit.name = item.name;
+    itemToEdit.description = item.description;
+    itemToEdit.priceInAgorot = item.priceInAgorot;
+
+    localStorage.setItem(itemsStorageKey, JSON.stringify(items));
+
+    return "Success";
+}
 
 export function addToStock(itemId: string, amount: number) {}
 
