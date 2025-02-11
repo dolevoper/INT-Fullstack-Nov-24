@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body>
+    <main class="reading-view stack">
+        <nav>
+            <menu class="u-inlineMenu">
+                <li><a href="add-item.html">New Item</a></li>
+                <li><a href="update-stock.html">Update Stock</a></li>
+            </menu>
+        </nav>
+        <h1>Items</h1>
+        <ul id="items" class="details-list"></ul>
+        <h1>Stock</h1>
+        <ul id="stock" class="details-list"></ul>
+    </main>
+
+    <script type="module">
+        import { getItems, getItem, getStock } from "./dist/app.js";
+
+        const itemsList = document.getElementById("items");
+
+        for (const item of getItems()) {
+            const itemEl = document.createElement("li");
+            itemEl.classList.add("item");
+            
+            const link = document.createElement("a");                      
+            link.textContent = item.name;
+            link.setAttribute("href", `add-item.html#${item.id}`);
+            itemEl.appendChild(link);
+
+            // const propertiesList = document.createElement("ul");
+            // propertiesList.classList.add("properties");
+            // const itemCategory = document.createElement("li");
+            // itemCategory.textContent = item.category;
+            // propertiesList.appendChild(itemCategory);
+            // itemEl.appendChild(propertiesList);
+            itemsList.append(itemEl);            
+        }
+
+        
+        for (const stockItem of getStock()) {
+
+            const item = getItem(stockItem.itemId);
+            const itemEl = document.createElement("li");
+            itemEl.classList.add("item");
+            
+            const link = document.createElement("a");                      
+            link.textContent = item.name;
+            link.setAttribute("href", `add-item.html#${item.id}`);
+            itemEl.appendChild(link);
+
+            const quantity = document.createElement("span");
+            quantity.textContent = stockItem.quantity;
+            itemEl.appendChild(quantity);
+
+            itemsList.append(itemEl);            
+        }
+    </script>
+</body>
+</html>

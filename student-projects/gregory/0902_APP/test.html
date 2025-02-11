@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Selection Form</title>
+    <style>
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .item input[type="text"] {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="itemForm">
+        <h1>Select Items</h1>
+
+        <div class="item">
+            <input type="checkbox" id="item1" name="item" value="Item 1">
+            <input type="text" id="value1" placeholder="Enter value" />
+        </div>
+        
+        <div class="item">
+            <input type="checkbox" id="item2" name="item" value="Item 2">
+            <input type="text" id="value2" placeholder="Enter value" />
+        </div>
+        
+        <div class="item">
+            <input type="checkbox" id="item3" name="item" value="Item 3">
+            <input type="text" id="value3" placeholder="Enter value" />
+        </div>
+        
+        <div class="item">
+            <input type="checkbox" id="item4" name="item" value="Item 4">
+            <input type="text" id="value4" placeholder="Enter value" />
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result">
+        <!-- The result of the form submission will appear here -->
+    </div>
+
+    <script>
+        document.getElementById("itemForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+            
+            const result = [];
+            
+            // Get all items (checkboxes)
+            const items = document.querySelectorAll("input[type='checkbox']");
+            
+            // Iterate over all items and collect checked ones with their values
+            items.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const valueField = document.getElementById(`value${index + 1}`);
+                    const value = valueField.value.trim();
+                    if (value) {
+                        result.push({ item: checkbox.value, value });
+                    }
+                }
+            });
+
+            // Display the result
+            const resultDiv = document.getElementById("result");
+            if (result.length > 0) {
+                resultDiv.innerHTML = "<h2>Selected Items:</h2>";
+                result.forEach(item => {
+                    resultDiv.innerHTML += `<p>${item.item}: ${item.value}</p>`;
+                });
+            } else {
+                resultDiv.innerHTML = "<p>No items selected.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
