@@ -111,3 +111,13 @@ a:hover {
   align-items: baseline;
   gap: 1rem;
 }
+
+.item-stock {
+  display: contents;
+}
+
+.u-2columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two equal columns */
+}

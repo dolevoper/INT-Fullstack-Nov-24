@@ -11,7 +11,7 @@
 <body>
     <main class="reading-view stack">
         <h1 id="formTitle">List of Consumables</h1>
-        <form name="consumable items" class="stack">           
+        <form name="consumableItems" class="stack">           
             <article class="cluster">
                 <button name="save">Update</button>
                 <a href="index.html">Back</a>
@@ -20,9 +20,9 @@
     </main>
 
     <script type="module">
-        import { addItem, editItem, getItem, getItems, getQuantity } from "./dist/app.js";
+        import { addItem, editItem, getItem, getItems, getQuantity, updateStock } from "./dist/app.js";
                      
-        const stockForm = document.forms.namedItem("consumable items");
+        const stockForm = document.forms.namedItem("consumableItems");
         const clusterElement = stockForm.querySelector("article.cluster");
         
         for (const item of getItems()) {
@@ -33,6 +33,7 @@
                 const checkBox = document.createElement("input");
                 checkBox.setAttribute ("id",item.id);
                 checkBox.setAttribute ("type","checkbox");
+                checkBox.setAttribute ("name",`ch_${item.id}`);
                 itemElement.appendChild(checkBox);
 
                 const itemLable = document.createElement("label");
@@ -45,6 +46,7 @@
 
                 const quantityInput = document.createElement("input");
                 quantityInput.setAttribute ("id",`q_${item.id}`);
+                quantityInput.setAttribute ("name",`q_${item.id}`);
                 quantityInput.setAttribute ("type","number");
                 quantityInput.setAttribute ("min","1");
                 const quantityValue = getQuantity(item.id);
@@ -55,28 +57,37 @@
 
                 stockForm.insertBefore(itemElement,clusterElement);
                 
-            }                               
+            }       
+            
+            
         }
 
-        
-        // for (const stockItem of getStock()) {
+        stockForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        //     const item = getItem(stockItem.itemId);
-        //     const itemEl = document.createElement("li");
-        //     itemEl.classList.add("item");
+            const formInput = new FormData(e.target);
+            console.log([...formInput.entries()]);
+            const formData = Object.fromEntries(formInput.entries());
+
+            console.log(formData);
+
+            const checkboxes = stockForm.querySelectorAll("input[type='checkbox']");
+            checkboxes.forEach(checkbox => {
+                const name = checkbox.getAttribute("name");
+                if (formData[name]) {
+                    const id = name.slice(3);
+                    console.log(id);
+                    const value = formData[`q_${id}`];
+                    console.log(value);
+
+                    const result = updateStock(id,value);
+                    if (result != "Success"){
+                        alert(result);
+                    }
+                }
+            });
             
-        //     const link = document.createElement("a");                      
-        //     link.textContent = item.name;
-        //     link.setAttribute("href", `add-item.html#${item.id}`);
-        //     itemEl.appendChild(link);
-
-        //     const quantity = document.createElement("span");
-        //     quantity.textContent = stockItem.quantity;
-        //     itemEl.appendChild(quantity);
-
-        //     itemsList.append(itemEl);            
-        // }
-
+        });
         
     </script>
 </body>

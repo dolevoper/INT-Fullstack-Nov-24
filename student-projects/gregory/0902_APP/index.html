@@ -17,13 +17,19 @@
         <h1>Items</h1>
         <ul id="items" class="details-list"></ul>
         <h1>Stock</h1>
-        <ul id="stock" class="details-list"></ul>
+        <ul id="stock" class="details-list u-2columns">
+            <li class="item-stock">
+                <h3>Item name</h3>
+                <h3>Quantity</h3>
+            </li>
+        </ul>
     </main>
 
     <script type="module">
         import { getItems, getItem, getStock } from "./dist/app.js";
 
         const itemsList = document.getElementById("items");
+        const stockList = document.getElementById("stock");
 
         for (const item of getItems()) {
             const itemEl = document.createElement("li");
@@ -48,7 +54,7 @@
 
             const item = getItem(stockItem.itemId);
             const itemEl = document.createElement("li");
-            itemEl.classList.add("item");
+            itemEl.classList.add("item-stock");
             
             const link = document.createElement("a");                      
             link.textContent = item.name;
@@ -59,7 +65,7 @@
             quantity.textContent = stockItem.quantity;
             itemEl.appendChild(quantity);
 
-            itemsList.append(itemEl);            
+            stockList.append(itemEl);            
         }
     </script>
 </body>

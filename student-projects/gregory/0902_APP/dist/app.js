@@ -46,15 +46,35 @@ export function addToStock(itemId, amount) {
     }
     const stockItem = stock.find(i => i.itemId === itemId);
     if (stockItem) {
-        stockItem.quantity += 1;
+        stockItem.quantity += amount;
     }
     else {
         const stockItem = {
             itemId: itemId,
-            quantity: 1
+            quantity: amount
         };
         stock.push(stockItem);
     }
+    localStorage.setItem(stockStorageKey, JSON.stringify(stock));
+    return "Success";
+}
+export function updateStock(itemId, amount) {
+    const itemToAdd = getItem(itemId);
+    if (typeof itemToAdd === "string") {
+        return itemToAdd;
+    }
+    const stockItem = stock.find(i => i.itemId === itemId);
+    if (stockItem) {
+        stockItem.quantity = amount;
+    }
+    else {
+        const stockItem = {
+            itemId: itemId,
+            quantity: amount
+        };
+        stock.push(stockItem);
+    }
+    localStorage.setItem(stockStorageKey, JSON.stringify(stock));
     return "Success";
 }
 export function getQuantity(itemId) {

@@ -37,8 +37,8 @@ const inventoryStorageKey = "inventory";
 const stockStorageKey = "stock";
 
 let items: Item[] = JSON.parse(localStorage.getItem(itemsStorageKey)) ?? [];
-let stock: Stock = JSON.parse(localStorage.getItem(stockStorageKey)) ?? [];
-let inventory: Inventory = JSON.parse(localStorage.getItem(inventoryStorageKey)) ?? [];
+let stock: Stock[] = JSON.parse(localStorage.getItem(stockStorageKey)) ?? [];
+let inventory: Inventory[] = JSON.parse(localStorage.getItem(inventoryStorageKey)) ?? [];
 
 export function getItems() {
     return items.slice();
@@ -91,14 +91,38 @@ export function addToStock(itemId: string, amount: number) {
 
     const stockItem = stock.find(i => i.itemId === itemId);
     if (stockItem) {
-        stockItem.quantity += 1;
+        stockItem.quantity += amount;
     } else {
         const stockItem = {
             itemId : itemId,
-            quantity : 1
+            quantity : amount
         }
         stock.push(stockItem);
     }
+
+    localStorage.setItem(stockStorageKey, JSON.stringify(stock));
+    return "Success";
+}
+
+export function updateStock(itemId: string, amount: number) {
+    const itemToAdd = getItem(itemId);
+
+    if (typeof itemToAdd === "string") {
+        return itemToAdd;
+    }
+
+    const stockItem = stock.find(i => i.itemId === itemId);
+    if (stockItem) {
+        stockItem.quantity = amount;
+    } else {
+        const stockItem = {
+            itemId : itemId,
+            quantity : amount
+        }
+        stock.push(stockItem);
+    }
+
+    localStorage.setItem(stockStorageKey, JSON.stringify(stock));
     return "Success";
 }
 

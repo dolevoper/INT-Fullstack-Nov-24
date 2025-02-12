@@ -97,7 +97,7 @@ a {
 
     padding: 0.5rem 1rem;
     will-change: background-color;
-    transition: background-color 300ms;
+    transition: background-color 300ms;    
 
     + li {
         border-top: 1px solid var(--_highlight-color);
@@ -118,4 +118,13 @@ a {
     flex-direction: row;
     align-items: baseline;
     gap: 1rem;
+}
+
+.item-stock{
+    display: contents;
+}
+
+.u-2columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
 }
