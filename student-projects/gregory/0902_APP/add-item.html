@@ -10,6 +10,19 @@
 
 <body>
     <main class="reading-view stack">
+        <nav>
+            <menu class="u-inlineMenu">
+                <li>
+                    <a href="update-stock.html">Update Stock</a>
+                </li>
+                <li>
+                    <a href="inventory.html">Inventory</a>
+                </li>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+            </menu>
+        </nav>
         <h1 id="formTitle">New Item</h1>
         <form name="new item" class="stack">
             <input type="hidden" name="id" />
@@ -39,7 +52,7 @@
             </div>
             <article class="cluster">
                 <button name="save">Add</button>
-                <a href="index.html">Home</a>
+                <a href="javascript:window.history.back();">Back</a>
             </article>
         </form>
     </main>
