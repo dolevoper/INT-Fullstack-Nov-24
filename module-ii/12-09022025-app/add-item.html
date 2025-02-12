@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+
+<body>
+    <main class="reading-view stack">
+        <h1>New Item</h1>
+        <form name="new item" class="stack">
+            <input type="hidden" name="id" />
+            <div class="form-control">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+            </div>
+            <div class="form-control">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option>Supplies</option>
+                    <option>Furniture</option>
+                    <option>IT</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" type="text" rows="6"></textarea>
+            </div>
+            <div class="form-control">
+                <label for="price">Price (₪)</label>
+                <input id="price" name="priceInNIS" type="number" step="0.1" required />
+            </div>
+            <article class="cluster">
+                <button name="save">Add</button>
+                <a href="index.html">Back</a>
+            </article>
+        </form>
+    </main>
+
+    <script type="module">
+        import { addItem, editItem, getItem } from "./dist/app.js";
+
+        const itemForm = document.forms.namedItem("new item");
+        const itemId = window.location.hash.slice(1);
+        const save = itemId ? editItem : addItem;
+
+        if (!itemId) {
+            itemForm.id.value = crypto.randomUUID().replaceAll("-", "").slice(-6);
+        } else {
+            const item = getItem(itemId);
+
+            if (typeof item === "string") {
+                window.location.assign(`error.html#${item}`);
+            } else {
+                itemForm.id.value = item.id;
+                itemForm.name.value = item.name;
+                itemForm.category.value = item.category;
+                itemForm.description.value = item.description ?? "";
+                itemForm.priceInNIS.value = item.priceInAgorot / 100;
+                itemForm.save.textContent = "Update";
+
+                itemForm.category.setAttribute("disabled", true);
+            }
+        }
+
+        itemForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const { id, name, category, description, priceInNIS } = Object.fromEntries(
+                new FormData(e.target)
+            );
+
+            const item = {
+                id,
+                name,
+                category,
+                ...(description ? { description } : {}),
+                priceInAgorot: Number(priceInNIS) * 100,
+            };
+            const result = save(item);
+
+            if (result !== "Success") {
+                alert(result);
+            } else {
+                window.location.assign("index.html");
+            }
+        });
+    </script>
+</body>
+
+</html>

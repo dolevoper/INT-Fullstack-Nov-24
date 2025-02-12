@@ -1,0 +1,109 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html {
+    font-size: calc(1rem + 0.5vw);
+    line-height: 1.5;
+}
+
+body {
+    font-family: system-ui;
+}
+
+button, input, textarea, select {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+
+    &:focus-visible {
+        outline: 1px solid deeppink;
+    }
+}
+
+button {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    padding: 0.3em 0.5em;
+    line-height: 1;
+    border-radius: 1.6em;
+    cursor: pointer;
+    border: 2px solid currentColor;
+
+    &:active {
+        background: gainsboro;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+ul, ol, menu {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: deeppink;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.reading-view {
+    width: min(70ch, 100% - 2rem);
+    margin-inline: auto;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cluster {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+
+    label { 
+        font-weight: 600;
+        font-size: 0.9rem;
+
+        &:has(+ [required])::after {
+            content: "*";
+            color: red;
+        }
+    }
+}
+
+.details-list > li {
+    --_highlight-color: #eeeeee;
+
+    padding: 0.5rem 1rem;
+    will-change: background-color;
+    transition: background-color 300ms;
+
+    + li {
+        border-top: 1px solid var(--_highlight-color);
+    }
+
+    &:hover {
+        background-color: var(--_highlight-color);
+    }
+}
