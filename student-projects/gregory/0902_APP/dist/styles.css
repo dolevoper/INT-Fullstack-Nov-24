@@ -116,6 +116,10 @@ a:hover {
   display: contents;
 }
 
+.item-inventory {
+  display: contents;
+}
+
 .u-2columns {
   display: grid;
   grid-template-columns: 1fr 1fr;

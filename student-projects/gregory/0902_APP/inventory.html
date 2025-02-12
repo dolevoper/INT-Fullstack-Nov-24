@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body>
+    <main class="reading-view stack">
+        <nav>
+            <menu class="u-inlineMenu">
+                <li>
+                    <a href="add-item.html">New Item</a>
+                </li>
+                <li>
+                    <a href="update-stock.html">Update Stock</a>
+                </li>
+                <li>
+                    <a href="inventory.html">Home</a>
+                </li>
+            </menu>
+        </nav>
+        <h1>Inventory</h1>
+        <ul id="inventory-items" class="details-list u-2columns">
+            <li class="item-inventory">
+                <h3>Item name</h3>
+                <h3>Serial Number</h3>
+            </li>
+        </ul>
+        
+    </main>
+
+    <script type="module">
+        import { getItem, updateInventory, getInventory, clearInventory } from "./dist/app.js";
+
+        const itemsList = document.getElementById("inventory-items");
+        
+        const result = updateInventory();
+        console.log(result);
+                     
+        for (const inventoryItem of getInventory()) {
+
+            const item = getItem(inventoryItem.itemId);
+            const itemEl = document.createElement("li");
+            itemEl.classList.add("item-inventory");
+            
+            const link = document.createElement("a");                      
+            link.textContent = item.name;
+            link.setAttribute("href", `add-item.html#${item.id}`);
+            itemEl.appendChild(link);
+
+            const serial = document.createElement("span");
+            serial.textContent = inventoryItem.serial;
+            itemEl.appendChild(serial);
+
+            itemsList.append(itemEl);            
+        }
+    </script>
+</body>
+</html>

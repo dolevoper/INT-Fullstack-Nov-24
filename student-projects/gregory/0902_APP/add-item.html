@@ -26,6 +26,10 @@
                 </select>
             </div>
             <div class="form-control">
+                <label for="serial">Serial</label>
+                <input id="serial" name="serial" type="text"></input>
+            </div>
+            <div class="form-control">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" type="text" rows="6"></textarea>
             </div>
@@ -35,7 +39,7 @@
             </div>
             <article class="cluster">
                 <button name="save">Add</button>
-                <a href="index.html">Back</a>
+                <a href="index.html">Home</a>
             </article>
         </form>
     </main>
@@ -47,7 +51,9 @@
         const formTitle = document.getElementById("formTitle");
         const itemId = window.location.hash.slice(1);
         const save = itemId ? editItem : addItem;
+        const categorySelect = document.getElementById("category");
 
+        
         if (!itemId) {
             itemForm.id.value = crypto.randomUUID().replaceAll("-", "").slice(-6);
         } else {
@@ -59,19 +65,32 @@
                 itemForm.id.value = item.id;
                 itemForm.name.value = item.name;
                 itemForm.category.value = item.category;
+                itemForm.serial.value = item.serial;
                 itemForm.description.value = item.description ?? "";
                 itemForm.priceInNIS.value = item.priceInAgorot / 100;
                 itemForm.save.textContent = "Update";
                 formTitle.textContent = "Update Item";
 
                 itemForm.category.setAttribute("disabled", true);
+
             }
         }
+
+        if (itemForm.category.value === "Supplies"){
+            itemForm.serial.setAttribute("disabled", true);
+        }
+        categorySelect.addEventListener("change",function(e){
+            if (e.target.value === "Supplies"){
+                itemForm.serial.setAttribute("disabled", true);
+            } else {
+                itemForm.serial.removeAttribute("disabled");
+            }
+        });
 
         itemForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const { id, name, category, description, priceInNIS } = Object.fromEntries(
+            const { id, name, category, serial, description, priceInNIS } = Object.fromEntries(
                 new FormData(e.target)
             );
 
@@ -79,6 +98,7 @@
                 id,
                 name,
                 category,
+                serial,
                 ...(description ? { description } : {}),
                 priceInAgorot: Number(priceInNIS) * 100,
             };

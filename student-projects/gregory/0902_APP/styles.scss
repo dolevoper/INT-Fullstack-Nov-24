@@ -120,7 +120,10 @@ a {
     gap: 1rem;
 }
 
-.item-stock{
+.item-stock {
+    display: contents;
+}
+.item-inventory {
     display: contents;
 }
 

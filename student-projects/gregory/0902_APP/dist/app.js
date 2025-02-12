@@ -13,8 +13,29 @@ let inventory = JSON.parse(localStorage.getItem(inventoryStorageKey)) ?? [];
 export function getItems() {
     return items.slice();
 }
+export function clearInventory() {
+    inventory = [];
+    localStorage.removeItem(inventoryStorageKey);
+}
+export function updateInventory() {
+    for (const item of items) {
+        const inventoryItem = inventory.find(i => i.itemId === item.id);
+        if ((!inventoryItem) && item.category != ("Supplies")) {
+            const inventoryItem = {
+                itemId: item.id,
+                serial: item.serial
+            };
+            inventory.push(inventoryItem);
+        }
+    }
+    localStorage.setItem(inventoryStorageKey, JSON.stringify(inventory));
+    return "Success";
+}
 export function getStock() {
     return stock.slice();
+}
+export function getInventory() {
+    return inventory.slice();
 }
 export function getItem(itemId) {
     const item = items.find((i) => i.id === itemId);
@@ -36,6 +57,9 @@ export function editItem(item) {
     itemToEdit.name = item.name;
     itemToEdit.description = item.description;
     itemToEdit.priceInAgorot = item.priceInAgorot;
+    if (itemToEdit.category != "Supplies") {
+        itemToEdit.serial = item.serial;
+    }
     localStorage.setItem(itemsStorageKey, JSON.stringify(items));
     return "Success";
 }
