@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/styles.css">
+    <title>Johnnie Walker Game</title>
+    
+</head>
+<body>
+
+    <main>
+        <article class="gameField">
+          
+            <div id="johnnieWalker" class="johnnieWalker">
+                <img class="gamePiece" src="./images/johnnie.jpg" alt="johnnie walker image">          
+            </div>
+
+        </article>
+    </main>
+
+    <script type="module">
+
+        const johnnieWalker = document.getElementById("johnnieWalker");
+
+        document.addEventListener("keydown", function(event) {
+            switch (event.key) {
+                case "ArrowUp":
+                    console.log("Up arrow pressed");
+                    
+                    break;
+                case "ArrowDown":
+                    console.log("Down arrow pressed");
+                    break;
+                case "ArrowLeft":
+                    console.log("Left arrow pressed");
+                    break;
+                case "ArrowRight":
+                    console.log("Right arrow pressed");
+                    break;
+            }
+        });
+
+    </script>
+    
+</body>
+</html>

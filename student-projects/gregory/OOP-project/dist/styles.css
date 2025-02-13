@@ -1,0 +1,41 @@
+:root {
+  --fieldSize: 50rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.gameField {
+  width: var(--fieldSize, 40rem);
+  height: var(--fieldSize, 40rem);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px;
+  border: 1px solid black;
+}
+
+.gamePiece {
+  height: var(--pieceHeight, 4rem);
+  width: auto;
+  border: 1px solid green;
+}
+
+.johnnieWalker {
+  grid-column: 2;
+  grid-row: 3;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
