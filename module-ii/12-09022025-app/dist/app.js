@@ -11,6 +11,10 @@ let inventory = [];
 export function getItems() {
     return items.slice();
 }
+export function getItem(itemId) {
+    const item = items.find((i) => i.id === itemId);
+    return item ?? `Item with id "${itemId}" doesn't exist.`;
+}
 export function addItem(item) {
     if (items.some((i) => i.id === item.id)) {
         return `Id "${item.id}" already exists`;
@@ -19,13 +23,7 @@ export function addItem(item) {
     localStorage.setItem(itemsStorageKey, JSON.stringify(items));
     return "Success";
 }
-export function editItem(item) {
-    const index = items.findIndex((i) => i.id === item.id);
-    if (index === -1) {
-        return `Id "${item.id}" does not exist`;
-    }
-    items[index] = item;
-}
+export function editItem(item) { }
 export function addToStock(itemId, amount) { }
 export function consume(itemId, quantity) { }
 export function acquire(itemId, serial) { }
