@@ -61,6 +61,17 @@ li {
   margin-right: 1rem;
 }
 
+.u-topMargin-16 {
+  margin-top: 1rem;
+}
+
+.u-valueItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
 main {
   display: flex;
   justify-content: space-around;
@@ -73,6 +84,12 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.values {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .score {
@@ -99,6 +116,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
 }
 
 .gamePiece {
@@ -121,11 +139,9 @@ main {
 }
 
 .rules {
-  margin-top: 2rem;
   width: 30rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .startButton {

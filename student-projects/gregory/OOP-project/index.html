@@ -39,7 +39,25 @@
                 <li class="u-statsItem"> 
                     <span class="u-statsText">Vigor</span>
                     <span class="u-statsText" id="vigor">10.0</span>
-                </li>                
+                </li>
+            </ul>
+
+            <ul class="values">
+                <li class="u-valueItem">
+                    <img src="./images/Beer-cropped.jpg" class="gamePiece">
+                    <span class="u-text-32">-</span>
+                    <span class="u-text-32" id="beerValue"></span>
+                </li>
+                <li class="u-valueItem">
+                    <img src="./images/red-wine.jpg" class="gamePiece">
+                    <span class="u-text-32">-</span>
+                    <span class="u-text-32" id="wineValue"></span>
+                </li>
+                <li class="u-valueItem">
+                    <img src="./images/tequila-cropped.jpg" class="gamePiece">
+                    <span class="u-text-32">-</span>
+                    <span class="u-text-32" id="tequillaValue"></span>
+                </li>
             </ul>
     
             <article class="rules">
@@ -56,7 +74,7 @@
                 <p class="u-text-32">
                     Keep him alive! Get him to the BOOZE!
                 </p>    
-                <p class="u-statsText">
+                <p class="u-statsText u-topMargin-16">
                     Use arrow keys to move him around. Pay attention, if he moves to mush he gets tired, and needs to rest.
                 </p>
             </article>
@@ -68,7 +86,7 @@
 
     <script type="module">
 
-        import { BenderB, updateStatsDisplay, generateBottle, updateScore } from "./dist/app.js";
+        import { BenderB, updateStatsDisplay, generateBottle, updateScore, drinkValues } from "./dist/app.js";
 
         let gameON = false;
         let counter = 0;
@@ -77,6 +95,15 @@
 
         const startButton = document.getElementById("startButton");
         BenderB.updatePosition();
+        
+
+        const beerValue = document.getElementById("beerValue");
+        const wineValue = document.getElementById("wineValue");
+        const tequillaValue = document.getElementById("tequillaValue");
+
+        beerValue.textContent = drinkValues.beer.toString();
+        wineValue.textContent = drinkValues.wine.toString();
+        tequillaValue.textContent = drinkValues.tequilla.toString();
 
         startButton.addEventListener("click",function(event){
             
@@ -106,6 +133,8 @@
                     console.log(BenderB.xPos,BenderB.yPos);
 
                 });
+
+                generateBottle();
 
                 const timer = setInterval(() => {
                     BenderB.timedStats();

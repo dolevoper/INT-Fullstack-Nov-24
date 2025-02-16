@@ -210,6 +210,17 @@ const thirstDisplay = document.getElementById("thirst");
 const vigorDisplay = document.getElementById("vigor");
 const gameField = document.getElementById("gameField");
 let drinks = [];
+//Game Constants
+export const drinkValues = {
+    beer: 2,
+    wine: 4,
+    tequilla: 6
+};
+export const drinkVanishTime = {
+    beer: 10,
+    wine: 7,
+    tequilla: 3
+};
 //startX,startY,+vigor/sec,-health/sec,+health/sec
 export const BenderB = new Player(1, 1, 0.5, 0.2, 0.2);
 export function updateScore(score) {
@@ -253,20 +264,22 @@ export function generateBottle() {
     }
     const newName = getName();
     console.log(`Bottle name is: ${newName}`);
-    switch (newName) {
-        case "beer":
-            timeToVanish = 10;
-            value = 2;
-            break;
-        case "wine":
-            timeToVanish = 7;
-            value = 4;
-            break;
-        case "tequilla":
-            timeToVanish = 3;
-            value = 6;
-            break;
-    }
+    // switch (newName) {
+    //     case "beer":
+    //         timeToVanish = 10;
+    //         value = 2;
+    //         break;
+    //     case "wine":
+    //         timeToVanish = 7;
+    //         value = 4;
+    //         break;
+    //     case "tequilla":
+    //         timeToVanish = 3;
+    //         value = 6
+    //         break;  
+    // }
+    timeToVanish = drinkVanishTime[newName];
+    value = drinkValues[newName];
     const id = crypto.randomUUID().replaceAll("-", "").slice(-6);
     const newBottle = new Drink(id, drinkX, drinkY, newName, timeToVanish, value); //id,X,Y,Name,time/sec,value
     console.log(newBottle);
