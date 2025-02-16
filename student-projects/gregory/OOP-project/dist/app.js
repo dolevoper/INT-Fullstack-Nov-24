@@ -3,7 +3,7 @@ class Player {
     constructor(xPos, yPos, stamina, degradation, recuperation) {
         this.#thirst = 0;
         this.#health = 10.0;
-        this.#vigor = 10.0;
+        this.#vigor = 0;
         this.xPos = xPos;
         this.yPos = yPos;
         this.#stamina = stamina;
@@ -33,7 +33,7 @@ class Player {
         // this.#health -= 1;
     }
     move(direction) {
-        if (this.#vigor > 0) {
+        if (this.#vigor < 10) {
             console.log(`Vigor at move: ${this.#vigor}`);
             switch (direction) {
                 case "Up":
@@ -62,7 +62,7 @@ class Player {
                     break;
             }
             this.updatePosition();
-            this.#vigor -= 0.5;
+            this.#vigor += 0.5;
             for (const drink of drinks) {
                 if ((drink.xPos === this.xPos) && (drink.yPos === this.yPos)) {
                     this.drink(drink.getValue());
@@ -80,9 +80,9 @@ class Player {
         else {
             console.log(`Thirst: ${this.#thirst}`);
         }
-        this.#vigor += this.#stamina; //Vigor restoration per second
-        if (this.#vigor > 10) {
-            this.#vigor = 10;
+        this.#vigor -= this.#stamina; //Vigor restoration per second
+        if (this.#vigor < 0) {
+            this.#vigor = 0;
         }
         else {
             console.log(`Vigor: ${this.#vigor}`);
@@ -221,7 +221,7 @@ export const drinkVanishTime = {
     wine: 7,
     tequilla: 3
 };
-//startX,startY,+vigor/sec,-health/sec,+health/sec
+//startX,startY,-fatigue/sec,-health/sec,+health/sec
 export const BenderB = new Player(1, 1, 0.5, 0.2, 0.2);
 export function updateScore(score) {
     const scoreDisplay = document.getElementById("score");
@@ -231,7 +231,7 @@ export function updateStatsDisplay() {
     vigorDisplay.textContent = BenderB.getVigor().toFixed(1).toString();
     healthDisplay.textContent = BenderB.getHealth().toFixed(1).toString();
     thirstDisplay.textContent = BenderB.getThirst().toString();
-    if (BenderB.getVigor() < 1) {
+    if (BenderB.getVigor() > 9) {
         vigorDisplay.classList.add("u-redText");
     }
     else {

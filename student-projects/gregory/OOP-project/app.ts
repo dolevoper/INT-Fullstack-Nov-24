@@ -2,7 +2,7 @@
 class Player {
     #thirst = 0;
     #health = 10.0;
-    #vigor = 10.0;
+    #vigor = 0;
     xPos : number;
     yPos : number;
     #stamina : number;
@@ -37,7 +37,7 @@ class Player {
     
     move(direction : String) {
        
-        if (this.#vigor > 0) {
+        if (this.#vigor < 10) {
             console.log(`Vigor at move: ${this.#vigor}`);
             switch (direction) {
                 case "Up":
@@ -67,7 +67,7 @@ class Player {
             }
     
             this.updatePosition();
-            this.#vigor -= 0.5;       
+            this.#vigor += 0.5;       
 
             for (const drink of drinks){
                 if ((drink.xPos === this.xPos) && (drink.yPos === this.yPos)){
@@ -89,9 +89,9 @@ class Player {
         } else{
             console.log(`Thirst: ${this.#thirst}`);
         }
-        this.#vigor += this.#stamina; //Vigor restoration per second
-        if (this.#vigor > 10){
-            this.#vigor = 10;
+        this.#vigor -= this.#stamina; //Vigor restoration per second
+        if (this.#vigor < 0){
+            this.#vigor = 0;
         } else{
             console.log(`Vigor: ${this.#vigor}`);
         }
@@ -254,7 +254,7 @@ export const drinkVanishTime = {
     tequilla : 3
 }
 
-//startX,startY,+vigor/sec,-health/sec,+health/sec
+//startX,startY,-fatigue/sec,-health/sec,+health/sec
 export const BenderB = new Player(1,1,0.5,0.2,0.2);
 
 export function updateScore(score : number){
@@ -268,7 +268,7 @@ export function updateStatsDisplay(){
     healthDisplay.textContent = BenderB.getHealth().toFixed(1).toString();
     thirstDisplay.textContent = BenderB.getThirst().toString();
 
-    if (BenderB.getVigor() < 1){
+    if (BenderB.getVigor() > 9){
         vigorDisplay.classList.add("u-redText");  
     } else {
         vigorDisplay.classList.remove("u-redText");
