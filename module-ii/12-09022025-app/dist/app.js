@@ -19,7 +19,13 @@ export function addItem(item) {
     localStorage.setItem(itemsStorageKey, JSON.stringify(items));
     return "Success";
 }
-export function editItem(item) { }
+export function editItem(item) {
+    const index = items.findIndex((i) => i.id === item.id);
+    if (index === -1) {
+        return `Id "${item.id}" does not exist`;
+    }
+    items[index] = item;
+}
 export function addToStock(itemId, amount) { }
 export function consume(itemId, quantity) { }
 export function acquire(itemId, serial) { }

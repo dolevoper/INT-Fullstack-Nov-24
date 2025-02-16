@@ -54,7 +54,15 @@ export function addItem(item: Item) {
     return "Success";
 }
 
-export function editItem(item: Item) {}
+export function editItem(item: Item) {
+    const index = items.findIndex((i) => i.id === item.id);
+
+    if (index === -1) {
+        return `Id "${item.id}" does not exist`;
+    }
+
+    items[index] = item
+}
 
 export function addToStock(itemId: string, amount: number) {}
 
