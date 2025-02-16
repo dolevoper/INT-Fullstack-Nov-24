@@ -76,10 +76,37 @@
         let score = 1;
 
         const startButton = document.getElementById("startButton");
+        BenderB.updatePosition();
+
         startButton.addEventListener("click",function(event){
             
             if (!gameON) {
                 gameON = true;
+                document.addEventListener("keydown", function(event) {
+                    switch (event.key) {
+                        case "ArrowUp":
+                            console.log("Up arrow pressed");
+                            BenderB.move("Up");
+                            break;
+                        case "ArrowDown":
+                            console.log("Down arrow pressed");
+                            BenderB.move("Down");
+                            break;
+                        case "ArrowLeft":
+                            console.log("Left arrow pressed");
+                            BenderB.move("Left");
+                            break;
+                        case "ArrowRight":
+                            console.log("Right arrow pressed");
+                            BenderB.move("Right");
+                            break;
+                    }
+
+                    updateStatsDisplay();
+                    console.log(BenderB.xPos,BenderB.yPos);
+
+                });
+
                 const timer = setInterval(() => {
                     BenderB.timedStats();
                     
@@ -103,32 +130,12 @@
             }
         });       
 
-        BenderB.updatePosition();
+        
 
-        document.addEventListener("keydown", function(event) {
-            switch (event.key) {
-                case "ArrowUp":
-                    console.log("Up arrow pressed");
-                    BenderB.move("Up");
-                    break;
-                case "ArrowDown":
-                    console.log("Down arrow pressed");
-                    BenderB.move("Down");
-                    break;
-                case "ArrowLeft":
-                    console.log("Left arrow pressed");
-                    BenderB.move("Left");
-                    break;
-                case "ArrowRight":
-                    console.log("Right arrow pressed");
-                    BenderB.move("Right");
-                    break;
-            }
-
-            updateStatsDisplay();
-            console.log(BenderB.xPos,BenderB.yPos);
-
-        });
+        if (gameON){
+          
+        }
+        
         
     </script>
     
