@@ -1,114 +1,106 @@
 // classes
 class Player {
-    #thirst = 0;
-    #health = 10.0;
-    #vigor = 10.0;
-    xPos : number;
-    yPos : number;
-    #stamina : number;
-    #degradation : number;
-    #recuperation : number;
-    
-    constructor(xPos : number, yPos : number, stamina : number, 
-                    degradation : number, recuperation : number) {
+    constructor(xPos, yPos, stamina, degradation, recuperation) {
+        this.#thirst = 0;
+        this.#health = 10.0;
+        this.#vigor = 10.0;
         this.xPos = xPos;
         this.yPos = yPos;
         this.#stamina = stamina;
         this.#degradation = degradation;
         this.#recuperation = recuperation;
-        
     }
-    getThirst(){
+    #thirst;
+    #health;
+    #vigor;
+    #stamina;
+    #degradation;
+    #recuperation;
+    getThirst() {
         return this.#thirst;
     }
-    getHealth(){
+    getHealth() {
         return this.#health;
     }
-    getVigor(){
+    getVigor() {
         return this.#vigor;
     }
-    drink(value : number) {
+    drink(value) {
         this.#thirst -= value;
-        if (this.#thirst < 0){
+        if (this.#thirst < 0) {
             this.#thirst = 0;
         }
         // this.#health -= 1;
     }
-    
-    move(direction : String) {
-       
+    move(direction) {
         if (this.#vigor > 0) {
             console.log(`Vigor at move: ${this.#vigor}`);
             switch (direction) {
                 case "Up":
                     this.yPos -= 1;
-                    if (this.yPos === 0){
+                    if (this.yPos === 0) {
                         this.yPos = 10;
-                    }                
+                    }
                     break;
                 case "Down":
                     this.yPos += 1;
-                    if (this.yPos === 11){
+                    if (this.yPos === 11) {
                         this.yPos = 1;
-                    } 
+                    }
                     break;
                 case "Left":
                     this.xPos -= 1;
-                    if (this.xPos === 0){
+                    if (this.xPos === 0) {
                         this.xPos = 10;
-                    }  
+                    }
                     break;
                 case "Right":
                     this.xPos += 1;
-                    if (this.xPos === 11){
+                    if (this.xPos === 11) {
                         this.xPos = 1;
-                    } 
+                    }
                     break;
             }
-    
             this.updatePosition();
-            this.#vigor -= 0.5;       
-
-            for (const drink of drinks){
-                if ((drink.xPos === this.xPos) && (drink.yPos === this.yPos)){
+            this.#vigor -= 0.5;
+            for (const drink of drinks) {
+                if ((drink.xPos === this.xPos) && (drink.yPos === this.yPos)) {
                     this.drink(drink.getValue());
                     console.log(`${drink.getName()} bottle ID:${drink.getID()} consumed`);
-                    drink.removeFromBoard();                    
+                    drink.removeFromBoard();
                 }
             }
-
         }
-      
     }
-
-   
-    timedStats(){
+    timedStats() {
         this.#thirst += 1; //Thirst per second 
-        if (this.#thirst > 10){
+        if (this.#thirst > 10) {
             this.#thirst = 10;
-        } else{
+        }
+        else {
             console.log(`Thirst: ${this.#thirst}`);
         }
         this.#vigor += this.#stamina; //Vigor restoration per second
-        if (this.#vigor > 10){
+        if (this.#vigor > 10) {
             this.#vigor = 10;
-        } else{
+        }
+        else {
             console.log(`Vigor: ${this.#vigor}`);
         }
-        if (this.#thirst >= 10){
-            this.#health -= this.#degradation;            
-            if (this.#health < this.#degradation){
+        if (this.#thirst >= 10) {
+            this.#health -= this.#degradation;
+            if (this.#health < this.#degradation) {
                 this.#health = 0;
             }
             console.log(`Health: ${this.#health}`);
-        } else {
+        }
+        else {
             this.#health += this.#recuperation;
-            if (this.#health > 10){
+            if (this.#health > 10) {
                 this.#health = 10;
             }
         }
     }
-
     updatePosition() {
         const benderB = document.getElementById("benderB");
         if (benderB) {
@@ -117,44 +109,34 @@ class Player {
         }
     }
 }
-
-class Drink{
-
-    #id : String;
-    #name : String;
-    #timeToVanish : number;
-    #matured : boolean;
-    #value : number;
-    #age : number;
-    xPos : number;
-    yPos : number;
-    #timerId: number | null = null;
-
-    constructor(id : String, xPos : number, yPos : number, name : String, timeToVanish : number, value : number){
-
+class Drink {
+    constructor(id, xPos, yPos, name, timeToVanish, value) {
+        this.#timerId = null;
         this.#id = id;
         this.#name = name;
         this.#timeToVanish = timeToVanish;
         this.#value = value;
-
         this.#age = 0;
         this.#matured = false;
-
         this.xPos = xPos;
         this.yPos = yPos;
-
     }
-
-    getValue(){
+    #id;
+    #name;
+    #timeToVanish;
+    #matured;
+    #value;
+    #age;
+    #timerId;
+    getValue() {
         return this.#value;
     }
-    getName(){
+    getName() {
         return this.#name;
     }
-    getID(){
+    getID() {
         return this.#id;
     }
-
     // timedStats(){
     //     this.#age += 1; 
     //     if (this.#age === this.#timeToVanish){
@@ -162,14 +144,12 @@ class Drink{
     //         console.log(`${this.#name} is matured`);
     //     }         
     // }
-
-    removeFromBoard(){
-        const bottleEl = document.getElementById(this.#id.toString());      
+    removeFromBoard() {
+        const bottleEl = document.getElementById(this.#id.toString());
         bottleEl.remove();
-
         const index = drinks.findIndex(drink => drink.#id === this.#id);
         if (index !== -1) {
-            drinks.splice(index, 1);           
+            drinks.splice(index, 1);
         }
         if (this.#timerId !== null) {
             clearInterval(this.#timerId);
@@ -177,8 +157,7 @@ class Drink{
         }
         console.log(drinks);
     }
-
-    putOnBoard(){
+    putOnBoard() {
         const gameField = document.getElementById("gameField");
         const divEl = document.createElement("div");
         divEl.classList.add("bottle");
@@ -186,14 +165,13 @@ class Drink{
         divEl.classList.add(`u-${this.#name.toString()}`);
         divEl.style.gridColumn = this.xPos.toString();
         divEl.style.gridRow = this.yPos.toString();
-
         const imgEl = document.createElement("img");
-        switch(this.#name){
-            case "beer" : 
+        switch (this.#name) {
+            case "beer":
                 imgEl.src = "./images/Beer-cropped.jpg";
                 imgEl.alt = "beer bottle image";
                 break;
-            case "wine":  
+            case "wine":
                 imgEl.src = "./images/red-wine.jpg";
                 imgEl.alt = "wine bottle image";
                 break;
@@ -203,95 +181,76 @@ class Drink{
                 break;
         }
         imgEl.classList.add("gamePiece");
-        
-        divEl.id  = this.#id.toString();
+        divEl.id = this.#id.toString();
         divEl.appendChild(imgEl);
         gameField.appendChild(divEl);
-        
         let counter = this.#timeToVanish;
         this.#timerId = setInterval(() => {
-            if (counter === 0){
+            if (counter === 0) {
                 console.log(`bottle of ${this.#name} id:${this.#id} removed`);
                 this.removeFromBoard();
             }
             counter--;
-
-        },1000);
+        }, 1000);
     }
-
 }
-
-function getName() : String{
-
+function getName() {
     const random = Math.random() * 100;
-
     if (random < 50) {
         return "beer";
     }
-    if (random < 90){
+    if (random < 90) {
         return "wine";
     }
     return "tequilla";
 }
-
 //Body
 const healthDisplay = document.getElementById("health");
 const thirstDisplay = document.getElementById("thirst");
 const vigorDisplay = document.getElementById("vigor");
-
 const gameField = document.getElementById("gameField");
-
-let drinks : Drink[] = [];
-
+let drinks = [];
 //startX,startY,+vigor/sec,-health/sec,+health/sec
-export const BenderB = new Player(1,1,0.5,0.2,0.2);
-
-export function updateScore(score : number){
+export const BenderB = new Player(1, 1, 0.5, 0.2, 0.2);
+export function updateScore(score) {
     const scoreDisplay = document.getElementById("score");
     scoreDisplay.textContent = score.toString();
 }
-
-export function updateStatsDisplay(){
-    
+export function updateStatsDisplay() {
     vigorDisplay.textContent = BenderB.getVigor().toFixed(1).toString();
     healthDisplay.textContent = BenderB.getHealth().toFixed(1).toString();
     thirstDisplay.textContent = BenderB.getThirst().toString();
-
-    if (BenderB.getVigor() < 1){
-        vigorDisplay.classList.add("u-redText");  
-    } else {
+    if (BenderB.getVigor() < 1) {
+        vigorDisplay.classList.add("u-redText");
+    }
+    else {
         vigorDisplay.classList.remove("u-redText");
     }
-
-    if (BenderB.getThirst() >= 10){
-        thirstDisplay.classList.add("u-redText");  
-    } else {
-         thirstDisplay.classList.remove("u-redText");
+    if (BenderB.getThirst() >= 10) {
+        thirstDisplay.classList.add("u-redText");
     }
-
-    if (BenderB.getHealth() <= 3){
-        healthDisplay.classList.add("u-redText");  
-    } else {
+    else {
+        thirstDisplay.classList.remove("u-redText");
+    }
+    if (BenderB.getHealth() <= 3) {
+        healthDisplay.classList.add("u-redText");
+    }
+    else {
         healthDisplay.classList.remove("u-redText");
     }
 }
-
-export function generateBottle(){
-    
+export function generateBottle() {
     let drinkX = 0;
     let drinkY = 0;
     let timeToVanish = 10;
     let value = 0;
-
     while (true) {
         drinkX = Math.floor(Math.random() * 10) + 1;
         drinkY = Math.floor(Math.random() * 10) + 1;
-
-        if ((drinkX != BenderB.xPos) && (drinkY != BenderB.yPos)){
+        if ((drinkX != BenderB.xPos) && (drinkY != BenderB.yPos)) {
             break;
         }
     }
-
     const newName = getName();
     console.log(`Bottle name is: ${newName}`);
     switch (newName) {
@@ -305,17 +264,12 @@ export function generateBottle(){
             break;
         case "tequilla":
             timeToVanish = 3;
-            value = 6
-            break;  
+            value = 6;
+            break;
     }
-
     const id = crypto.randomUUID().replaceAll("-", "").slice(-6);
-    const newBottle = new Drink(id,drinkX,drinkY,newName,timeToVanish,value);//id,X,Y,Name,time/sec,value
+    const newBottle = new Drink(id, drinkX, drinkY, newName, timeToVanish, value); //id,X,Y,Name,time/sec,value
     console.log(newBottle);
-    
-    drinks.push(newBottle);  
-
-    newBottle.putOnBoard();    
-
+    drinks.push(newBottle);
+    newBottle.putOnBoard();
 }
-

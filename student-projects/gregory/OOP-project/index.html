@@ -4,43 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/styles.css">
-    <title>Johnnie Walker Game</title>
+    <title>Bender Bending Rodríguez Game</title>
     
 </head>
 <body>
 
     <main>
-        <article class="gameField">
+        <article id="gameField" class="gameField">
           
-            <div id="johnnieWalker" class="johnnieWalker">
-                <img class="gamePiece" src="./images/johnnie.jpg" alt="johnnie walker image">          
+            <div id="benderB" class="benderB">
+                <img class="gamePiece" src="./images/bender_cropped.jpg" alt="johnnie walker image">                          
             </div>
 
-        </article>
+            <button id="startButton" class="startButton">START</button>
+
+        </article>     
+        
+        <div class="sideBlock">
+
+            <p class="score u-text-32">
+                <span class="u-leftMargin-16">Score:</span>
+                <span id="score" class="u-rightMargin-16">0</span>
+            </p>
+
+            <ul class="stats">
+                <li class="u-statsItem">
+                    <span class="u-statsText">Health</span>
+                    <span class="u-statsText" id="health">10.0</span>
+                </li>
+                <li class="u-statsItem">
+                    <span class="u-statsText">Thirst</span>
+                    <span class="u-statsText" id="thirst">0</span>
+                </li>
+                <li class="u-statsItem"> 
+                    <span class="u-statsText">Vigor</span>
+                    <span class="u-statsText" id="vigor">10.0</span>
+                </li>                
+            </ul>
+    
+            <article class="rules">
+                <h2 class="u-text-32 u-center">
+                    Help Bender Bending Rodríguez to survive!
+                </h2>
+                <p class="u-text-32">
+                    Because of a manufacturing error that left Bender without a backup unit, Bender's memory cannot be transferred or uploaded to another robot body, and he is MORTAL!!!
+                    In order to function properly
+                </p> 
+                <p class="u-text-32">
+                    HE NEEDS BOOZE!!!
+                </p>    
+                <p class="u-text-32">
+                    Keep him alive! Get him to the BOOZE!
+                </p>    
+                <p class="u-statsText">
+                    Use arrow keys to move him around. Pay attention, if he moves to mush he gets tired, and needs to rest.
+                </p>
+            </article>
+        </div>
+      
+
+       
     </main>
 
     <script type="module">
 
-        const johnnieWalker = document.getElementById("johnnieWalker");
+        import { BenderB, updateStatsDisplay, generateBottle, updateScore } from "./dist/app.js";
+
+        let gameON = false;
+        let counter = 0;
+        const bottleInterval = 3;//sec
+        let score = 1;
+
+        const startButton = document.getElementById("startButton");
+        startButton.addEventListener("click",function(event){
+            
+            if (!gameON) {
+                gameON = true;
+                const timer = setInterval(() => {
+                    BenderB.timedStats();
+                    
+                    if (BenderB.getHealth() === 0){
+                        clearInterval(timer);
+                        alert(`Game Over!\n
+                                Your score is: ${score}.`);
+                    }
+                    updateStatsDisplay();
+                    updateScore(score);
+                                        
+                    counter++;
+                    if (counter === bottleInterval) {
+                        generateBottle();
+                        console.log("Bottle generated.");
+                        counter = 0;
+                    }
+                    
+                    score++;                   
+                }, 1000);
+            }
+        });       
+
+        BenderB.updatePosition();
 
         document.addEventListener("keydown", function(event) {
             switch (event.key) {
                 case "ArrowUp":
                     console.log("Up arrow pressed");
-                    
+                    BenderB.move("Up");
                     break;
                 case "ArrowDown":
                     console.log("Down arrow pressed");
+                    BenderB.move("Down");
                     break;
                 case "ArrowLeft":
                     console.log("Left arrow pressed");
+                    BenderB.move("Left");
                     break;
                 case "ArrowRight":
                     console.log("Right arrow pressed");
+                    BenderB.move("Right");
                     break;
             }
-        });
 
+            updateStatsDisplay();
+            console.log(BenderB.xPos,BenderB.yPos);
+
+        });
+        
     </script>
     
 </body>
