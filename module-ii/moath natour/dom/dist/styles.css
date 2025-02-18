@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-frame {
+  border: black 1px solid;
+  width: min(10rem, calc(100% - 1rem));
+  aspect-ratio: 3/2;
+  padding: 0.5rem;
+  background-color: #0f0f24;
+  border-radius: 0.5rem;
+}
+
+.display {
+  padding: 0.2rem;
+  align-content: center;
+  font-weight: 900;
+  overflow: hidden;
+  width: 100%;
+  height: 2rem;
+  background-color: #4d6b2e;
+  opacity: 0.8;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.5rem 0 0 0;
+}
+.buttons-container li {
+  min-width: calc((100% - 0.6rem)/4);
+}
+
+button {
+  width: 100%;
+  color: chocolate;
+  background-color: #262673;
+  border-radius: 0.25rem;
+}
