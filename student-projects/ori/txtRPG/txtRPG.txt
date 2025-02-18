@@ -1,0 +1,30 @@
+game states:
+    game start state - location: location1
+
+
+
+player status:
+    hp
+    strenght
+    
+player invetory:
+
+player actions:
+    open: function used to open conteiners and doors
+    take: function used to add item to Inventory
+    drop: function used to remove item from invetory
+    push/pull: function used to allow the player to push/pull objects in the space
+    move: function used to allow the player to move objects in the space or to move himself in a direction
+    go: function used to allow the player to go to a stated location or to a direction or in out of locations
+    look: function used to allow the player to look at the current state of the room/space/item/conteiner 
+    
+
+locations:
+    house: (exit from door to south field)
+        inside house rooms
+
+
+
+
+
+enemies:
