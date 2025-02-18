@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login</title>
+  <link rel="stylesheet" href="dist/user.css">
+</head>
+<body>
+    <button type="submit" onclick="showRegistrationForm()">Sign Up</button>
+  <div id="login-form">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+  <div id="registration-form">
+    <h2>Registration</h2>
+    <input type="text" id="reg-username" placeholder="Username">
+    <input type="password" id="reg-password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="confirm Password">
+    <input type="number" id="age" placeholder="Age">
+    <button onclick="register()">Register</button>
+  </div>
+
+  <div id="details-form" style="display: none;">
+    <h2>Edit Details</h2>
+    <input type="text" id="edit-username" placeholder="Username">
+    <input type="password" id="edit-password" placeholder="Password">
+    <input type="password" id="confirmNewPassword" placeholder="confirm Password">
+    <input type="number" id="edit-age" placeholder="Age">
+    <button onclick="editDetails()">Save</button>
+  </div>
+  
+  <script src="dist/user.js"></script>
+</body>
+</html>

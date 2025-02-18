@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="dist/stylesIn.css" />
+</head>
+<body>
+    <main class="reading-view stack">
+        <nav>
+            <menu>
+                <li><a href="addIn.html">New Item</a></li>
+            </menu>
+        </nav>
+        <h1>Items</h1>
+        <ul id="items" class="details-list"></ul>
+    </main>
+
+    <script type="module">
+        import { getItems } from "./dist/app.js";
+
+        const itemsList = document.getElementById("items");
+
+        for (const item of getItems()) {
+            const itemEl = document.createElement("li");
+
+            itemEl.textContent = item.name;
+
+            itemsList.append(itemEl);
+        }
+    </script>
+</body>
+</html>
