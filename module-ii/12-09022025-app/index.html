@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body>
+    <main class="reading-view stack">
+        <nav>
+            <menu>
+                <li><a href="add-item.html">New Item</a></li>
+            </menu>
+        </nav>
+        <h1>Items</h1>
+        <ul id="items" class="details-list"></ul>
+    </main>
+
+    <script type="module">
+        import { getItems } from "./dist/app.js";
+
+        const itemsList = document.getElementById("items");
+
+        for (const item of getItems()) {
+            const itemEl = document.createElement("li");
+            const link = document.createElement("a");
+
+            link.textContent = item.name;
+            link.setAttribute("href", `add-item.html#${item.id}`);
+
+            itemEl.append(link);
+            itemsList.append(itemEl);
+        }
+    </script>
+</body>
+</html>

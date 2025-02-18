@@ -3,6 +3,8 @@
 // End game states - get to certain state/goal to win, or run into "trouble" and loose
 // Inventory - track items in the user's possession and their state, allow using and dropping items, (limit invnetory size?)
 
+let hasKey = false;
+
 playGame();
 
 function playGame() {
@@ -47,7 +49,13 @@ function forgottenTemple() {
     switch (userAction) {
         case "enter":
         case "e":
-        case "1": return hiddenChamber;
+        case "1":
+            if (hasKey) {
+                return hiddenChamber;
+            }
+
+            alert("You try to turn the handle but it won't budge. The door seems locked.");
+            return forgottenTemple;
         case "return":
         case "r":
         case "2": return moonlitGrove;
@@ -60,6 +68,10 @@ function forgottenTemple() {
 }
 
 function enchantedForrestClearing() {
+    return hasKey ? enchantedForrestClearingWithKey() : enchantedForrestClearingWithoutKey();
+}
+
+function enchantedForrestClearingWithoutKey() {
     const userAction = getUserAction(
         "A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.\n" +
         "1. Inspect the glowing well\n" +
@@ -69,11 +81,36 @@ function enchantedForrestClearing() {
     switch (userAction) {
         case "inspect":
         case "i":
-        case "1": return hiddenChamber;
+        case "1":
+            hasKey = true;
+            alert(
+                "While inspecting the glowing wall, you notice a key lying in the grass.\n\n" +
+                "Key added to inventory"
+            );
+            return enchantedForrestClearing;
         case "head back":
         case "back":
         case "h":
         case "2": return moonlitGrove;
+        case undefined: return;
+        default:
+            alertUnknownAction(userAction);
+
+            return enchantedForrestClearing;
+    }
+}
+
+function enchantedForrestClearingWithKey() {
+    const userAction = getUserAction(
+        "A serene, circular clearing surrounded by ancient oaks. The air here feels charged with magic, and faint whispers can be heard if you listen closely. In the center, an old well glows faintly, its waters still and inviting.\n" +
+        "1. Head back toward the Moonlit Grove"
+    );
+
+    switch (userAction) {
+        case "head back":
+        case "back":
+        case "h":
+        case "1": return moonlitGrove;
         case undefined: return;
         default:
             alertUnknownAction(userAction);
@@ -93,7 +130,7 @@ function hiddenChamber() {
         case "open":
         case "o":
         case "1":
-            alert("You found a secret treasure!");
+            alert("You found the secret treasure!");
             return;
         case "enter":
         case "e":
