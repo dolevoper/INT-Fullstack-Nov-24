@@ -4,15 +4,19 @@
 // Inventory - track items in the user's possession and their state, allow using and dropping items, (limit invnetory size?)
 
 playGame();
-
+let inventory: string = ""
 function playGame() {
     let currentRoom: Function | undefined = moonlitGrove;
-
+    let inventory: string = ""
     while (currentRoom) {
         currentRoom = currentRoom();
     }
 
     alert("Thank you for playing!");
+}
+
+function addToInventory(itemToAdd){
+    inventory = inventory + itemToAdd + ","
 }
 
 function moonlitGrove() {
