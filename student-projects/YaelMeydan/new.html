@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="dist/new.css">
+</head>
+<body>
+  <div class="container">
+    <form id="loginForm" class="form">
+      <h2>Login</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+      <button type="submit">Login</button>
+      <button id="registerBtn">Register</button>
+    </form>
+
+    <form id="userDataForm" class="form hidden">
+      <h2>User Data</h2>
+      <p>Welcome, <span id="userData"></span></p>
+      <button id="editBtn">Edit User Details</button>
+    </form>
+
+    <form id="editForm" class="form hidden">
+        <h2>Edit your user Details</h2>
+      <label for="editUsername">New Username</label>
+      <input type="text" id="editUsername" name="editUsername" placeholder="">
+      <label for="editPassword">New Password</label>
+      <input type="password" id="editPassword" name="editPassword">
+      <button type="submit">save changes</button>
+    </form>
+
+    <form id="registerForm" class="form hidden">
+      <h2>Register</h2>
+      <label for="newUsername">Username</label>
+      <input type="text" id="newUsername" name="newUsername">
+      <label for="newPassword">Password</label>
+      <input type="password" id="newPassword" name="newPassword">
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script src="dist/new.js"></script>
+</body>
+</html>
