@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/styles.css">
+    <title>Personal Finance Tracker</title>
+</head>
+
+<body class="u-radius-16">
+    <header class="u-horSpan">
+        <span id="userGreeting" class="u-largeFont u-leftMargin-16">
+            Hello, Johnny
+        </span>
+        <span id="userIcon" class="u-righMargin-16">
+            <img class="icon" src="./images/avatar.jpg" alt="user avatar">
+        </span>
+
+    </header>
+
+    <main>
+
+        <form id="newExpenseForm" name="newExpenseForm" class="popUpForm u-radius-16 u-regularFont u-verSpan" style="display: none;">
+            <h2 class="u-margin-auto">Expense</h2>
+            <input type="hidden" name="id">
+            <div class="form-control u-horSpan">
+                <label for="category">Category:</label>
+                <select name="category" id="category" class="u-regularFont u-radius-8 u-padding-8 u-maxWidth-10rem" name="category">
+                    <option>Grosceries</option>
+                    <option>Bills</option>
+                    <option>Housing</option>
+                    <option>Misc.</option>
+                    <option>Apparel</option>
+                    <option>Pets</option>
+                    <option>Transportation</option>
+                    <option>Eating Out</option>
+                    <option>Education</option>
+                    <option>Vacations</option>
+                </select>
+            </div>
+            <div class="form-control u-horSpan">
+                <input type="datetime-local" class="u-regularFont u-radius-8 u-padding-8" name="date" id="date">
+            </div>
+            <div class="form-control u-horSpan">
+                <label for="sum">Sum ($):</label>
+                <input type="number" name="sum" id="sum" class="u-regularFont u-radius-8 u-padding-8 u-maxWidth-10rem u-textRight" step="0.01" min="0">
+            </div>
+            <div class="form-control u-verSpan">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" type="text" rows="6" class="u-regularFont u-radius-8"></textarea>
+            </div>
+
+            <article class="u-horSpan">
+                <button id="addButton" name="addButton" class="roundButton u-margin-auto" type="submit">
+                    V
+                </button>
+                <button id="cancelButton" name="cancelButton" class="roundButton u-margin-auto" type="button"> 
+                    ✖
+                </button>
+            </article>  
+        </form>
+
+        <form id="newIncomeForm" name="newIncomeForm" class="popUpForm u-radius-16 u-regularFont u-verSpan" style="display: none;">
+            <h2 class="u-margin-auto">Income</h2>
+            <input type="hidden" name="id">
+            <div class="form-control u-horSpan">
+                <label for="source">Source:</label>
+                <input type="text" name="source" id="source" class="u-regularFont u-radius-8 u-padding-8 u-maxWidth-10rem" step="0.01" min="0">
+            </div>
+            <div class="form-control u-horSpan">
+                <input type="datetime-local" class="u-regularFont u-radius-8 u-padding-8" name="date" id="date">
+            </div>            
+            <div class="form-control u-horSpan">
+                <label for="sum">Sum ($):</label>
+                <input type="number" name="sum" id="sum" class="u-regularFont u-radius-8 u-padding-8 u-maxWidth-10rem u-textRight" step="0.01" min="0">
+            </div>
+            <div class="form-control u-verSpan">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" type="text" rows="6" class="u-regularFont u-radius-8"></textarea>
+            </div>
+
+            <article class="u-horSpan">
+                <button id="iAddButton" name="addButton" class="roundButton u-margin-auto" type="submit">
+                    V
+                </button>
+                <button id="iCancelButton" name="cancelButton" class="roundButton u-margin-auto" type="button"> 
+                    ✖
+                </button>
+            </article>  
+        </form>
+
+        <article class="topHeader u-horSpan">
+            <span id="currMonth" class="u-largeFont u-leftMargin-16">
+                F
+            </span>
+            <span id="currBalance" class="u-largeFont u-righMargin-16">
+                $999
+            </span>
+        </article>
+        
+    
+        <canvas id="moneyChart" class="moneyChart"> </canvas>
+    
+        <menu class="menuSelector">
+            <button id="exButton" class="ioSelector u-largeFont">Expenses</button>
+            <button id="inButton" class="ioSelector u-largeFont">Incomes</button>
+        </menu>
+    
+        <article class="u-verSpan">
+            <ul id="largestExpensesList" class="focusList">
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/rent-Icon.png" alt="">
+                    <span class="u-regularFont u-leftMargin-16">1st largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$111</span>
+                </li>
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/grosceries-icon.png" alt="">
+                    <span class="u-leftMargin-16 u-regularFont">2nd largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$222</span>
+                </li>
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/Apparel-Icon.png" alt="">
+                    <span class="u-leftMargin-16 u-regularFont">3rd largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$333</span>
+                </li>            
+            </ul>
+        
+            <ul id="largestincomesList" class="focusList" style="display: none;">
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
+                    <span class="u-regularFont u-leftMargin-16">1st largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$111</span>
+                </li>
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
+                    <span class="u-leftMargin-16 u-regularFont">2nd largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$222</span>
+                </li>
+                <li class="u-listItem">
+                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
+                    <span class="u-leftMargin-16 u-regularFont">3rd largest</span>
+                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$333</span>
+                </li>
+            </ul> 
+
+            <button id="plusButton" class="roundButton u-margin-auto">➕</button>
+        </article>
+               
+    </main>   
+    
+    <script type="module">
+
+        import { expensesByCategories, addExpense, addIncome,  getIncome } from "./dist/app.js";
+
+        const today = new Date();
+        const currMonth = document.getElementById("currMonth");
+        currMonth.textContent = today.toLocaleString("en-GB",{month: "long"});
+        
+        const expensesSorted = expensesByCategories(today.getMonth());
+        const thisMonthIncome = getIncome(today.getMonth());
+        console.log(expensesSorted);
+        console.log(thisMonthIncome);
+        const totalExpenses = expensesSorted.reduce((acc,expense) => acc+expense.sum,0);
+        const totalIncomes = thisMonthIncome.reduce((acc,income) => acc+income.sum,0);
+        console.log(`Total expences = ${totalExpenses}`);
+        console.log(`Total incomes = ${totalIncomes}`);
+        const balance = totalIncomes - totalExpenses;
+        console.log(balance);
+        const balanceDisplay = document.getElementById("currBalance");
+        balanceDisplay.textContent = balance.toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        let expensesMode = true;// set default display at expenses
+
+        const expensesButton = document.getElementById("exButton");
+        const incomeButton = document.getElementById("inButton");
+        const expensesDisplay = document.getElementById("largestExpensesList");
+        const incomesDisplay = document.getElementById("largestincomesList");
+
+        expensesButton.addEventListener("click",function(event){
+            incomesDisplay.style.display = "none";
+            expensesDisplay.style.display = "block";
+            expensesMode = true;
+        });
+
+        incomeButton.addEventListener("click",function(event){
+            incomesDisplay.style.display = "block";
+            expensesDisplay.style.display = "none";
+            expensesMode = false;
+        });
+
+        const plusButton = document.getElementById("plusButton");
+        plusButton.addEventListener("click",function(event){
+            if (expensesMode) {
+                doExpenseForm();             
+            } else {
+                doIncomeForm();
+            }
+        });
+
+        //*********
+        //functions
+        //*********
+
+        function doIncomeForm(){
+            const incomeForm = document.forms.namedItem("newIncomeForm");
+            const newForm = incomeForm.cloneNode(true);
+            incomeForm.replaceWith(newForm);
+            newForm.reset();
+            const cancelButton = document.getElementById("iCancelButton");
+
+            newForm.style.display = "flex";
+            newForm.id.value = crypto.randomUUID().replaceAll("-", "").slice(-6);
+
+            const today = new Date();
+            today.setHours(10);
+            today.setMinutes(0);
+            today.setDate(1);
+            console.log(today.toISOString().slice(0, 16));
+
+                      
+
+            const formattedDate = today.toISOString().slice(0, 16);
+            newForm.date.value = formattedDate;
+            newForm.source.value = "Paycheck";
+
+            newForm.addEventListener("submit", function(event) {
+                event.preventDefault();                       
+
+                const { id, date, sum, description} = Object.fromEntries(
+                new FormData(event.target));
+
+                const income = {
+                    id,
+                    date : Date(date),
+                    sum : Number(sum),
+                    ...(description ? { description } : {})                
+                };
+                
+                console.log(income);
+                addIncome(income);
+                
+                newForm.style.display = "none";
+            });
+
+            cancelButton.addEventListener("click",function(event){
+                newForm.style.display = "none";
+            });
+
+        }
+
+        function doExpenseForm(){
+            const expenseForm = document.forms.namedItem("newExpenseForm");
+            const newForm = expenseForm.cloneNode(true);
+            expenseForm.replaceWith(newForm);
+            newForm.reset();
+
+            const cancelButton = document.getElementById("cancelButton");
+
+            newForm.style.display = "flex";
+            newForm.id.value = crypto.randomUUID().replaceAll("-", "").slice(-6);
+
+            const today = new Date();
+            today.setHours(today.getHours() - today.getTimezoneOffset()/60);
+            console.log(today.toISOString().slice(0, 16));
+            
+
+            const formattedDate = today.toISOString().slice(0, 16);
+            newForm.date.value = formattedDate;
+            
+            newForm.addEventListener("submit", function(event) {
+                event.preventDefault();                       
+
+                const { id, category, date, sum, description} = Object.fromEntries(
+                new FormData(event.target));
+
+                const expense = {
+                    id,
+                    category,
+                    date : Date(date),
+                    sum : Number(sum),
+                    ...(description ? { description } : {})                
+                };
+                
+                console.log(expense);
+                addExpense(expense);
+                
+                newForm.style.display = "none";
+            });
+
+            cancelButton.addEventListener("click",function(event){
+                newForm.style.display = "none";
+            });
+        }
+
+        function populateExpences(){
+            expensesDisplay
+        }
+
+    </script>
+    
+</body>
+
+</html>
