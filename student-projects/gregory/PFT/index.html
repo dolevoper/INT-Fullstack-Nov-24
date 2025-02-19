@@ -99,51 +99,75 @@
         </article>
         
     
-        <canvas id="moneyChart" class="moneyChart"> </canvas>
+        <canvas id="moneyChart" width = "300"  height="300" class="moneyChart"> </canvas>
     
         <menu class="menuSelector">
             <button id="exButton" class="ioSelector u-largeFont">Expenses</button>
             <button id="inButton" class="ioSelector u-largeFont">Incomes</button>
         </menu>
     
-        <article class="u-verSpan">
-            <ul id="largestExpensesList" class="focusList">
+        <article class="focusTabs u-verSpan">
+            <ul id="largestExpensesList" class="focusList active">
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/rent-Icon.png" alt="">
-                    <span class="u-regularFont u-leftMargin-16">1st largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$111</span>
+                    <img id="exIconRow_0" class="smallIcon u-leftMargin-16" src="./images/housing.png" alt="Expences icon">
+                    <span id="exCatRow_0" class="u-leftMargin-16 u-regularFont">
+                        Housing
+                    </span>
+                    <span id="exSumRow_0" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -2,500.00
+                    </span>                    
                 </li>
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/grosceries-icon.png" alt="">
-                    <span class="u-leftMargin-16 u-regularFont">2nd largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$222</span>
+                    <img id="exIconRow_1" class="smallIcon u-leftMargin-16" src="./images/apparel.png" alt="Expences icon">
+                    <span id="exCatRow_1" class="u-leftMargin-16 u-regularFont">
+                        Apparel
+                    </span>
+                    <span id="exSumRow_1" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -327.00
+                    </span>
                 </li>
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/Apparel-Icon.png" alt="">
-                    <span class="u-leftMargin-16 u-regularFont">3rd largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$333</span>
-                </li>            
+                    <img id="exIconRow_2" class="smallIcon u-leftMargin-16" src="./images/apparel.png" alt="Expences icon">
+                    <span id="exCatRow_2" class="u-leftMargin-16 u-regularFont">
+                        Grosceries
+                    </span>
+                    <span id="exSumRow_2" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -325.00
+                    </span>
+                </li>
             </ul>
         
-            <ul id="largestincomesList" class="focusList" style="display: none;">
+            <ul id="largestincomesList" class="focusList">
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
-                    <span class="u-regularFont u-leftMargin-16">1st largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$111</span>
+                    <img id="inIconRow_0" class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="Salary icon">
+                    <span id="inCatRow_0" class="u-leftMargin-16 u-regularFont">
+                        Housing
+                    </span>
+                    <span id="inSumRow_0" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -2,500.00
+                    </span>                    
                 </li>
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
-                    <span class="u-leftMargin-16 u-regularFont">2nd largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$222</span>
+                    <img id="inIconRow_1" class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="Salary icon">
+                    <span id="inCatRow_1" class="u-leftMargin-16 u-regularFont">
+                        Apparel
+                    </span>
+                    <span id="inSumRow_1" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -327.00
+                    </span>
                 </li>
                 <li class="u-listItem">
-                    <img class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="">
-                    <span class="u-leftMargin-16 u-regularFont">3rd largest</span>
-                    <span class="u-righMargin-16 u-leftMargin-auto u-regularFont">-$333</span>
+                    <img id="inIconRow_2" class="smallIcon u-leftMargin-16" src="./images/salary-icon.png" alt="Salary icon">
+                    <span id="inCatRow_2" class="u-leftMargin-16 u-regularFont">
+                        Grosceries
+                    </span>
+                    <span id="inSumRow_2" class="u-righMargin-16 u-leftMargin-auto u-regularFont">
+                        -325.00
+                    </span>
                 </li>
             </ul> 
 
-            <button id="plusButton" class="roundButton u-margin-auto">➕</button>
+            <button id="plusButton" class="plusButton roundButton">➕</button>
         </article>
                
     </main>   
@@ -152,22 +176,19 @@
 
         import { expensesByCategories, addExpense, addIncome,  getIncome } from "./dist/app.js";
 
+        updateChart();
+        
         const today = new Date();
         const currMonth = document.getElementById("currMonth");
         currMonth.textContent = today.toLocaleString("en-GB",{month: "long"});
         
-        const expensesSorted = expensesByCategories(today.getMonth());
-        const thisMonthIncome = getIncome(today.getMonth());
-        console.log(expensesSorted);
-        console.log(thisMonthIncome);
-        const totalExpenses = expensesSorted.reduce((acc,expense) => acc+expense.sum,0);
-        const totalIncomes = thisMonthIncome.reduce((acc,income) => acc+income.sum,0);
-        console.log(`Total expences = ${totalExpenses}`);
-        console.log(`Total incomes = ${totalIncomes}`);
-        const balance = totalIncomes - totalExpenses;
-        console.log(balance);
-        const balanceDisplay = document.getElementById("currBalance");
-        balanceDisplay.textContent = balance.toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        let expensesSorted = expensesByCategories(today.getMonth());
+        let thisMonthIncome = getIncome(today.getMonth());
+
+        updateBalance();
+        
+
+        //console.log(expensesSorted[0].category.toLowerCase());
 
         let expensesMode = true;// set default display at expenses
 
@@ -176,30 +197,56 @@
         const expensesDisplay = document.getElementById("largestExpensesList");
         const incomesDisplay = document.getElementById("largestincomesList");
 
+        populateExpences();
+
         expensesButton.addEventListener("click",function(event){
-            incomesDisplay.style.display = "none";
-            expensesDisplay.style.display = "block";
+            populateExpences();
+            expensesDisplay.classList.add("active");
+            incomesDisplay.classList.remove("active");
+            // incomesDisplay.style.display = "none";
+            // expensesDisplay.style.display = "block";
             expensesMode = true;
         });
 
         incomeButton.addEventListener("click",function(event){
-            incomesDisplay.style.display = "block";
-            expensesDisplay.style.display = "none";
+            populateIncomes();
+            expensesDisplay.classList.remove("active");
+            incomesDisplay.classList.add("active");
+            // incomesDisplay.style.display = "block";
+            // expensesDisplay.style.display = "none";
             expensesMode = false;
         });
 
         const plusButton = document.getElementById("plusButton");
         plusButton.addEventListener("click",function(event){
             if (expensesMode) {
-                doExpenseForm();             
+                doExpenseForm();                                           
             } else {
-                doIncomeForm();
+                doIncomeForm();            
             }
         });
 
         //*********
         //functions
         //*********
+        function updateBalance(){
+            console.log(expensesSorted);
+            console.log(thisMonthIncome);
+            const totalExpenses = expensesSorted.reduce((acc,expense) => acc+expense.sum,0);
+            const totalIncomes = thisMonthIncome.reduce((acc,income) => acc+income.sum,0);
+            console.log(`Total expences = ${totalExpenses}`);
+            console.log(`Total incomes = ${totalIncomes}`);
+            const balance = totalIncomes - totalExpenses;
+            console.log(balance);
+            const balanceDisplay = document.getElementById("currBalance");
+            const balanceString = balance.toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (balance > 0) {
+                balanceDisplay.textContent = `+${balanceString}`;
+            } else {
+                balanceDisplay.textContent = balanceString;
+            }
+             
+        }
 
         function doIncomeForm(){
             const incomeForm = document.forms.namedItem("newIncomeForm");
@@ -226,26 +273,31 @@
             newForm.addEventListener("submit", function(event) {
                 event.preventDefault();                       
 
-                const { id, date, sum, description} = Object.fromEntries(
+                const { id, source, date, sum, description} = Object.fromEntries(
                 new FormData(event.target));
 
                 const income = {
                     id,
-                    date : Date(date),
+                    source,
+                    date : new Date(date),
                     sum : Number(sum),
                     ...(description ? { description } : {})                
                 };
                 
                 console.log(income);
                 addIncome(income);
+
+                thisMonthIncome = getIncome(today.getMonth());
+                populateIncomes(); 
+                updateBalance();
                 
                 newForm.style.display = "none";
             });
 
             cancelButton.addEventListener("click",function(event){
                 newForm.style.display = "none";
-            });
-
+            });           
+            
         }
 
         function doExpenseForm(){
@@ -276,13 +328,17 @@
                 const expense = {
                     id,
                     category,
-                    date : Date(date),
+                    date : new Date(date),
                     sum : Number(sum),
                     ...(description ? { description } : {})                
                 };
                 
                 console.log(expense);
                 addExpense(expense);
+
+                expensesSorted = expensesByCategories(today.getMonth());
+                populateExpences();
+                updateBalance();
                 
                 newForm.style.display = "none";
             });
@@ -290,10 +346,103 @@
             cancelButton.addEventListener("click",function(event){
                 newForm.style.display = "none";
             });
+            
         }
 
         function populateExpences(){
-            expensesDisplay
+            
+            length = expensesSorted.length;
+            
+            for (let i = 0; i < 3; i++){
+                const imgEl = document.getElementById(`exIconRow_${i}`);
+                const categoryDisplay = document.getElementById(`exCatRow_${i}`);
+                const expenseAmount = document.getElementById(`exSumRow_${i}`);
+                if (i < length) {                    
+                    if (imgEl.src != `./images/${expensesSorted[i].category.toLowerCase()}.png`) {
+                        imgEl.src = `./images/${expensesSorted[i].category.toLowerCase()}.png`;
+                    }
+                    if (categoryDisplay.textContent != expensesSorted[i].category){
+                        categoryDisplay.textContent = expensesSorted[i].category;
+                    }
+                    const exSumString = (-1 * expensesSorted[i].sum).toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    if (expenseAmount.textContent != exSumString) {
+                        expenseAmount.textContent = exSumString;
+                    }
+                    
+                } else {                    
+                    if (imgEl.src != `./images/bills.png`){
+                        imgEl.src = `./images/bills.png`;
+                    }
+                    if (categoryDisplay.textContent != "Add Expence"){
+                        categoryDisplay.textContent = "Add Expence";
+                    }   
+                    const exSumString = (0).toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });         
+                    if (expenseAmount.textContent != exSumString){
+                        expenseAmount.textContent = exSumString;
+                    }                  
+                }             
+
+            }              
+        }
+
+        function populateIncomes(){
+
+            const length = thisMonthIncome.length;
+            
+            for (let i = 0; i < 3; i++){
+                
+                const categoryDisplay = document.getElementById(`inCatRow_${i}`);
+                const incomeAmount = document.getElementById(`inSumRow_${i}`);
+                
+                if (i < length){
+                    categoryDisplay.textContent = thisMonthIncome[i].source;
+                    incomeAmount.textContent = (thisMonthIncome[i].sum).toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                }else{                  
+                    categoryDisplay.textContent = "Add Income";
+                    incomeAmount.textContent = (0).toLocaleString("en-US",{ minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                }                  
+                
+            }
+        }
+
+        function updateChart(){
+            const canvas = document.getElementById("moneyChart");
+            const ctx = canvas.getContext("2d");
+
+              // Example data (percentages)
+            const data = [40, 25, 20, 15];  // Percentages
+            const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50"]; // Colors for each segment
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            console.log(`center y is: ${centerY}`);
+            const radius = 140;  // Outer radius
+            const holeRadius = 100; // Inner radius for doughnut effect
+
+            let startAngle = 0;
+            const total = data.reduce((sum, value) => sum + value, 0); // Sum of data values
+
+            data.forEach((value, index) => {
+                const sliceAngle = (value / total) * (Math.PI * 2); // Convert percentage to radians
+
+                // Draw the outer slice
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = colors[index];
+                ctx.fill();
+
+                startAngle += sliceAngle;
+            });
+
+            // Draw the inner circle (hole)
+            ctx.globalCompositeOperation = "destination-out"; // Makes the next shape remove parts from existing drawing
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, holeRadius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalCompositeOperation = "source-over"; // Reset to normal drawing mode
+
         }
 
     </script>

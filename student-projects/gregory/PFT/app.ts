@@ -28,7 +28,7 @@ let incomes: Income[] = JSON.parse(localStorage.getItem(incomesStorageKey) ?? "[
 export function expensesByCategories(month : number){
 
     let expensesByCategories: {category: string; sum: number}[] = [];
-    //this month expences:
+    
     const thisMonthExpences = expenses.filter(expense => expense.date.getMonth() === month);
 
     for (const expense of thisMonthExpences){
@@ -44,14 +44,30 @@ export function expensesByCategories(month : number){
                
     }
 
-    return expensesByCategories.sort((a, b) => b.sum - a.sum);
+    if (expensesByCategories.length > 0){
+        return expensesByCategories.sort((a, b) => b.sum - a.sum);
+    } else {
+        return [];
+    }
+    
 }
  
 
 
 export function getIncome(month : number){
+    
+    let thisMonthIncome : Income [] = [];
 
-    return incomes.filter(income => income.date.getMonth() === month);
+    if (incomes.length >0) {
+        thisMonthIncome =  incomes.filter(income => income.date.getMonth() === month);
+    }   
+
+    if (thisMonthIncome.length > 0){ 
+        return thisMonthIncome.sort((a, b) => b.sum - a.sum);
+    } else {
+        return [];
+    }
+    
 
 }
 

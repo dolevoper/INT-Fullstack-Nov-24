@@ -6,6 +6,7 @@
   --smallIconWidth: 3rem;
   --maxWidth: 25rem;
   --heigth: 44rem;
+  --dButton: 2.5rem;
 }
 
 *, *::before, *::after {
@@ -35,6 +36,8 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  max-height: 100%;
 }
 
 .u-largeFont {
@@ -137,7 +140,6 @@ main {
 }
 
 .moneyChart {
-  border: 1px solid red;
   margin: 1rem 2rem 1rem 2rem;
   aspect-ratio: 1;
 }
@@ -150,7 +152,6 @@ main {
   align-items: center;
   height: var(--dButton, 2.5rem);
   width: var(--dButton, 2.5rem);
-  margin: 0.5rem auto 0.5rem auto;
 }
 .roundButton:hover {
   cursor: pointer;
@@ -167,4 +168,28 @@ main {
   /* Higher value to keep it on top */
   border: 1px solid black;
   gap: 1rem;
+}
+
+.focusTabs {
+  position: relative;
+  height: 100%;
+}
+
+.focusList {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+  min-height: 9rem;
+}
+.focusList.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.plusButton {
+  position: absolute;
+  top: 9.25rem;
+  left: 11.25rem;
 }
