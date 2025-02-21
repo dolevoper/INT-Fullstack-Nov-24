@@ -1,39 +1,46 @@
 type Todo = {
     id: string,
     status: "Pending" | "Completed",
-    createdAt: Date,
+    createdAt: number,
     content: string,
 };
 
-let todos: Todo[] = [];
+let _todos: Todo[] = [];
 let onTodosUpdateCallbacks: (() => void)[] = [];
 
+export function initTodos(todos: Todo[]) {
+    _todos = todos;
+    callOnTodosUpdateCallbacks();
+}
+
 export function getTodos(): Todo[] {
-    return todos
-        .toSorted((a, b) => b.createdAt.valueOf() - a.createdAt.valueOf());
+    return _todos.slice();
 }
 
 export function addTodo(todo: Todo) {
-    if (todos.some((t) => t.id === todo.id)) {
+    if (_todos.some((t) => t.id === todo.id)) {
         throw new Error(`Todo with id ${todo.id} already exists`);
     }
 
-    todos.push(todo);
-    onTodosUpdateCallbacks.forEach((callback) => callback());
+    _todos.push(todo);
+    callOnTodosUpdateCallbacks();
 }
 
 export function toggleTodo(todoId: string) {
-    const todo = todos.find(t => t.id === todoId);
-    
+    const todo = _todos.find((t) => t.id === todoId);
+
     if (!todo) {
         throw new Error(`Todo with id ${todoId} not found`);
     }
 
-    todo.status = todo.status === "Pending" ? "Completed" : "Pending";
-    
-    onTodosUpdateCallbacks.forEach((callback) => callback());
+    todo.status = todo.status === "Completed" ? "Pending" : "Completed";
+    callOnTodosUpdateCallbacks();
 }
 
 export function onTodosUpdate(callback: () => void) {
     onTodosUpdateCallbacks.push(callback);
+}
+
+function callOnTodosUpdateCallbacks() {
+    onTodosUpdateCallbacks.forEach((callback) => callback());
 }
