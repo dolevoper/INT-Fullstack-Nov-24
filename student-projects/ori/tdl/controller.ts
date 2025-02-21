@@ -1,5 +1,6 @@
 import { addTodo } from "./model.js";
 
+
 export function onAddTodoSubmit(formData: FormData) {
     const rawContent = formData.get("content");
 
@@ -19,4 +20,7 @@ export function onAddTodoSubmit(formData: FormData) {
         status: "Pending",
         content,
     });
+}
+export function crossInOutTodo(){
+    
 }
