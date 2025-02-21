@@ -11,7 +11,14 @@ export function addTodo(todo) {
     todos.push(todo);
     onTodosUpdateCallbacks.forEach((callback) => callback());
 }
-export function toggleTodo(todoId) { }
+export function toggleTodo(todoId) {
+    const todo = todos.find(t => t.id === todoId);
+    if (!todo) {
+        throw new Error(`Todo with id ${todoId} not found`);
+    }
+    todo.status = todo.status === "Pending" ? "Completed" : "Pending";
+    onTodosUpdateCallbacks.forEach((callback) => callback());
+}
 export function onTodosUpdate(callback) {
     onTodosUpdateCallbacks.push(callback);
 }

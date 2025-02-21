@@ -15,3 +15,5 @@ export function onAddTodoSubmit(formData) {
         content,
     });
 }
+export function crossInOutTodo() {
+}
