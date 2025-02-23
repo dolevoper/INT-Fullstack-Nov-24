@@ -1,0 +1,144 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html {
+    font-size: calc(1rem + 0.5vw);
+    line-height: 1.5;
+}
+
+body {
+    font-family: system-ui;
+}
+
+main {
+    width: min(70ch, 100% - 2rem);
+    margin-inline: auto;
+}
+
+input, button {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+ul, li{
+    list-style: none;
+    padding: 0;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.u-inputFieldShort{
+    width: 10rem;
+}
+.u-center{
+    text-align: center;
+}
+
+.u-smallFont{
+    font-size: 0.8rem;
+}
+
+form[name="add todo"] {
+    display: flex;
+    gap: 0.5rem;
+
+    > input {
+        flex: 1;
+    }
+}
+
+.horisontalMenu{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 13rem;
+}
+
+.button{
+    width: 10rem;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+
+    li{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 15rem;    
+    }    
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+
+    li{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 15rem;            
+    }    
+    :nth-child(3){
+        width: 18rem;
+    }
+}
+
+.toast {
+    background: #f44336;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeOut 3s ease forwards;
+    z-index: 1000;
+    position: absolute;
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+}
+
+
+
+#todos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    > li{
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+
+        &.completed {
+            color: #5f5f5f;
+
+            &::after {
+                content: "✅";
+            }
+        }
+    }
+}
