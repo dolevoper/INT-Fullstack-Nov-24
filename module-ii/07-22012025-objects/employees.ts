@@ -7,52 +7,18 @@ type Employee = {
 
 const employees: Employee[] = [];
 
-app();
+for (let i = 0; i < 5; i++) {
+    const name = prompt("Please enter employee name") ?? "";
+    const age = Number(prompt("Please enter employee age"));
+    const department = prompt("Please enter employee department") ?? "";
+    const sallary = Number(prompt("Please enter employee sallary"));
 
-const mainMenuPrompt =
-    `Please select an option:
-
-1. New employee
-2. Find employee
-3. Remove employee
-4. Stats
-(Press cancel to quit)`;
-
-function app() {
-    alert("Welcome to employee manager!");
-
-    let userInput = prompt(mainMenuPrompt);
-
-    while (userInput !== null) {
-        switch (userInput) {
-            case "1":
-                newEmployee();
-                break;
-            case "2":
-                findEmployee();
-                break;
-            case "3":
-                removeEmployee();
-                break;
-            case "4":
-                stats();
-                break;
-            default:
-                alert(`Unknown option '${userInput}'`);
-        }
-
-        userInput = prompt(mainMenuPrompt);
-    }
-}
-
-function newEmployee() {
-    const employeeToAdd = readEmployee();
-
-    if (!employeeToAdd) {
-        return;
-    }
-
-    employees.push(employeeToAdd);
+    employees.push({
+        name,
+        age,
+        department,
+        sallary
+    });
 }
 
 function findEmployee() { }
