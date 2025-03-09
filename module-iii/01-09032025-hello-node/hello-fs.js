@@ -20,7 +20,34 @@
 
 // import * as fs from "fs";
 const fs = require("fs");
+const { EOL } = require("os");
 
-const file = fs.readFileSync("./hello.txt", "utf8");
+const [,, inputPath] = process.argv;
 
-console.log(file);
+app();
+
+function app() {
+    const input = getInput();
+    const joinedContent = input.replaceAll(EOL, ",");
+    const outputPath = getOutputFilePath();
+
+    fs.writeFileSync(outputPath, joinedContent);
+}
+
+function getInput() {
+    try {
+        return fs.readFileSync(inputPath, "utf8");
+    } catch {
+        console.error(`Cannot find file ${inputPath}`);
+        process.exit(1);
+    }
+}
+
+function getOutputFilePath() {
+    const fileParts = inputPath.split(".");
+    const fileName = fileParts.slice(0, -1).join(".");
+    const fileExtension = fileParts.slice(-1);
+    
+    return `${fileName}-joined.${fileExtension}`;
+}
+
