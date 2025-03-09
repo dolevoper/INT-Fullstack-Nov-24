@@ -1,12 +1,16 @@
-const [,, firstInput, secondInput] = process.argv;
+const [,, ...inputs] = process.argv;
 
-const firstNumber = Number(firstInput);
-const secondNumber = Number(secondInput);
+const numbers = inputs.map(Number);
+const nanIndex = numbers.findIndex(isNaN);
 
-if (isNaN(firstNumber)) {
-    console.error(`${firstInput} is not a number`);
-} else if (isNaN(secondNumber)) {
-    console.error(`${secondInput} is not a number`);
-} else {
-    console.log(firstNumber + secondNumber);
+if (nanIndex > -1) {
+    console.error(`${inputs[nanIndex]} is not a number`);
+    process.exit(1);
 }
+
+const sum = numbers.reduce(
+    (res, currentNumber) => res + currentNumber,
+    0
+);
+
+console.log(sum);
