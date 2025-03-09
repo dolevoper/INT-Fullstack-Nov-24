@@ -1,13 +1,9 @@
-const numbers: number[] = [];
+// const numbers: number[] = [];
 
-let userInput = prompt("Please enter a number");
-
-while (userInput !== null) {
-    numbers[numbers.length] = Number(userInput); // numbers.push(Number(userInput));
-
-    userInput = prompt("Please enter a number");
+for (let i = 0; i < 10; i++) {
+    numbers[i] = Number(prompt("Please enter a number"));
 }
 
-for (let i = 0; i < numbers.length; i++) {
+for (let i = 0; i < 10; i++) {
     alert(numbers[i]);
 }
