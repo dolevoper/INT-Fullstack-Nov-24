@@ -8,6 +8,7 @@ const userHeightInCm = Number(prompt("What is your height? (cm)"));
 
 // Output: "You can board the ride!" or "Go home"
 
+
 const isOlderThan8 = userAge > 8;
 const isAtLeast140Cm = userHeightInCm >= 140;
 const isOlderThan18 = userAge > 18;

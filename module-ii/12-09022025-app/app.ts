@@ -60,21 +60,7 @@ export function addItem(item: Item) {
     return "Success";
 }
 
-export function editItem(item: Item) {
-    const itemToEdit = getItem(item.id);
-
-    if (typeof itemToEdit === "string") {
-        return itemToEdit;
-    }
-
-    itemToEdit.name = item.name;
-    itemToEdit.description = item.description;
-    itemToEdit.priceInAgorot = item.priceInAgorot;
-
-    localStorage.setItem(itemsStorageKey, JSON.stringify(items));
-
-    return "Success";
-}
+export function editItem(item: Item) {}
 
 export function addToStock(itemId: string, amount: number) {}
 

@@ -1,35 +1,16 @@
+var _a, _b;
 var employees = [];
-app();
-var mainMenuPrompt = "Please select an option:\n\n1. New employee\n2. Find employee\n3. Remove employee\n4. Stats\n(Press cancel to quit)";
-function app() {
-    alert("Welcome to employee manager!");
-    var userInput = prompt(mainMenuPrompt);
-    while (userInput !== null) {
-        switch (userInput) {
-            case "1":
-                newEmployee();
-                break;
-            case "2":
-                findEmployee();
-                break;
-            case "3":
-                removeEmployee();
-                break;
-            case "4":
-                stats();
-                break;
-            default:
-                alert("Unknown option '" + userInput + "'");
-        }
-        userInput = prompt(mainMenuPrompt);
-    }
-}
-function newEmployee() {
-    var employeeToAdd = readEmployee();
-    if (!employeeToAdd) {
-        return;
-    }
-    employees.push(employeeToAdd);
+for (var i = 0; i < 5; i++) {
+    var name = (_a = prompt("Please enter employee name")) !== null && _a !== void 0 ? _a : "";
+    var age = Number(prompt("Please enter employee age"));
+    var department = (_b = prompt("Please enter employee department")) !== null && _b !== void 0 ? _b : "";
+    var sallary = Number(prompt("Please enter employee sallary"));
+    employees.push({
+        name: name,
+        age: age,
+        department: department,
+        sallary: sallary
+    });
 }
 function findEmployee() { }
 function removeEmployee() { }
