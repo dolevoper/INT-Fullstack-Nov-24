@@ -1,7 +1,8 @@
 import { createServer } from "http";
 import express from "express";
 import { json } from "body-parser";
-import { importFromCSV, parseDoctorsCSV, parseLabsCSV, parsePatiensCSV } from "./filesHandler";
+import { doctorsToCSV, importFromCSV, labsToCSV, parseDoctorsCSV, parseLabsCSV, parsePatiensCSV, patientsToCSV, saveToCSV } from "./filesHandler";
+import { error } from "console";
 
 export type Patient = {
     id: string;
@@ -30,31 +31,35 @@ let patients :  Map<string, Patient>;
 let doctors : Map<string,Doctor>;
 let labs : Map<string,Laboratory>;
 
-importFromCSV("./data/doctors.csv")
+const doctorsFilePath = "./data/doctors.csv";
+const patientsFilePath = "./data/patients.csv";
+const labsFilePath = "./data/laboratories.csv";
+
+importFromCSV(doctorsFilePath)
     .then((csvData) => {
         doctors = parseDoctorsCSV(csvData);
-        console.log("doctors loaded");
+        console.log((new Date()).toLocaleString(),`Doctors loaded from ${doctorsFilePath}`);
     })
     .catch((error) => {
-        console.error("Failed to load doctors:", error);
+        console.error((new Date()).toLocaleString(),"Failed to load doctors:", error);
     });
 
-importFromCSV("./data/laboratories.csv")
+importFromCSV(labsFilePath)
     .then((csvData) => {
         labs = parseLabsCSV(csvData);
-        console.log("labs loaded");
+        console.log((new Date()).toLocaleString(),`Labs loaded from ${labsFilePath}`);
     })
     .catch((error) => {
-        console.error("Failed to load laboratories:", error);
+        console.error((new Date()).toLocaleString(),"Failed to load laboratories:", error);
     });
 
-importFromCSV("./data/patients.csv")
+importFromCSV(patientsFilePath)
     .then((csvData) => {
         patients = parsePatiensCSV(csvData);
-        console.log("patients loaded");
+        console.log((new Date()).toLocaleString(),`Patients loaded from ${patientsFilePath}`);
     })
     .catch((error) => {
-        console.error("Failed to load laboratories:", error);
+        console.error((new Date()).toLocaleString(),"Failed to load laboratories:", error);
     });
 
 
@@ -164,6 +169,233 @@ app.get("/labs/:id", (req, res) => {
     res.json(lab);
 });
 
+
+app.put("/patients/:id", (req, res) => {
+    const { id } = req.params;
+    const inputBody = req.body as Patient; 
+    
+    const requiredFields: (keyof Patient)[] = ["id", "password", "name", "surname", "dateOfBirth", "address", "contactPhone", "email"];
+    for (const field of requiredFields) {
+        if (!inputBody[field]) {
+            res.status(400).json({ error: `Missing field: ${field}` });
+            return;
+        }
+    }
+
+    if (typeof inputBody.id !== "string") {
+        res.status(400).json({ error: "Invalid id format" });
+        return;
+    }
+    if (id !== inputBody.id){
+        res.status(400).json({ error: "ID mismatch" });
+        return;
+    }
+    if (typeof inputBody.password !== "string") {
+        res.status(400).json({ error: "Invalid password format" });
+        return;
+    }
+    if (typeof inputBody.name !== "string") {
+        res.status(400).json({ error: "Invalid name format" });
+        return;
+    }
+    if (typeof inputBody.surname !== "string") {
+        res.status(400).json({ error: "Invalid surname format" });
+        return;
+    }
+    if (typeof inputBody.address !== "string") {
+        res.status(400).json({ error: "Invalid address format" });
+        return;
+    }
+    if (typeof inputBody.contactPhone !== "string") {
+        res.status(400).json({ error: "Invalid phone format" });
+        return;
+    }
+    if (typeof inputBody.email !== "string" || !inputBody.email.includes("@")){ 
+        res.status(400).json({ error: "Invalid email format" });
+        return;
+    }
+
+    const dateOfBirth = new Date(inputBody.dateOfBirth);  
+    if (isNaN(dateOfBirth.getTime())) {
+        res.status(400).json({ error: "Invalid dateOfBirth format. Expected YYYY-MM-DD" });
+        return;
+    }else{
+        inputBody.dateOfBirth = dateOfBirth;
+    }   
+   
+
+    patients.set(id,inputBody);
+
+    res.status(201);
+    res.end();
+
+    const csvData = patientsToCSV(patients);
+    saveToCSV(patientsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Patients saved to ${patientsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Failed to save patients:", error);
+        });
+});
+
+app.put("/doctors/:id", (req, res) => {
+    const { id } = req.params;
+    const inputBody = req.body as Doctor; 
+    
+    const requiredFields: (keyof Doctor)[] = ["id", "name", "surname", "department"];
+    for (const field of requiredFields) {
+        if (!inputBody[field]) {
+            res.status(400).json({ error: `Missing field: ${field}` });
+            return;
+        }
+    }
+
+    if (typeof inputBody.id !== "string") {
+        res.status(400).json({ error: "Invalid id format" });
+        return;
+    }  
+    if (id !== inputBody.id){
+        res.status(400).json({ error: "ID mismatch" });
+        return;
+    }
+    if (typeof inputBody.name !== "string") {
+        res.status(400).json({ error: "Invalid name format" });
+        return;
+    }
+    if (typeof inputBody.surname !== "string") {
+        res.status(400).json({ error: "Invalid surname format" });
+        return;
+    }
+    if (typeof inputBody.department !== "string") {
+        res.status(400).json({ error: "Invalid department format" });
+        return;
+    }        
+   
+    doctors.set(id,inputBody);
+
+    res.status(201);
+    res.end();
+
+    const csvData = doctorsToCSV(doctors);
+    saveToCSV(doctorsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Doctors saved to ${doctorsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Failed to save patients:", error);
+        });
+});
+
+app.put("/labs/:id", (req, res) => {
+    const { id } = req.params;
+    const inputBody = req.body as Laboratory; 
+    
+    const requiredFields: (keyof Laboratory)[] = ["id", "name", "department"];
+    for (const field of requiredFields) {
+        if (!inputBody[field]) {
+            res.status(400).json({ error: `Missing field: ${field}` });
+            return;
+        }
+    }
+
+    if (typeof inputBody.id !== "string") {
+        res.status(400).json({ error: "Invalid id format" });
+        return;
+    }  
+    if (id !== inputBody.id){
+        res.status(400).json({ error: "ID mismatch" });
+        return;
+    }
+    if (typeof inputBody.name !== "string") {
+        res.status(400).json({ error: "Invalid name format" });
+        return;
+    }    
+    if (typeof inputBody.department !== "string") {
+        res.status(400).json({ error: "Invalid department format" });
+        return;
+    }        
+   
+    labs.set(id,inputBody);
+
+    res.status(201);
+    res.end();
+
+    const csvData = labsToCSV(labs);
+    saveToCSV(labsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Doctors saved to ${labsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Failed to save patients:", error);
+        });
+});
+
+app.delete("/patients/:id", (req, res) => {
+    const { id } = req.params;
+    const deleted = patients.delete(id);
+
+    if (!deleted) {
+        res.status(400).json({ error: "No such patient"});        
+        return;
+    }
+
+    res.status(201);
+    res.end();
+
+    const csvData = patientsToCSV(patients);
+    saveToCSV(patientsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Patients saved to ${patientsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Failed to save patients:", error);
+        });
+});
+
+app.delete("/labs/:id", (req, res) => {
+    const { id } = req.params;
+    const deleted = labs.delete(id);
+
+    if (!deleted) {
+        res.status(400).json({ error: "No such laboratory"});        
+        return;
+    }
+
+    res.status(201);
+    res.end();
+
+    const csvData = labsToCSV(labs);
+    saveToCSV(labsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Labs saved to ${labsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Failed to save labs:", error);
+        });
+});
+
+app.delete("/doctors/:id", (req, res) => {
+    const { id } = req.params;
+    const deleted = doctors.delete(id);
+
+    if (!deleted) {
+        res.status(400).json({ error: "No such doctor"});        
+        return;
+    }
+
+    res.status(201);
+    res.end();
+
+    const csvData = doctorsToCSV(doctors);
+    saveToCSV(doctorsFilePath,csvData)
+        .then(() => {
+            console.log((new Date()).toLocaleString(),`Doctors saved to ${doctorsFilePath}`)
+        })
+        .catch((error) => {
+            console.error((new Date()).toLocaleString(),"Faild to save doctors:", error);
+        });
+});
 
 
 const server = createServer(app);

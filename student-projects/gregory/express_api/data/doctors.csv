@@ -5,9 +5,8 @@ id,name,surname,department
 548236193,Eitan,Peretz,Pediatrics
 126783451,Tamar,Biton,Oncology
 675490827,Amit,Dahan,Dermatology
-832715649,Shira,Avraham,Psychiatry
 469258730,Itay,Sharon,Radiology
-907643215,Gal,Weiss,General Surgery
+907643215,Tal,Weiss,General Surgery
 385620974,Yarden,Goldstein,Anesthesiology
 741258903,Lior,Baruch,Endocrinology
 526394781,Nadav,Rubin,Gastroenterology
@@ -19,3 +18,4 @@ id,name,surname,department
 567218439,Maya,Shapiro,Ophthalmology
 214785306,Elad,Malka,ENT
 309572684,Hila,Segal,Emergency Medicine
+832715649,Shira,Avraham,Shrinks
