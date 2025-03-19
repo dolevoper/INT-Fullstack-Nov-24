@@ -2,14 +2,14 @@ import { randomUUID } from "crypto";
 import { createServer } from "http";
 
 
-type Computers = {
+type Computer = {
     id: string,
     createdAt: number,
     description?: string,
     price: number,
 };
 
-let computers: Computers[] = [];
+let computers: Computer[] = [];
 
 
 const server = createServer((req, res) => {
