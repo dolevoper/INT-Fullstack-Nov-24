@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPatient</title>
-    <!-- <link rel="stylesheet" href="./slave/dist/reset.css">
-    <link rel="stylesheet" href="./slave/dist/composition.css">
-    <link rel="stylesheet" href="./slave/dist/utility.css">
-    <link rel="stylesheet" href="./slave/dist/block.css">
-    <link rel="stylesheet" href="./slave/dist/expection.css">   -->
+    <link rel="stylesheet" href="/styles.css">   
 </head>
 <body>
     <header class="mainHeader">
         <nav class="mainNav">
-            <ul class="nav-list">
+            <ul class="navList">
                 <li><a href="/show_patients">Parients</a></li>
                 <li><a href="/">Doctors</a></li>
                 <li><a href="/show_labs">Labs</a></li>                                          
             </ul>
         </nav>
     </header>
-    <h2 class="mainTitle">Hello <span>userName</span></h2>
+    <h2 class="mainTitle">Patients List</h2>
 
-    <ul>
+    <ul class="patientsList">
         <% patients.forEach(patient => { %>        
         <li>
             <a href="show_patients/<%= patient.id %>">
@@ -31,6 +27,8 @@
         </li>
         <% }); %>
     </ul>
+
+    <a href="/new_patient" class="bottomMenu">Add</a>
     
 </body>
 </html>

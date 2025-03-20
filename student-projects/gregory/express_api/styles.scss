@@ -1,0 +1,140 @@
+:root{
+    --primatry-color: #3f6ff3;
+    --secondary-color: #e2e9fd;     
+
+    --text-color-primary: #000000;
+    --text_color_secondary: #545454;
+
+    --h2-font-size: clamp(1.5rem, 2.5vw, 2.5rem);//2.5rem;
+    --metersFont : clamp(1.2rem, 3vw, 2rem);//2rem;
+    --regularFont : clamp(0.8rem, 1.8vw, 1.2rem);//1.2rem;
+    --largeFont : clamp(1rem, 2vw, 1.5rem);//1.5rem;
+
+    --iconWidth : 4rem;
+    --smallIconWidth : 3rem;
+   
+    @media (prefers-color-scheme: dark) {
+       
+    }
+
+    @media screen and (max-width: 48rem) {
+       
+    }
+}
+
+$bp-mobile: 27rem;
+$bp-tablet: 48rem;
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+* {
+    // margin: 0;    
+}
+
+ul, ol, menu, li {
+    padding: 0;
+    list-style: none;
+    
+}
+
+html{
+    // background-color: var(--margin-color,darkgrey);
+    font-size: var(--regularFont,1rem);
+    color: var(--text-color-primary);
+}
+
+body, main {
+    background-color: var(--backgroundColor,white);    
+}
+
+h2{
+    color: var(--text-color-primary);
+    font-size: var(--h2-font-size, 3rem);
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    color: var(--text_color_main);
+    font-size: var(--regularFont, 2rem);
+}
+
+p{
+    color: var(--text_color_secondary);
+}
+
+.navList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.patientsList{
+    font-size: var(--regularFont,1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 70vh;
+    // border: 1px solid red;
+    overflow: auto;
+
+}
+
+.patientCard{
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--regularFont,1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    // border: 1px solid red;
+}
+
+.bottomMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.patientForm{
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: var(--regularFont,1rem);
+
+    li{
+        display: flex;
+        justify-content: space-between;        
+    }
+
+    button{
+        width: 5rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: var(--regularFont,1rem);
+        padding: 0.25rem;
+    }
+    input{
+        width: 20rem;
+        // text-align: right;
+        font-size: var(--regularFont,1rem);
+        padding-left: 0.5rem;
+    }
+}

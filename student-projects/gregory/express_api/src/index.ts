@@ -30,6 +30,11 @@ app.get("/", (req, res) => {
     res.render("index", {doctors});
 });
 
+app.get("/new_patient",(req,res) =>{
+      
+    res.redirect("/edit_patient/new");
+});
+
 app.get("/show_patients", (req, res) => {
     const patients = Array.from(dataModel.getPatients().values());
 
@@ -46,22 +51,21 @@ app.get("/show_patients/:id", (req, res) => {
 
 app.get("/edit_patient/:id", (req, res) => {
 
-    const { id } = req.params;
+    const { id } = req.params;   
     const error = req.query.error || "";
-    const patient = dataModel.getPatients().get(id);
+    if (id ==="new"){
+        const patient = {};
+        res.render("edit_patient",{patient,error});
+    }
 
+    const patient = dataModel.getPatients().get(id);
+    
     if (patient) {
         res.render("edit_patient", {patient,error});
     }
     else{
-        res.render("edit_patient", {name : "",
-                                    surname : "",
-                                    id : "",
-                                    password: "", 
-                                    dateOfBirth: "",
-                                    address: "",
-                                    contactPhone: "",
-                                    email: "",error});
+        const patient = {};
+        res.render("edit_patient",{patient,error});
     }
 });
 
@@ -82,12 +86,7 @@ app.post("/edit_patient/:id", (req,res) => {
             console.error(`Bad ID`);
             res.redirect(`/edit_patient/${id}?error=Bad ID`);            
             return;
-        }
-        if (id !== inputBody.id){
-            console.error(`ID mismatch`);
-            res.redirect(`/edit_patient/${id}?error=ID mismatch`);
-            return;
-        }
+        }        
         if (typeof inputBody.password !== "string") {
             console.error(`Invalid password format`);
             res.redirect(`/edit_patient/${id}?error=Invalid password format`);            
