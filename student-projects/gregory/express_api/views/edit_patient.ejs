@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPatient | <%= patient.name %> <%= patient.surname %></title>
+    <link rel="stylesheet" href="../dist/styles.css">
+    <!--<link rel="stylesheet" href="./slave/dist/composition.css">
+    <link rel="stylesheet" href="./slave/dist/utility.css">
+    <link rel="stylesheet" href="./slave/dist/block.css">
+    <link rel="stylesheet" href="./slave/dist/expection.css">   -->
+</head>
+<body>
+    <header class="mainHeader">
+        <nav class="mainNav">
+            <ul class="nav-list">
+                <li><a href="/show_patients">Parients</a></li>
+                <li><a href="/">Doctors</a></li>
+                <li><a href="/show_labs">Labs</a></li>                                          
+            </ul>
+        </nav>
+    </header>
+    <h2 class="mainTitle">Hello <span>userName</span></h2>
+
+    <form name="patient form" method="post">
+        <li>
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" required value="<%=patient.name%>">
+        </li>
+        <li>
+            <label for="surname">Surname</label>
+        <input id="surname" type="text" name="surname" required value="<%=patient.surname%>">
+        </li>
+        <li>
+            <label for="id">ID</label>
+            <input id="id" type="text" name="id" value="<%=patient.id%>"
+            <% if (patient.id) { %>
+                readonly
+            <% } %>>
+        </li>
+        <li>
+            <label for="password">Password</label>
+            <input id="password" type="text" name="password" required value="<%=patient.password%>">
+        </li>
+        <li>
+            <label for="dateOfBirth">Date of Birth</label>
+            <input id="dateOfBirth" type="date" name="dateOfBirth" required value="<%=patient.dateOfBirth.toISOString().slice(0, 10)%>">
+        </li>
+        <li>
+            <label for="address">Address</label>
+            <input id="address" type="text" name="address" required value="<%=patient.address%>">
+        </li>
+        <li>
+            <label for="contactPhone">Phone</label>
+            <input id="contactPhone" type="text" name="contactPhone" required value="<%=patient.contactPhone%>">
+        </li>
+        <li>
+            <label for="email">e-mail</label>
+            <input id="email" type="email" name="email" required value="<%=patient.email%>">
+        </li>
+        <button>Apply</button>
+    </form>
+
+    <a href="/show_patients">Back</a>
+   
+    <% if (error) { %>
+        <div class="error-message" style="color: red;">
+            <%= error %>
+        </div>
+    <% } %>
+    
+</body>
+</html>

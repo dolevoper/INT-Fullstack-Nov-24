@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPatient | <%= patient.name %> <%= patient.surname %></title>
+    <!-- <link rel="stylesheet" href="./slave/dist/reset.css">
+    <link rel="stylesheet" href="./slave/dist/composition.css">
+    <link rel="stylesheet" href="./slave/dist/utility.css">
+    <link rel="stylesheet" href="./slave/dist/block.css">
+    <link rel="stylesheet" href="./slave/dist/expection.css">   -->
+</head>
+<body>
+    <header class="mainHeader">
+        <nav class="mainNav">
+            <ul class="nav-list">
+                <li><a href="/show_patients">Parients</a></li>
+                <li><a href="/">Doctors</a></li>
+                <li><a href="/show_labs">Labs</a></li>                                          
+            </ul>
+        </nav>
+    </header>
+    <h2 class="mainTitle">Hello <span>userName</span></h2>
+
+    <ul>
+        <li>Name: <%= patient.name %></li>
+        <li>Surname: <%= patient.surname %></li>
+        <li>ID: <%= patient.id %></li> 
+        <li>Date of Birth: <%= patient.dateOfBirth.toLocaleString().slice(0,10) %></li>
+        <li>Address: <%= patient.address %></li>
+        <li>Phone: <%= patient.contactPhone %></li>
+        <li>e-mail: <%= patient.email %></li>   
+    </ul>
+
+    <a href="/show_patients">Back</a>
+    <a href="/edit_patient/<%=patient.id%>">Edit</a>
+    
+</body>
+</html>
