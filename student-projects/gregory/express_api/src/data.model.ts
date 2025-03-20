@@ -148,9 +148,10 @@ console.log((new Date()).toLocaleString(),`Patients loaded from ${patientsFilePa
 function importFromCSV(file : string) :string  {                     
 
     try{
-        return readFileSync(file).toString();       
+        return readFileSync(file,"utf8");       
     } catch (error){
         console.error((new Date()).toLocaleString(),"Error reading file:", error);
+        return "";
     }       
 }
 
